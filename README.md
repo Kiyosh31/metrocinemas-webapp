@@ -1,9 +1,8 @@
-# metrocinemas webapp
+# Metrocinemas webapp
 
 This project is made with laravel, for the management and correct sell tickets of a cinema.
 
-# Pre-requisites
-
+# Prerequisites
 - Install Laragon
 
 # Installation
@@ -19,12 +18,10 @@ composer install
 ```
 
 Copy .env.example and rename it as .env
-
 Generate a new APP_KEY
 ```
 php artisan key:generate
 ```
-
 
 # Usage
 
