@@ -18,6 +18,8 @@ Install dependencies
 composer install 
 ```
 
+Copy .env.example and rename it as .env
+
 Generate a new APP_KEY
 ```
 php artisan key:generate
