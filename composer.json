@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "kiyosh31/metrocinemas",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Management and correct sell the tickets of a cinema",
     "keywords": [
         "framework",
         "laravel"
