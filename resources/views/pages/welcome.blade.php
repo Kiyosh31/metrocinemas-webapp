@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome</title>
-</head>
-<body>
-    <h1>Welcome!</h1>
-    <p>
-        Hello {{ $name }} {{ $last_name }}
-    </p>
+@extends('layouts.app')
 
-    <p>
-        Nombre completo: {{$complete_name}}
-    </p>
-</body>
-</html>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Welcome</div>
+
+                <h1>Hola aqui gru! mostrandoles el welcome</h1>
+
+                <p>
+                    Gestor para la venta y apartado de los lugares para el cine.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
