@@ -9,7 +9,11 @@
 <body>
     <h1>Welcome!</h1>
     <p>
-        Hola {{ $name }} {{ $last_name }}
+        Hello {{ $name }} {{ $last_name }}
+    </p>
+
+    <p>
+        Nombre completo: {{$complete_name}}
     </p>
 </body>
 </html>
