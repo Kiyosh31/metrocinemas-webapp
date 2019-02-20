@@ -6,13 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Welcome</div>
-
-                <h1>Hola aqui gru! mostrandoles el welcome</h1>
-
                 <p>
-                    Gestor para la venta y apartado de los lugares para el cine.
+                    Nombre {{$name}} {{$last_name}}
                 </p>
-                
+                <p>
+                    nombre completo: {{$complete_name}}
+                </p>
             </div>
         </div>
     </div>

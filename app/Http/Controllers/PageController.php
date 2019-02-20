@@ -14,7 +14,7 @@ class PageController extends Controller
         return view('pages.contact');    
     }
 
-    public function welcome () {
+    public function welcome ($name, $last_name = null) {
         return view('pages.welcome', compact('name', 'last_name'))
         ->with(['complete_name' => $name . ' ' . $last_name]);
     }

@@ -6,13 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Contacto</div>
-
-                <h1>Hola aqui gru! mostrandoles contacto</h1>
-
-                <p>
-                    Gestor para la venta y apartado de los lugares para el cine.
-                </p>
-                
+                    <p>Gestor para la venta y apartado de los lugares para el cine.</p>
             </div>
         </div>
     </div>
