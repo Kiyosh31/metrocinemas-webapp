@@ -22,3 +22,9 @@ Route::get('/info', function () {
 Route::get('/contact', function () {
     return view('pages.contact');
 });
+
+Route::get('/welcome/{name}/{last_name?}', function ($name, $last_name = null) {
+    //return $name . ' ' . $last_name;
+    return view('pages.welcome')
+        ->with(['name' => $name, 'last_name' => $last_name]);
+});
