@@ -12,8 +12,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>David</th>
+                <tr class="table-success">
+                    <td>David</td>
                     <td>Garcia</td>
                     <td>Kiyoshi31</td>
                 </tr>
