@@ -18,4 +18,8 @@ class PageController extends Controller
         return view('pages.welcome', compact('name', 'last_name'))
         ->with(['complete_name' => $name . ' ' . $last_name]);
     }
+
+    public function team () {
+        return view('pages.team');
+    }
 }

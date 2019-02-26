@@ -21,6 +21,8 @@ Route::get('/contact', 'PageController@contact');
 
 Route::get('/welcome/{name}/{last_name?}', 'PageController@welcome');
 
+Route::get('/team', 'PageController@team');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
