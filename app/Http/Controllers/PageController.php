@@ -10,16 +10,19 @@ class PageController extends Controller
         return view('pages.info');
     }
 
-    public function contact () {
-        return view('pages.contact');    
+    public function contact () 
+    {
+        return view('pages.contact');
     }
 
-    public function welcome ($name, $last_name = null) {
+    public function welcome ($name, $last_name = null) 
+    {
         return view('pages.welcome', compact('name', 'last_name'))
         ->with(['complete_name' => $name . ' ' . $last_name]);
     }
 
-    public function team () {
+    public function team () 
+    {
         return view('pages.team');
     }
 }
