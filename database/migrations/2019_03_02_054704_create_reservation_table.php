@@ -15,11 +15,11 @@ class CreateReservationTable extends Migration
     {
         Schema::create('reservation', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('screening_id');
+            $table->integer('screening_id')->unsigned();
             $table->foreign('screening_id')->references('id')->on('screening');
-            $table->unsignedBigInteger('user_id');
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('seat_id');
+            $table->integer('seat_id')->unsigned();
             $table->foreign('seat_id')->references('id')->on('seat');
             $table->timestamps();
         });

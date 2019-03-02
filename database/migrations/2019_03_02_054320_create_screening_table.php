@@ -15,9 +15,9 @@ class CreateScreeningTable extends Migration
     {
         Schema::create('screening', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('movie_id');
+            $table->integer('movie_id')->unsigned();
             $table->foreign('moovie_id')->references('id')->on('movie');
-            $table->unsignedBigInteger('room_id');
+            $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('room');
             $table->timestamps('screening_start');
             $table->boolean('active');

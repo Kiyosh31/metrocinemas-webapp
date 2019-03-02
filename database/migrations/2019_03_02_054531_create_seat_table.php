@@ -17,7 +17,7 @@ class CreateSeatTable extends Migration
             $table->increments('id');
             $table->string('row');
             $table->string('number');
-            $table->unsignedBigInteger('room_id');
+            $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('room');
             $table->timestamps();
         });
