@@ -25,7 +25,7 @@
                         <td>{{ $movie->director }}</td>
                         <td>{{ $movie->cast }}</td>
                         <td>{{ $movie->clasification }}</td>
-                        <td>{{ $movie->duration_min }}</td>
+                        <td>{{ $movie->duration_min }} minutos</td>
                     </tr>
                 @endforeach
             </tbody>
