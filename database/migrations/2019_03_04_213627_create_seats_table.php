@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSeatTable extends Migration
+class CreateSeatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateSeatTable extends Migration
      */
     public function up()
     {
-        Schema::create('seat', function (Blueprint $table) {
+        Schema::create('seats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('row');
             $table->string('number');
-            $table->integer('room_id')->unsigned();
-            $table->foreign('room_id')->references('id')->on('room');
+            $table->unsignedInteger('room_id');
             $table->timestamps();
+
+            //$table->foreign('room_id')->references('id')->on('rooms');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateSeatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seat');
+        Schema::dropIfExists('seats');
     }
 }
