@@ -20,7 +20,7 @@ Route::get('/contact', 'PageController@contact');
 Route::get('/welcome/{name}/{last_name?}', 'PageController@welcome');
 Route::get('/team', 'PageController@team')->name('team');
 
-Route::get('/movies', 'MoviesController@index')->main('movies.index');
+Route::get('/movie', 'MoviesController@index')->name('movie.index');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
