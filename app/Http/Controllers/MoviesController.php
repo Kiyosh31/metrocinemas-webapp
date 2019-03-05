@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Metrocinemas\Http\Controllers;
 
 //use Illuminate\Support\Facades\DB;
-use App\Movie;
+use Metrocinemas\Movie;
 use Illuminate\Http\Request;
 
 class MoviesController extends Controller
