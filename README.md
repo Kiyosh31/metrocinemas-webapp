@@ -17,10 +17,15 @@ Install dependencies
 composer install 
 ```
 
-Copy .env.example and rename it as .env
+Rename .env.example as .env
 Generate a new APP_KEY
 ```
 php artisan key:generate
+```
+
+Generate Database
+```
+php artisan migrate
 ```
 
 # Usage

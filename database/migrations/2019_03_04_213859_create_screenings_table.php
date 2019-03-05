@@ -19,6 +19,7 @@ class CreateScreeningsTable extends Migration
             $table->unsignedInteger('room_id');
             $table->timestamp('start');
             $table->timestamp('finish');
+            $table->boolean('active');
             $table->timestamps();
 
             //$table->foreign('movie_id')->references('id')->on('movies');
