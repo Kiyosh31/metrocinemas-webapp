@@ -18,7 +18,7 @@ class CreateReservationsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('screening_id');
             $table->unsignedInteger('seat_id');
-            $table->float('paryment');
+            $table->float('payment');
             $table->timestamps();
 
             //$table->foreign('user_id')->references('id')->on('users');

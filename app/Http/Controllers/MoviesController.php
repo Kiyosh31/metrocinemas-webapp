@@ -19,7 +19,7 @@ class MoviesController extends Controller
 
         // CONSULTA CON MODELO
         //$movies = Movie::all();
-        $movies = Movie::where('id', '!=', '1')->get();
+        $movies = Movie::where('active', '=', '1')->get();
         return view('pages.movie.index', compact('movies'));
     }
 }
