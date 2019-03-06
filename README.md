@@ -37,4 +37,4 @@ php artisan serve
 ```
 
 # Author
-* David Garcia (Kiyosh31)
+* David Garcia [Kiyosh31](https://github.com/Kiyosh31)
