@@ -21,9 +21,9 @@ class CreateReservationsTable extends Migration
             $table->float('payment');
             $table->timestamps();
 
-            //$table->foreign('user_id')->references('id')->on('users');
-            //$table->foreign('screening_id')->references('id')->on('screenings');
-            //$table->foreign('seat_id')->references('id')->on('seats');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('screening_id')->references('id')->on('screenings');
+            $table->foreign('seat_id')->references('id')->on('seats');
         });
     }
 

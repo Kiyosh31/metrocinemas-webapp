@@ -20,7 +20,7 @@ class CreateSeatsTable extends Migration
             $table->unsignedInteger('room_id');
             $table->timestamps();
 
-            //$table->foreign('room_id')->references('id')->on('rooms');
+            $table->foreign('room_id')->references('id')->on('rooms');
         });
     }
 
