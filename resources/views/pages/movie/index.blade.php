@@ -21,7 +21,7 @@
                     No se encontraron peliculas
                 </div>
                 @else @foreach($movies as $movie)
-                <tr class="table-success">
+                <tr>
                     <td>{{ $movie->id }}</td>
                     <td>{{ $movie->title }}</td>
                     <td>{{ $movie->description }}</td>

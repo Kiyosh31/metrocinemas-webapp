@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/inicio', function () {
+    return view('inicio');
+});
+
 Route::get('/info', 'PageController@info')->name('info');
 Route::get('/contact', 'PageController@contact')->name('contact');
 Route::get('/welcome/{name}/{last_name?}', 'PageController@welcome')->name('welcome');
