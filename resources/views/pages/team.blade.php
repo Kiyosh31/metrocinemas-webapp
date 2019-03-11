@@ -15,7 +15,7 @@
                 <tr class="table-success">
                     <td>David</td>
                     <td>Garcia</td>
-                    <td>Kiyoshi31</td>
+                    <td>Kiyoshi31.... esta de la baby este nickname XD</td>
                 </tr>
             </tbody>
             </table>

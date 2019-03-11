@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Metrocinemas;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'last_name', 'phone', 'email', 'password',
     ];
 
     /**

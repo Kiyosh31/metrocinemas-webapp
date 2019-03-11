@@ -15,14 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/info', 'PageController@info');
-
-Route::get('/contact', 'PageController@contact');
-
-Route::get('/welcome/{name}/{last_name?}', 'PageController@welcome');
-
+Route::get('/info', 'PageController@info')->name('info');
+Route::get('/contact', 'PageController@contact')->name('contact');
+Route::get('/welcome/{name}/{last_name?}', 'PageController@welcome')->name('welcome');
 Route::get('/team', 'PageController@team')->name('team');
 
-Auth::routes();
+Route::get('/movie', 'MoviesController@index')->name('movie.index');
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
