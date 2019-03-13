@@ -19,6 +19,9 @@ Route::get('/inicio', function () {
     return view('inicio');
 });
 
+//Resource for CRUD on movie 
+Route::resource('movies', 'MovieController');
+
 Route::get('/info', 'PageController@info')->name('info');
 Route::get('/contact', 'PageController@contact')->name('contact');
 Route::get('/welcome/{name}/{last_name?}', 'PageController@welcome')->name('welcome');

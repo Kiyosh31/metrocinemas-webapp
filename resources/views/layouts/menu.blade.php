@@ -40,7 +40,11 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a href="/movie" class="nav-link"><i class="fe fe-check-square"></i> Peliculas</a>
+        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"><i class="fe fe-file"></i> Peliculas</a>
+        <div class="dropdown-menu dropdown-menu-arrow">
+          <a href="{{ route('movies.index') }}" class="dropdown-item">Mostrar Peliculas</a>
+          <a href="{{ route('movies.create') }}" class="dropdown-item">Agregar Pelicula</a>          
+        </div>
       </li>
       <li class="nav-item">
         <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
