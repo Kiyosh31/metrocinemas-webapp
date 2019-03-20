@@ -7,7 +7,7 @@
     <div class="col-md-8 offset-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Listado de peliculas</h3>
+                <h3 class="card-title">Busqueda de pelicula</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -21,15 +21,9 @@
                                 <th scope="col">Cast</th>
                                 <th scope="col">Clasificacion</th>
                                 <th scope="col">Duracion</th>
-                                <th scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if($movies->isEmpty())
-                            <div class="alert alert-danger" role="alert">
-                                No se encontraron peliculas
-                            </div>
-                            @else @foreach($movies as $movie)
                             <tr>
                                 <td>{{ $movie->id }}</td>
                                 <td>{{ $movie->title }}</td>
@@ -39,10 +33,14 @@
                                 <td>{{ $movie->clasification }}</td>
                                 <td>{{ $movie->duration_min }} minutos</td>
                                 <td>
-                                    <a href="{{ route('movies.show', $movie->id) }}">Detalle</a>
+                                    <a href="{{ route('movies.edit', $movie->id)}}" class="btn btn-sm btn-warning">Editar</a>
+                                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
-                            @endforeach @endif
                         </tbody>
                     </table>
                 </div>

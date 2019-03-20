@@ -85,7 +85,7 @@
             <p>Pagina en construccion, favor de no estar chingando</p>
 
             <div class="links">
-                <a href="{{ route('movie.index') }}">Peliculas</a>
+                <a href="{{ route('movies.index') }}">Peliculas</a>
             </div>
         </div>
 

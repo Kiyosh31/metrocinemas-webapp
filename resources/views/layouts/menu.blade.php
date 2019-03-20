@@ -22,7 +22,7 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"><i class="fe fe-file"></i> Pages</a>
+        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i> Pages</a>
         <div class="dropdown-menu dropdown-menu-arrow">
           <a href="./profile.html" class="dropdown-item ">Profile</a>
           <a href="./login.html" class="dropdown-item ">Login</a>
@@ -43,7 +43,7 @@
         <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"><i class="fe fe-file"></i> Peliculas</a>
         <div class="dropdown-menu dropdown-menu-arrow">
           <a href="{{ route('movies.index') }}" class="dropdown-item">Mostrar Peliculas</a>
-          <a href="{{ route('movies.create') }}" class="dropdown-item">Agregar Pelicula</a>          
+          <a href="{{ route('movies.create') }}" class="dropdown-item">Agregar Pelicula</a>
         </div>
       </li>
       <li class="nav-item">

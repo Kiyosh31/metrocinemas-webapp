@@ -19,7 +19,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('Movies.movieIndex', compact('movies'));
+        return view('movies.movieIndex', compact('movies'));
     }
 
     /**
@@ -63,7 +63,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        return view('movies.showMovie', compact('movie'));
     }
 
     /**
@@ -74,7 +74,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        return view('Movies.movieForm', compact('movie'));
     }
 
     /**
@@ -86,7 +86,16 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        $movie->title = $request->title;
+        $movie->description = $request->description;
+        $movie->director = $request->director;
+        $movie->cast = $request->cast;
+        $movie->clasification = $request->clasification;
+        $movie->duration_min = $request->duration;
+        $movie->active = $request->status;
+        $movie->save();
+
+        return redirect()->route('movies.show', $movie->id);
     }
 
     /**
@@ -97,6 +106,7 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+        return redirect()->route('movies.index');
     }
 }
