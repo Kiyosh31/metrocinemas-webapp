@@ -47,7 +47,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
+        <a href="{{ route('screenings.index') }}" class="nav-link"><i class="fe fe-image"></i> Funciones</a>
       </li>
       <li class="nav-item">
         <a href="./docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
