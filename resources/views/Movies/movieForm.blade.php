@@ -10,6 +10,17 @@
                 <h3 class="card-title">Agregar pelicula</h3>
             </div>
             <div class="card-body">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 @if(isset($movie))
                     <form action="{{ route('movies.update', $movie->id) }}" method="POST">
                         <input type="hidden" name="_method" value="PATCH">
@@ -18,32 +29,38 @@
                         <div class="col-8 offset-2">
                             <div class="form-group">
                                 <label class="form-label">Titulo</label>
-                                <input type="text" class="form-control" name="title" placeholder="Titulo" value="{{ isset($movie) ? $movie->title : '' }}">
+                                <input type="text" class="form-control" name="title" value="{{ $movie->title ?? '' }}{{ old('title') }}">
+                                
+                                @if ($errors->has('name'))
+                                    <span class="alert alert-danger">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span> 
+                                @endif
                             </div>
 
                             <div class="form-group">
                                     <label class="form-label">Descripcion</label>
-                                    <input type="text" class="form-control" name="description" placeholder="Descripcion" value="{{ $movie->description ?? '' }}">
+                                    <input type="text" class="form-control" name="description" value="{{ $movie->description ?? '' }}{{ old('description') }}">
                                 </div>
     
                                 <div class="form-group">
                                     <label class="form-label">Director</label>
-                                    <input type="text" class="form-control" name="director" placeholder="Director" value="{{ $movie->director ?? '' }}">
+                                    <input type="text" class="form-control" name="director" value="{{ $movie->director ?? '' }}{{ old('director') }}">
                                 </div>
     
                                 <div class="form-group">
                                     <label class="form-label">Reparto</label>
-                                    <input type="text" class="form-control" name="cast" placeholder="Reparto" value="{{ $movie->cast ?? '' }}">
+                                    <input type="text" class="form-control" name="cast" value="{{ $movie->cast ?? '' }}{{ old('cast') }}">
                                 </div>
     
                                 <div class="form-group">
                                     <label class="form-label">Clasificacion</label>
-                                    <input type="text" class="form-control" name="clasification" placeholder="Clasificacion" value="{{ $movie->clasification ?? '' }}">
+                                    <input type="text" class="form-control" name="clasification" value="{{ $movie->clasification ?? '' }}{{ old('clasification') }}">
                                 </div>
     
                                 <div class="form-group">
                                     <label class="form-label">Duracion en minutos</label>
-                                    <input type="text" class="form-control" name="duration" placeholder="Duracion" value="{{ $movie->duration_min ?? '' }}">
+                                    <input type="number" class="form-control" name="duration_min" value="{{ $movie->duration_min ?? '' }}{{ old('duration_min') }}">
                                 </div>
     
                                 <div class="form-label">Estatus</div>
@@ -71,7 +88,6 @@
 
                                 <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                         </div>
-
                     </form>
                 @else
                     <form action="{{ route('movies.store') }}" method="POST">
@@ -79,32 +95,38 @@
                         <div class="col-8 offset-2">
                             <div class="form-group">
                                 <label class="form-label">Titulo</label>
-                                <input type="text" class="form-control" name="title" placeholder="Titulo">
+                                <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+
+                                @if ($errors->has('title'))
+                                    <span class="alert alert-danger">
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span> 
+                                @endif
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Descripcion</label>
-                                <input type="text" class="form-control" name="description" placeholder="Descripcion">
+                                <input type="text" class="form-control" name="description" value="{{ old('description') }}">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Director</label>
-                                <input type="text" class="form-control" name="director" placeholder="Director">
+                                <input type="text" class="form-control" name="director" value="{{ old('director') }}">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Reparto</label>
-                                <input type="text" class="form-control" name="cast" placeholder="Reparto">
+                                <input type="text" class="form-control" name="cast" value="{{ old('cast') }}">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Clasificacion</label>
-                                <input type="text" class="form-control" name="clasification" placeholder="Clasificacion">
+                                <input type="text" class="form-control" name="clasification" value="{{ old('clasification') }}">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Duracion en minutos</label>
-                                <input type="text" class="form-control" name="duration" placeholder="Duracion">
+                                <input type="number" class="form-control" name="duration_min" value="{{ old('duration_min') }}">
                             </div>
 
                             <div class="form-label">Estatus</div>

@@ -42,13 +42,25 @@ class MovieController extends Controller
     {
         //obtenemos la info enviada desde el form
         //dd($request->all());
+        
+
+        //Validacion de datos
+        $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|min:15|max:255',
+            'director' => 'required|max:255',
+            'cast' => 'required|max:255',
+            'clasification' => 'required|max:1',
+            'duration_min' => 'required|numeric'
+        ]);
+
         $movie = new Movie();
         $movie->title = $request->input('title');
         $movie->description = $request->description;
         $movie->director = $request->director;
         $movie->cast = $request->cast;
         $movie->clasification = $request->clasification;
-        $movie->duration_min = $request->duration;
+        $movie->duration_min = $request->duration_min;
         $movie->active = $request->status;
         $movie->save();
 
@@ -91,7 +103,7 @@ class MovieController extends Controller
         $movie->director = $request->director;
         $movie->cast = $request->cast;
         $movie->clasification = $request->clasification;
-        $movie->duration_min = $request->duration;
+        $movie->duration_min = $request->duration_min;
         $movie->active = $request->status;
         $movie->save();
 
