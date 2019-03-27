@@ -25,8 +25,8 @@
                             @foreach($screenings as $sc)
                             <tr>
                                 <td>{{ $sc->id }}</td>
-                                <td>{{ $sc->movie_id }}</td>
-                                <td>{{ $sc->room_id }}</td>
+                                <td>{{ $sc->movie->title }}</td>
+                                <td>{{ $sc->room->name }}</td>
                                 <td>{{ $sc->start }}</td>
                                 <td>{{ $sc->finish }}</td>
                                 <td>

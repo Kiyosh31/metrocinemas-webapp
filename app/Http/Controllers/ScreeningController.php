@@ -16,7 +16,7 @@ class ScreeningController extends Controller
      */
     public function index()
     {
-        $screenings = Screening::all();
+        $screenings = Screening::where('active', '=', '1')->get();
         return view('screenings.screeningIndex', compact('screenings'));
     }
 
@@ -27,8 +27,8 @@ class ScreeningController extends Controller
      */
     public function create()
     {
-        $movies = Movie::all();
-        $rooms = Room::all();
+        $movies = Movie::where('active', '=', '1')->get();
+        $rooms = Room::where('active', '=', '1')->get();
         return view('screenings.screeningForm', compact('movies', 'rooms'));
     }
 
@@ -70,8 +70,8 @@ class ScreeningController extends Controller
      */
     public function edit(Screening $screening)
     {
-        $movies = Movie::all();
-        $rooms = Room::all();
+        $movies = Movie::where('active', '=', '1')->get();
+        $rooms = Room::where('active', '=', '1')->get();
         return view('screenings.screeningForm', compact('screening', 'movies', 'rooms'));
     }
 
