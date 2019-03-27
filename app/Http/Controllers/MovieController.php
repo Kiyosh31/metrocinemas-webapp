@@ -40,29 +40,18 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //obtenemos la info enviada desde el form
-        //dd($request->all());
-        
-
         //Validacion de datos
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required|min:15|max:255',
             'director' => 'required|max:255',
             'cast' => 'required|max:255',
-            'clasification' => 'required|max:1',
+            'clasification' => 'required|max:5',
             'duration_min' => 'required|numeric'
         ]);
 
-        $movie = new Movie();
-        $movie->title = $request->input('title');
-        $movie->description = $request->description;
-        $movie->director = $request->director;
-        $movie->cast = $request->cast;
-        $movie->clasification = $request->clasification;
-        $movie->duration_min = $request->duration_min;
-        $movie->active = $request->status;
-        $movie->save();
+        // Nueva forma de guardar con el fillable o guard en el model
+        Movie::create($request->all());
 
         return redirect()->route('movies.index');
     }
@@ -98,14 +87,17 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        $movie->title = $request->title;
-        $movie->description = $request->description;
-        $movie->director = $request->director;
-        $movie->cast = $request->cast;
-        $movie->clasification = $request->clasification;
-        $movie->duration_min = $request->duration_min;
-        $movie->active = $request->status;
-        $movie->save();
+        $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|min:15|max:255',
+            'director' => 'required|max:255',
+            'cast' => 'required|max:255',
+            'clasification' => 'required|max:5',
+            'duration_min' => 'required|numeric'
+        ]);
+        
+        //Nueva forma de guardar con el fillable o guard en el model
+        $movie->update($request->all());
 
         return redirect()->route('movies.show', $movie->id);
     }

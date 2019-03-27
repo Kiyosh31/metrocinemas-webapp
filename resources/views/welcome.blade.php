@@ -86,6 +86,7 @@
 
             <div class="links">
                 <a href="{{ route('movies.index') }}">Peliculas</a>
+                <a href="{{ route('screenings.index') }}">Proyecciones</a>                
             </div>
         </div>
 

@@ -36,12 +36,12 @@
 
                         <div class="form-group">
                             <label class="form-label">Inicio</label>
-                            <input type="datetime-local" class="form-control" name="start" value="{{ old('start') }}">
+                            <input type="datetime-local" class="form-control" name="start" value="{{ $screening->start ?? '' }}{{ old('start') }}">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Termina</label>
-                            <input type="datetime-local" class="form-control" name="finish" value="{{ old('finish') }}">
+                            <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}{{ old('finish') }}">
                         </div>
 
                         <div class="form-label">Estatus</div>
@@ -87,12 +87,12 @@
 
                     <div class="form-group">
                         <label class="form-label">Inicio</label>
-                        <input type="datetime-local" class="form-control" name="start" value="{{ old('start') }}">
+                        <input type="datetime-local" class="form-control" name="start" value="{{ $screening->start ?? '' }}{{ old('start') }}">
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Termina</label>
-                        <input type="datetime-local" class="form-control" name="finish" value="{{ old('finish') }}">
+                        <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}{{ old('finish') }}">
                     </div>
 
                     <div class="form-label">Estatus</div>

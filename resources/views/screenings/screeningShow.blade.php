@@ -24,15 +24,15 @@
                         <tbody>
                             <tr>
                                 <td>{{ $screening->id }}</td>
-                                <td>{{ $screening->movie_id }}</td>
-                                <td>{{ $screening->room_id }}</td>
+                                <td>{{ $screening->movie->title }}</td>
+                                <td>{{ $screening->room->name }}</td>
                                 <td>{{ $screening->start }}</td>
                                 <td>{{ $screening->finish }}</td>
                                 <td>
-                                    <a href="{{ route('screenings.edit', $screening->id)}}" class="btn btn-sm btn-warning">Editar</a>
+                                    <a href="{{ route('screenings.edit', $screening->id)}}" class="btn btn-warning">Editar</a>
                                     <form action="{{ route('screenings.destroy', $screening->id) }}" method="POST">
                                         <input type="hidden" name="_method" value="DELETE"> @csrf
-                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>

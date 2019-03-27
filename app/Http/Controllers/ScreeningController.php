@@ -40,13 +40,15 @@ class ScreeningController extends Controller
      */
     public function store(Request $request)
     {
-        $screening = new Screening();
-        $screening->movie_id = $request->movie_id;
-        $screening->room_id = $request->room_id;
-        $screening->start = $request->start;
-        $screening->finish = $request->finish;
-        $screening->active = $request->active;
-        $screening->save();
+        $request->validate([
+            'movie_id' => 'required|numeric',
+            'room_id' => 'required|numeric',
+            'start' => 'required|max:255',
+            'finish' => 'required|max:255',
+            'active' => 'required|numeric'
+        ]);
+
+        Screening::create($request->all());
 
         return redirect()->route('screenings.index');
     }
@@ -84,14 +86,17 @@ class ScreeningController extends Controller
      */
     public function update(Request $request, Screening $screening)
     {
-        $screening->movie_id = $request->movie_id;
-        $screening->room_id = $request->room_id;
-        $screening->start = $request->start;
-        $screening->finish = $request->finish;
-        $screening->active = $request->active;
-        $screening.save();
+        $request->validate([
+            'movie_id' => 'required|numeric',
+            'room_id' => 'required|numeric',
+            'start' => 'required|max:255',
+            'finish' => 'required|max:255',
+            'active' => 'required|numeric'
+        ]);
 
-        return redirect()->route('screenings.screeningShow', $screening-id);
+        $screening->update($request->all());
+
+        return redirect()->route('screenings.screeningShow', $screening->id);
     }
 
     /**

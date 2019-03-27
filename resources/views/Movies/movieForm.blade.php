@@ -49,7 +49,13 @@
 
                         <div class="form-group">
                             <label class="form-label">Clasificacion</label>
-                            <input type="text" class="form-control" name="clasification" value="{{ $movie->clasification ?? '' }}{{ old('clasification') }}">
+                            <select name="clasification" class="form-control">
+                                <option value="aa {{ old('clasification') }}">AA</option>
+                                <option value="a {{ old('clasification') }}">A</option>
+                                <option value="b {{ old('clasification') }}">B</option>
+                                <option value="b15 {{ old('clasification') }}">B15</option>
+                                <option value="c {{ old('clasification') }}">C</option>                                                                                                
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -61,19 +67,19 @@
                         <div class="custom-controls-stacked">
                             @if($movie->active == 1)
                             <label class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" name="status" value="1" checked>
+                                            <input type="radio" class="custom-control-input" name="active" value="1" checked>
                                             <div class="custom-control-label">Activo</div>
                                         </label>
                             <label class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" name="status" value="0">
+                                            <input type="radio" class="custom-control-input" name="active" value="0">
                                             <div class="custom-control-label">Inactivo</div>
                                     </label> @else
                             <label class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" name="status" value="1">
+                                            <input type="radio" class="custom-control-input" name="active" value="1">
                                             <div class="custom-control-label">Activo</div>
                                         </label>
                             <label class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" name="status" value="0" checked>
+                                            <input type="radio" class="custom-control-input" name="active" value="0" checked>
                                             <div class="custom-control-label">Inactivo</div>
                                     </label> @endif
                         </div>
@@ -110,7 +116,13 @@
 
                         <div class="form-group">
                             <label class="form-label">Clasificacion</label>
-                            <input type="text" class="form-control" name="clasification" value="{{ old('clasification') }}">
+                            <select name="clasification" class="form-control">
+                                <option value="aa {{ old('clasification') }}">AA</option>
+                                <option value="a {{ old('clasification') }}">A</option>
+                                <option value="b {{ old('clasification') }}">B</option>
+                                <option value="b15 {{ old('clasification') }}">B15</option>
+                                <option value="c {{ old('clasification') }}">C</option>                                                                                                
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -121,11 +133,11 @@
                         <div class="form-label">Estatus</div>
                         <div class="custom-controls-stacked">
                             <label class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="status" value="1" checked>
+                                        <input type="radio" class="custom-control-input" name="active" value="1" checked>
                                         <div class="custom-control-label">Activo</div>
                                     </label>
                             <label class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="status" value="0">
+                                        <input type="radio" class="custom-control-input" name="active" value="0">
                                         <div class="custom-control-label">Inactivo</div>
                                     </label>
                         </div>
