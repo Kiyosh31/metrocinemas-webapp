@@ -4,7 +4,7 @@ namespace Metrocinemas;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Seat_Reserved extends Model
 {
     //
 }

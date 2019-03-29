@@ -20,8 +20,8 @@ class CreateMoviesTable extends Migration
             $table->string('director');
             $table->string('cast');
             $table->string('clasification');
+            $table->string('category');
             $table->integer('duration_min');
-            $table->boolean('active');
             $table->timestamps();
         });
     }
