@@ -16,7 +16,7 @@ class ScreeningController extends Controller
      */
     public function index()
     {
-        $screenings = Screening::where('active', '=', '1')->get();
+        $screenings = Screening::all();
         return view('screenings.screeningIndex', compact('screenings'));
     }
 
@@ -27,8 +27,8 @@ class ScreeningController extends Controller
      */
     public function create()
     {
-        $movies = Movie::where('active', '=', '1')->get();
-        $rooms = Room::where('active', '=', '1')->get();
+        $movies = Movie::all();
+        $rooms = Room::all();
         return view('screenings.screeningForm', compact('movies', 'rooms'));
     }
 
@@ -44,8 +44,7 @@ class ScreeningController extends Controller
             'movie_id' => 'required|numeric',
             'room_id' => 'required|numeric',
             'start' => 'required|max:255',
-            'finish' => 'required|max:255',
-            'active' => 'required|numeric'
+            'finish' => 'required|max:255'
         ]);
 
         Screening::create($request->all());
@@ -72,8 +71,8 @@ class ScreeningController extends Controller
      */
     public function edit(Screening $screening)
     {
-        $movies = Movie::where('active', '=', '1')->get();
-        $rooms = Room::where('active', '=', '1')->get();
+        $movies = Movie::all();
+        $rooms = Room::all();
         return view('screenings.screeningForm', compact('screening', 'movies', 'rooms'));
     }
 
@@ -90,8 +89,7 @@ class ScreeningController extends Controller
             'movie_id' => 'required|numeric',
             'room_id' => 'required|numeric',
             'start' => 'required|max:255',
-            'finish' => 'required|max:255',
-            'active' => 'required|numeric'
+            'finish' => 'required|max:255'
         ]);
 
         $screening->update($request->all());

@@ -1,13 +1,13 @@
 @extends('layouts.tabler') 
 @section('content')
 <div class="plage-header">
-    <h1>Listado de funciones</h1>
+    <h1>Listado de Proyecciones</h1>
 </div>
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Listado de funciones</h3>
+                <h3 class="card-title">Listado de Proyecciones</h3>
             </div>
             <div class="card-body">
                 <div class="row">

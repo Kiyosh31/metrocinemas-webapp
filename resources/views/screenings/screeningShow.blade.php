@@ -19,6 +19,7 @@
                                 <th scope="col">Sala</th>
                                 <th scope="col">Inicio</th>
                                 <th scope="col">Termina</th>
+                                <th scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1,13 +1,13 @@
 @extends('layouts.tabler') 
 @section('content')
 <div class="plage-header">
-    <h1>Agregar Funcion</h1>
+    <h1>Agregar Proyeccion</h1>
 </div>
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Agregar Funcion</h3>
+                <h3 class="card-title">Agregar Proyeccion</h3>
             </div>
             <div class="card-body">
                 @if(isset($screening))
@@ -44,17 +44,6 @@
                             <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}{{ old('finish') }}">
                         </div>
 
-                        <div class="form-label">Estatus</div>
-                        <div class="custom-controls-stacked">
-                            <label class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="active" value="1" checked>
-                                        <div class="custom-control-label">Activo</div>
-                                    </label>
-                            <label class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="active" value="0">
-                                        <div class="custom-control-label">Inactivo</div>
-                                    </label>
-                        </div>
                         @if($movies->isEmpty() || $rooms->isEmpty())
                         <button type="submit" class="btn btn-primary ml-auto" disabled>Aceptar</button> @else
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button> @endif
@@ -93,18 +82,6 @@
                     <div class="form-group">
                         <label class="form-label">Termina</label>
                         <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}{{ old('finish') }}">
-                    </div>
-
-                    <div class="form-label">Estatus</div>
-                    <div class="custom-controls-stacked">
-                        <label class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="active" value="1" checked>
-                                        <div class="custom-control-label">Activo</div>
-                                    </label>
-                        <label class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="active" value="0">
-                                        <div class="custom-control-label">Inactivo</div>
-                                    </label>
                     </div>
 
                     @if($movies->isEmpty() || $rooms->isEmpty())

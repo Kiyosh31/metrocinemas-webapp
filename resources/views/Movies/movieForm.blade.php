@@ -59,31 +59,30 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="form-label">Categoria</label>
+                            <select name="category" class="form-control">
+                                <option value="Comedia {{ old('category') }}">Comedia</option>
+                                <option value="Sci-Fi {{ old('category') }}">Sci-Fi</option>
+                                <option value="Horror {{ old('category') }}">Horror</option>
+                                <option value="Romance {{ old('category') }}">Romance</option>
+                                <option value="Accion {{ old('category') }}">Accion</option>
+                                <option value="Thriller {{ old('category') }}">Thriller</option>
+                                <option value="Drama {{ old('category') }}">Drama</option>
+                                <option value="Misterio {{ old('category') }}">Misterio</option>
+                                <option value="Crimen {{ old('category') }}">Crimen</option>
+                                <option value="Animacion {{ old('category') }}">Animacion</option>
+                                <option value="Aventura {{ old('category') }}">Aventura</option>
+                                <option value="Fantasia {{ old('category') }}">Fantasia</option>
+                                <option value="Comedia Romantica {{ old('category') }}">Comedia romantica</option>
+                                <option value="Accion Comedia {{ old('category') }}">Accion Comedia</option>
+                                <option value="Super Heores {{ old('category') }}">Super heroes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label class="form-label">Duracion en minutos</label>
                             <input type="number" class="form-control" name="duration_min" value="{{ $movie->duration_min ?? '' }}{{ old('duration_min') }}">
                         </div>
-
-                        <div class="form-label">Estatus</div>
-                        <div class="custom-controls-stacked">
-                            @if($movie->active == 1)
-                            <label class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" name="active" value="1" checked>
-                                            <div class="custom-control-label">Activo</div>
-                                        </label>
-                            <label class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" name="active" value="0">
-                                            <div class="custom-control-label">Inactivo</div>
-                                    </label> @else
-                            <label class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" name="active" value="1">
-                                            <div class="custom-control-label">Activo</div>
-                                        </label>
-                            <label class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" name="active" value="0" checked>
-                                            <div class="custom-control-label">Inactivo</div>
-                                    </label> @endif
-                        </div>
-
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                     </div>
                 </form>
@@ -121,7 +120,28 @@
                                 <option value="a {{ old('clasification') }}">A</option>
                                 <option value="b {{ old('clasification') }}">B</option>
                                 <option value="b15 {{ old('clasification') }}">B15</option>
-                                <option value="c {{ old('clasification') }}">C</option>                                                                                                
+                                <option value="c {{ old('clasification') }}">C</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Categoria</label>
+                            <select name="category" class="form-control">
+                                <option value="Comedia {{ old('category') }}">Comedia</option>
+                                <option value="Sci-Fi {{ old('category') }}">Sci-Fi</option>
+                                <option value="Horror {{ old('category') }}">Horror</option>
+                                <option value="Romance {{ old('category') }}">Romance</option>
+                                <option value="Accion {{ old('category') }}">Accion</option>
+                                <option value="Thriller {{ old('category') }}">Thriller</option>
+                                <option value="Drama {{ old('category') }}">Drama</option>
+                                <option value="Misterio {{ old('category') }}">Misterio</option>
+                                <option value="Crimen {{ old('category') }}">Crimen</option>
+                                <option value="Animacion {{ old('category') }}">Animacion</option>
+                                <option value="Aventura {{ old('category') }}">Aventura</option>
+                                <option value="Fantasia {{ old('category') }}">Fantasia</option>
+                                <option value="Comedia Romantica {{ old('category') }}">Comedia romantica</option>
+                                <option value="Accion Comedia {{ old('category') }}">Accion Comedia</option>
+                                <option value="Super Heores {{ old('category') }}">Super heroes</option>
                             </select>
                         </div>
 
@@ -129,19 +149,6 @@
                             <label class="form-label">Duracion en minutos</label>
                             <input type="number" class="form-control" name="duration_min" value="{{ old('duration_min') }}">
                         </div>
-
-                        <div class="form-label">Estatus</div>
-                        <div class="custom-controls-stacked">
-                            <label class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="active" value="1" checked>
-                                        <div class="custom-control-label">Activo</div>
-                                    </label>
-                            <label class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="active" value="0">
-                                        <div class="custom-control-label">Inactivo</div>
-                                    </label>
-                        </div>
-
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                     </div>
             </div>

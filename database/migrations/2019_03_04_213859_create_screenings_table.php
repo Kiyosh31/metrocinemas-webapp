@@ -18,7 +18,6 @@ class CreateScreeningsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('movie_id');
             $table->unsignedInteger('room_id');
-            $table->unsignedInteger('seat_reserved_id');
             $table->timestamp('start');
             $table->timestamp('finish');
             $table->timestamps();
@@ -27,7 +26,6 @@ class CreateScreeningsTable extends Migration
         Schema::table('screenings', function(Blueprint $table) {
             $table->foreign('movie_id')->references('id')->on('movies');
             $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('seat_reserved_id')->references('id')->on('seats_reserved');
         });
     }
 

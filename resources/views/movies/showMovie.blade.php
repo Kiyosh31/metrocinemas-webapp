@@ -20,7 +20,9 @@
                                 <th scope="col">Director</th>
                                 <th scope="col">Cast</th>
                                 <th scope="col">Clasificacion</th>
+                                <th scope="col">Categoria</th>
                                 <th scope="col">Duracion</th>
+                                <th scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,12 +33,12 @@
                                 <td>{{ $movie->director }}</td>
                                 <td>{{ $movie->cast }}</td>
                                 <td>{{ $movie->clasification }}</td>
+                                <td>{{ $movie->category }}</td>
                                 <td>{{ $movie->duration_min }} minutos</td>
                                 <td>
                                     <a href="{{ route('movies.edit', $movie->id)}}" class="btn btn-sm btn-warning">Editar</a>
                                     <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE"> @csrf
                                         <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                     </form>
                                 </td>

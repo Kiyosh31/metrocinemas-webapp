@@ -20,6 +20,7 @@
                                 <th scope="col">Director</th>
                                 <th scope="col">Cast</th>
                                 <th scope="col">Clasificacion</th>
+                                <th scope="col">Categoria</th>
                                 <th scope="col">Duracion</th>
                                 <th scope="col">Detalle</th>
                             </tr>
@@ -37,6 +38,7 @@
                                 <td>{{ $movie->director }}</td>
                                 <td>{{ $movie->cast }}</td>
                                 <td>{{ $movie->clasification }}</td>
+                                <td>{{ $movie->category }}</td>
                                 <td>{{ $movie->duration_min }} minutos</td>
                                 <td>
                                     <a href="{{ route('movies.show', $movie->id) }}">Detalle</a>
