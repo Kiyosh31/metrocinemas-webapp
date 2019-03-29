@@ -19,18 +19,18 @@ Route::get('/inicio', function () {
     return view('inicio');
 });
 
-//Resource for CRUD on movie 
+//Resource for CRUD on movies
 Route::resource('movies', 'MovieController');
-
+//Resource for CRUD on screenings
 Route::resource('screenings', 'ScreeningController');
+//Resource for CRUD on rooms
+Route::resource('rooms', 'RoomController');
 
 
+//Info pages
 Route::get('/info', 'PageController@info')->name('info');
 Route::get('/contact', 'PageController@contact')->name('contact');
-Route::get('/welcome/{name}/{last_name?}', 'PageController@welcome')->name('welcome');
 Route::get('/team', 'PageController@team')->name('team');
-
-Route::get('/movie', 'MoviesController@index')->name('movie.index');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -1,13 +1,11 @@
 @extends('layouts.tabler') 
 @section('content')
-<div class="plage-header">
-    <h1>Agregar pelicula</h1>
-</div>
+
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Agregar pelicula</h3>
+                <h3 class="card-title">{{ isset($movie) ? 'Modificar' : 'Agregar' }} pelicula</h3>
             </div>
             <div class="card-body">
 
@@ -50,32 +48,32 @@
                         <div class="form-group">
                             <label class="form-label">Clasificacion</label>
                             <select name="clasification" class="form-control">
-                                <option value="aa {{ old('clasification') }}">AA</option>
-                                <option value="a {{ old('clasification') }}">A</option>
-                                <option value="b {{ old('clasification') }}">B</option>
-                                <option value="b15 {{ old('clasification') }}">B15</option>
-                                <option value="c {{ old('clasification') }}">C</option>                                                                                                
+                                <option value="aa" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >AA</option>
+                                <option value="a" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >A</option>
+                                <option value="b" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >B</option>
+                                <option value="b15" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >B15</option>
+                                <option value="c" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >C</option>
                             </select>
+
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Categoria</label>
                             <select name="category" class="form-control">
-                                <option value="Comedia {{ old('category') }}">Comedia</option>
-                                <option value="Sci-Fi {{ old('category') }}">Sci-Fi</option>
-                                <option value="Horror {{ old('category') }}">Horror</option>
-                                <option value="Romance {{ old('category') }}">Romance</option>
-                                <option value="Accion {{ old('category') }}">Accion</option>
-                                <option value="Thriller {{ old('category') }}">Thriller</option>
-                                <option value="Drama {{ old('category') }}">Drama</option>
-                                <option value="Misterio {{ old('category') }}">Misterio</option>
-                                <option value="Crimen {{ old('category') }}">Crimen</option>
-                                <option value="Animacion {{ old('category') }}">Animacion</option>
-                                <option value="Aventura {{ old('category') }}">Aventura</option>
-                                <option value="Fantasia {{ old('category') }}">Fantasia</option>
-                                <option value="Comedia Romantica {{ old('category') }}">Comedia romantica</option>
-                                <option value="Accion Comedia {{ old('category') }}">Accion Comedia</option>
-                                <option value="Super Heores {{ old('category') }}">Super heroes</option>
+                                <option value="Comedia" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Comedia</option>
+                                <option value="Sci-Fi" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Sci-Fi</option>
+                                <option value="Horror" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Horror</option>
+                                <option value="Romance" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Romance</option>
+                                <option value="Accion" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Accion</option>
+                                <option value="Thriller" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Thriller</option>
+                                <option value="Drama" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Drama</option>
+                                <option value="Misterio" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Misterio</option>
+                                <option value="Animacion" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Animacion</option>
+                                <option value="Aventura" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Aventura</option>
+                                <option value="Fantasia" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Fantasia</option>
+                                <option value="Comedia Romantica" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Comedia Romantica</option>
+                                <option value="Accion Comedia" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Accion Comedia</option>
+                                <option value="Super Heores" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Super Heores</option>
                             </select>
                         </div>
 
@@ -116,32 +114,32 @@
                         <div class="form-group">
                             <label class="form-label">Clasificacion</label>
                             <select name="clasification" class="form-control">
-                                <option value="aa {{ old('clasification') }}">AA</option>
-                                <option value="a {{ old('clasification') }}">A</option>
-                                <option value="b {{ old('clasification') }}">B</option>
-                                <option value="b15 {{ old('clasification') }}">B15</option>
-                                <option value="c {{ old('clasification') }}">C</option>
+                                <option value="aa">AA</option>
+                                <option value="a">A</option>
+                                <option value="b">B</option>
+                                <option value="b15">B15</option>
+                                <option value="c">C</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Categoria</label>
                             <select name="category" class="form-control">
-                                <option value="Comedia {{ old('category') }}">Comedia</option>
-                                <option value="Sci-Fi {{ old('category') }}">Sci-Fi</option>
-                                <option value="Horror {{ old('category') }}">Horror</option>
-                                <option value="Romance {{ old('category') }}">Romance</option>
-                                <option value="Accion {{ old('category') }}">Accion</option>
-                                <option value="Thriller {{ old('category') }}">Thriller</option>
-                                <option value="Drama {{ old('category') }}">Drama</option>
-                                <option value="Misterio {{ old('category') }}">Misterio</option>
-                                <option value="Crimen {{ old('category') }}">Crimen</option>
-                                <option value="Animacion {{ old('category') }}">Animacion</option>
-                                <option value="Aventura {{ old('category') }}">Aventura</option>
-                                <option value="Fantasia {{ old('category') }}">Fantasia</option>
-                                <option value="Comedia Romantica {{ old('category') }}">Comedia romantica</option>
-                                <option value="Accion Comedia {{ old('category') }}">Accion Comedia</option>
-                                <option value="Super Heores {{ old('category') }}">Super heroes</option>
+                                <option value="Comedia">Comedia</option>
+                                <option value="Sci-Fi">Sci-Fi</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Accion">Accion</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Misterio">Misterio</option>
+                                <option value="Crimen">Crimen</option>
+                                <option value="Animacion">Animacion</option>
+                                <option value="Aventura">Aventura</option>
+                                <option value="Fantasia">Fantasia</option>
+                                <option value="Comedia Romantica">Comedia romantica</option>
+                                <option value="Accion Comedia">Accion Comedia</option>
+                                <option value="Super Heores">Super heroes</option>
                             </select>
                         </div>
 

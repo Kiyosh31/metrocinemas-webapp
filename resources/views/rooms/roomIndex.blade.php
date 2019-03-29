@@ -4,7 +4,7 @@
     <div class="col-md-8 offset-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Listado de Proyecciones</h3>
+                <h3 class="card-title">Listado de Salas</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -12,23 +12,17 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Pelicula</th>
-                                <th scope="col">Sala</th>
-                                <th scope="col">Inicio</th>
-                                <th scope="col">Termina</th>
+                                <th scope="col">Nombre</th>
                                 <th scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($screenings as $sc)
+                            @foreach($rooms as $room)
                             <tr>
-                                <td>{{ $sc->id }}</td>
-                                <td>{{ $sc->movie->title }}</td>
-                                <td>{{ $sc->room->name }}</td>
-                                <td>{{ $sc->start }}</td>
-                                <td>{{ $sc->finish }}</td>
+                                <td>{{ $room->id }}</td>
+                                <td>{{ $room->name }}</td>
                                 <td>
-                                    <a href="{{ route('screenings.show', $sc->id) }}">Detalle</a>
+                                    <a href="{{ route('rooms.show', $room->id) }}">Detalle</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -42,10 +42,10 @@ class MovieController extends Controller
     {
         //Validacion de datos
         $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required|min:15|max:255',
-            'director' => 'required|max:255',
-            'cast' => 'required|max:255',
+            'title' => 'required|max:45',
+            'description' => 'required|min:15|max:45',
+            'director' => 'required|max:45',
+            'cast' => 'required|max:45',
             'clasification' => 'required|max:5',
             'duration_min' => 'required|numeric'
         ]);
@@ -88,10 +88,10 @@ class MovieController extends Controller
     public function update(Request $request, Movie $movie)
     {
         $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required|min:15|max:255',
-            'director' => 'required|max:255',
-            'cast' => 'required|max:255',
+            'title' => 'required|max:45',
+            'description' => 'required|min:15|max:45',
+            'director' => 'required|max:45',
+            'cast' => 'required|max:45',
             'clasification' => 'required|max:5',
             'duration_min' => 'required|numeric'
         ]);

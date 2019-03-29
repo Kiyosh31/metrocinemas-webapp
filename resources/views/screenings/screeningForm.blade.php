@@ -1,18 +1,15 @@
 @extends('layouts.tabler') 
 @section('content')
-<div class="plage-header">
-    <h1>Agregar Proyeccion</h1>
-</div>
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Agregar Proyeccion</h3>
+                <h3 class="card-title">{{ isset($screening) ? 'Modificar' : 'Agregar' }} Proyeccion</h3>
             </div>
             <div class="card-body">
                 @if(isset($screening))
-                <form action="{{ route('screenings.store') }}" method="POST">
-                    @csrf
+                <form action="{{ route('screenings.update', $screening->id) }}" method="POST">
+                    <input type="hidden" name="_method" value="PATCH">@csrf
                     <div class="col-8 offset-2">
                         <div class="form-group">
                             <label class="form-label">Pelicula</label> @if($movies->isEmpty())
@@ -36,7 +33,7 @@
 
                         <div class="form-group">
                             <label class="form-label">Inicio</label>
-                            <input type="datetime-local" class="form-control" name="start" value="{{ $screening->start ?? '' }}{{ old('start') }}">
+                            <input type="datetime-local" class="form-control" name="start" value="{{ old('start', date('Y-m-d')) }}">
                         </div>
 
                         <div class="form-group">
@@ -76,12 +73,12 @@
 
                     <div class="form-group">
                         <label class="form-label">Inicio</label>
-                        <input type="datetime-local" class="form-control" name="start" value="{{ $screening->start ?? '' }}{{ old('start') }}">
+                        <input type="datetime-local" class="form-control" name="start" value="{{ $screening->start ?? '' }}">
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Termina</label>
-                        <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}{{ old('finish') }}">
+                        <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}">
                     </div>
 
                     @if($movies->isEmpty() || $rooms->isEmpty())
