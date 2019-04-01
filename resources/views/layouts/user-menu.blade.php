@@ -10,16 +10,20 @@
     <a class="dropdown-item" href="#">
         <i class="dropdown-icon fe fe-user"></i> Perfil
       </a>
+      <a class="dropdown-item" href="#">
+          <span class="float-right"><span class="badge badge-primary">6</span></span>
+          <i class="dropdown-icon fe fe-mail"></i> Historial
+        </a>
     <a class="dropdown-item" href="#">
-        <i class="dropdown-icon fe fe-settings"></i> Configuraciones
-      </a>
-    <a class="dropdown-item" href="#">
-        <span class="float-right"><span class="badge badge-primary">6</span></span>
-        <i class="dropdown-icon fe fe-mail"></i> Inbox
+        <i class="dropdown-icon fa fa-shopping-cart"></i> Configuraciones
       </a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">
-        <i class="dropdown-icon fe fe-log-out"></i> Cerrar Sesion
+    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
+        <i class="dropdown-icon fe fe-log-out"></i> {{ __('Logout') }}
       </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
   </div>
 </div>
