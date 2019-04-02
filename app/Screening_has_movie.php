@@ -4,9 +4,7 @@ namespace Metrocinemas;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class Screening_has_movie extends Model
 {
-    protected $guarded = ['id'];
-
-    
+    //
 }
