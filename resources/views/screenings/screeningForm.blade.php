@@ -22,11 +22,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Sala</label> @if($rooms->isEmpty())
-                            <input type="text" class="form-control" placeholder="No hay salas" disabled> @endif
+                            <label class="form-label">Sala</label> @if($auditoriums->isEmpty())
+                            <input type="text" class="form-control" placeholder="No hay auditorios" disabled> @endif
                             <select name="movie_id" class="form-control">
-                                @foreach($rooms as $room)
-                                    <option value="{{ $room->id }}">{{ $room->name }}</option>
+                                @foreach($auditoriums as $auditorium)
+                                    <option value="{{ $auditorium->id }}">{{ $auditorium->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -41,7 +41,7 @@
                             <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}{{ old('finish') }}">
                         </div>
 
-                        @if($movies->isEmpty() || $rooms->isEmpty())
+                        @if($movies->isEmpty() || $auditoriums->isEmpty())
                         <button type="submit" class="btn btn-primary ml-auto" disabled>Aceptar</button> @else
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button> @endif
                     </div>
@@ -62,11 +62,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Sala</label> @if($rooms->isEmpty())
+                        <label class="form-label">Sala</label> @if($auditoriums->isEmpty())
                         <input type="text" class="form-control" placeholder="No hay salas" disabled> @else
                         <select name="room_id" class="form-control">
-                            @foreach($rooms as $room)
-                                <option value="{{ $room->id }}">{{ $room->name }}</option>
+                            @foreach($auditoriums as $auditorium)
+                                <option value="{{ $auditorium->id }}">{{ $auditorium->name }}</option>
                             @endforeach
                         </select> @endif
                     </div>
@@ -81,7 +81,7 @@
                         <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}">
                     </div>
 
-                    @if($movies->isEmpty() || $rooms->isEmpty())
+                    @if($movies->isEmpty() || $auditoriums->isEmpty())
                     <button type="submit" class="btn btn-primary ml-auto" disabled>Aceptar</button> @else
                     <button type="submit" class="btn btn-primary ml-auto">Aceptar</button> @endif
                 </div>

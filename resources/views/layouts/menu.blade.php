@@ -20,8 +20,8 @@
     <li class="nav-item dropdown">
       <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fa fa-video-camera"></i>Salas</a>
       <div class="dropdown-menu dropdown-menu-arrow">
-        <a href="{{ route('rooms.create') }}" class="dropdown-item">Agregar Sala</a>
-        <a href="{{ route('rooms.index') }}" class="dropdown-item">Mostrar Salas</a>
+        <a href="{{ route('auditoriums.create') }}" class="dropdown-item">Agregar Sala</a>
+        <a href="{{ route('auditoriums.index') }}" class="dropdown-item">Mostrar Salas</a>
       </div>
     </li>
   </ul>

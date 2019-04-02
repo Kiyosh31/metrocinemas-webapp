@@ -4,7 +4,7 @@ namespace Metrocinemas\Http\Controllers;
 
 use Metrocinemas\Screening;
 use Metrocinemas\Movie;
-use Metrocinemas\Room;
+use Metrocinemas\Auditorium;
 use Illuminate\Http\Request;
 
 class ScreeningController extends Controller
@@ -28,8 +28,8 @@ class ScreeningController extends Controller
     public function create()
     {
         $movies = Movie::all();
-        $rooms = Room::all();
-        return view('screenings.screeningForm', compact('movies', 'rooms'));
+        $auditoriums = Auditorium::all();
+        return view('screenings.screeningForm', compact('movies', 'auditoriums'));
     }
 
     /**
@@ -42,7 +42,7 @@ class ScreeningController extends Controller
     {
         $request->validate([
             'movie_id' => 'required|numeric',
-            'room_id' => 'required|numeric',
+            'auditorium_id' => 'required|numeric',
             'start' => 'required|max:255',
             'finish' => 'required|max:255'
         ]);
@@ -72,8 +72,8 @@ class ScreeningController extends Controller
     public function edit(Screening $screening)
     {
         $movies = Movie::all();
-        $rooms = Room::all();
-        return view('screenings.screeningForm', compact('screening', 'movies', 'rooms'));
+        $auditorium = Auditorium::all();
+        return view('screenings.screeningForm', compact('screening', 'movies', 'auditorium'));
     }
 
     /**
@@ -87,7 +87,7 @@ class ScreeningController extends Controller
     {
         $request->validate([
             'movie_id' => 'required|numeric',
-            'room_id' => 'required|numeric',
+            'auditorium_id' => 'required|numeric',
             'start' => 'required|max:255',
             'finish' => 'required|max:255'
         ]);

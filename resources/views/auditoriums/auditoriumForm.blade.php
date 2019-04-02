@@ -4,7 +4,7 @@
     <div class="col-md-8 offset-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{ isset($room) ? 'Modificar' : 'Agregar' }} Sala</h3>
+                <h3 class="card-title">{{ isset($auditorium) ? 'Modificar' : 'Agregar' }} Auditorio</h3>
             </div>
             <div class="card-body">
 
@@ -16,8 +16,8 @@
                         @endforeach
                     </ul>
                 </div>
-                @endif @if(isset($room))
-                <form action="{{ route('rooms.update', $room->id) }}" method="POST">
+                @endif @if(isset($auditorium))
+                <form action="{{ route('auditoriums.update', $auditorium->id) }}" method="POST">
                     <input type="hidden" name="_method" value="PATCH"> @csrf
 
                     <div class="col-8 offset-2">
@@ -26,16 +26,26 @@
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                         </div>
 
+                        <div class="form-group">
+                            <label class="form-label">Numero de asientos</label>
+                            <input type="number" class="form-control" name="seats_no" value="{{ old('seats_no') }}">
+                        </div>
+
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                     </div>
                 </form>
                 @else
-                <form action="{{ route('rooms.store') }}" method="POST">
+                <form action="{{ route('auditoriums.store') }}" method="POST">
                     @csrf
                     <div class="col-8 offset-2">
                         <div class="form-group">
                             <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Numero de asientos</label>
+                            <input type="number" class="form-control" name="seats_no" value="{{ old('seats_no') }}">
                         </div>
 
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>

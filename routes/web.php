@@ -23,8 +23,8 @@ Route::get('/inicio', function () {
 Route::resource('movies', 'MovieController');
 //Resource for CRUD on screenings
 Route::resource('screenings', 'ScreeningController');
-//Resource for CRUD on rooms
-Route::resource('rooms', 'RoomController');
+//Resource for CRUD on auditoriums
+Route::resource('auditoriums', 'AuditoriumController');
 
 
 //Info pages
