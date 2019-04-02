@@ -1,7 +1,7 @@
 <div class="col-lg order-lg-first">
   <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
     <li class="nav-item">
-      <a href="/inicio" class="nav-link"><i class="fe fe-home"></i> Inicio</a>
+      <a href="/main-page" class="nav-link"><i class="fe fe-home"></i> Inicio</a>
     </li>
     <li class="nav-item dropdown">
       <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"><i class="fa fa-film"></i>Peliculas</a>

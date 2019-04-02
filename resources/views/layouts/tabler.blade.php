@@ -16,10 +16,10 @@
   <link rel="icon" href="./favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
   <!-- Generated: 2018-04-16 09:29:05 +0200 -->
-  <title>Empty page </title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-  <script src="./assets/js/require.min.js"></script>
+  <title>Empty page</title>
+  <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext') }}">
+  <script src="{{ asset('./assets/js/require.min.js') }}"></script>
   <script>
     requirejs.config({
           baseUrl: '.'
@@ -44,7 +44,7 @@
       <div class="header py-4">
         <div class="container">
           <div class="d-flex">
-            <a class="header-brand" href="/inicio">
+            <a class="header-brand" href="/main-page">
                 <img src="{{ asset('demo/brand/tabler.svg') }}" class="header-brand-img" alt="tabler logo">
               </a>
             <div class="d-flex order-lg-2 ml-auto">

@@ -12,20 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-
-Route::get('/inicio', function () {
-    return view('inicio');
-});
-
-//Resource for CRUD on movies
-Route::resource('movies', 'MovieController');
-//Resource for CRUD on screenings
-Route::resource('screenings', 'ScreeningController');
-//Resource for CRUD on auditoriums
-Route::resource('auditoriums', 'AuditoriumController');
-
 
 //Info pages
 Route::get('/info', 'PageController@info')->name('info');
@@ -34,3 +22,14 @@ Route::get('/team', 'PageController@team')->name('team');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Group for the routes who shares the same middleware
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('movies', 'MovieController');
+    Route::resource('screenings', 'ScreeningController');
+    Route::resource('auditoriums', 'AuditoriumController');
+
+    Route::get('/main-page', function () {
+        return view('main-page');
+    });
+});
