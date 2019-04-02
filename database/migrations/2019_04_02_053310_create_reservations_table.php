@@ -15,15 +15,14 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('screening_id');
-            $table->float('payment');
+            $table->unsignedInteger('screenings_has_movies_screenings_id');
+            $table->unsignedInteger('screenings_has_movies_movies_id');
+            $table->unsignedInteger('seats_reserved_id');
+            $table->string('client_name', '32');
+            $table->string('client_last_name', '32');
+            $table->unsignedInteger('users_id');
+            $table->integer('paid');
             $table->timestamps();
-        });
-
-        Schema::table('reservations', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('screening_id')->references('id')->on('screenings');
         });
     }
 
