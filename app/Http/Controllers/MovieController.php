@@ -53,7 +53,11 @@ class MovieController extends Controller
         // Nueva forma de guardar con el fillable o guard en el model
         Movie::create($request->all());
 
-        return redirect()->route('movies.index');
+        return redirect()->route('movies.index')
+        ->with([
+            'notification' => 'Pelicula agregada con exito',
+            'alert-class' => 'alert-success'
+        ]);
     }
 
     /**
@@ -99,7 +103,11 @@ class MovieController extends Controller
         //Nueva forma de guardar con el fillable o guard en el model
         $movie->update($request->all());
 
-        return redirect()->route('movies.show', $movie->id);
+        return redirect()->route('movies.show', $movie->id)
+        ->with([
+            'notification' => 'Pelicula actualizada con exito',
+            'alert-class' => 'alert-success'
+        ]);
     }
 
     /**
@@ -111,6 +119,10 @@ class MovieController extends Controller
     public function destroy(Movie $movie)
     {
         $movie->delete();
-        return redirect()->route('movies.index');
+        return redirect()->route('movies.index')
+            ->with([
+                'notification' => 'Pelicula eliminada con exito',
+                'alert-class' => 'alert-warning'
+            ]);
     }
 }

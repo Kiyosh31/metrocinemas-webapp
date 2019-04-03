@@ -9,15 +9,9 @@
             </div>
             <div class="card-body">
 
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif @if(isset($movie))
+                @include('partials.formErrors')
+                
+                 @if(isset($movie))
                 <form action="{{ route('movies.update', $movie->id) }}" method="POST">
                     <input type="hidden" name="_method" value="PATCH"> @csrf
 

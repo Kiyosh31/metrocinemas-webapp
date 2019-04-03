@@ -8,15 +8,9 @@
             </div>
             <div class="card-body">
 
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif @if(isset($auditorium))
+                @include('partials.formErrors')
+
+                @if(isset($auditorium))
                 <form action="{{ route('auditoriums.update', $auditorium->id) }}" method="POST">
                     <input type="hidden" name="_method" value="PATCH"> @csrf
 

@@ -104,6 +104,7 @@
       </div>
       <div class="my-3 my-md-5">
         <div class="container">
+          @include('partials.notification')
           @yield('content')
         </div>
       </div>
