@@ -8,10 +8,7 @@
                 <h3 class="card-title">{{ isset($movie) ? 'Modificar' : 'Agregar' }} pelicula</h3>
             </div>
             <div class="card-body">
-
-                @include('partials.formErrors')
-                
-                 @if(isset($movie))
+    @include('partials.formErrors') @if(isset($movie))
                 <form action="{{ route('movies.update', $movie->id) }}" method="POST">
                     <input type="hidden" name="_method" value="PATCH"> @csrf
 
@@ -42,13 +39,12 @@
                         <div class="form-group">
                             <label class="form-label">Clasificacion</label>
                             <select name="clasification" class="form-control">
-                                <option value="aa" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >AA</option>
-                                <option value="a" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >A</option>
-                                <option value="b" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >B</option>
-                                <option value="b15" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >B15</option>
-                                <option value="c" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }} >C</option>
+                                <option value="aa" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>AA</option>
+                                <option value="a" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>A</option>
+                                <option value="b" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>B</option>
+                                <option value="b15" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>B15</option>
+                                <option value="c" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>C</option>
                             </select>
-
                         </div>
 
                         <div class="form-group">

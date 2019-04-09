@@ -8,15 +8,15 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <table class="table table-bordered">
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Pelicula</th>
-                                <th scope="col">Sala</th>
-                                <th scope="col">Inicio</th>
-                                <th scope="col">Termina</th>
-                                <th scope="col">Detalle</th>
+                                <th>ID</th>
+                                <th>Pelicula</th>
+                                <th>Sala</th>
+                                <th>Inicio</th>
+                                <th>Termina</th>
+                                <th>Detalle</th>
                             </tr>
                         </thead>
                         <tbody>

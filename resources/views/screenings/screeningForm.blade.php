@@ -81,9 +81,7 @@
                         <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}">
                     </div>
 
-                    @if($movies->isEmpty() || $auditoriums->isEmpty())
-                    <button type="submit" class="btn btn-primary ml-auto" disabled>Aceptar</button> @else
-                    <button type="submit" class="btn btn-primary ml-auto">Aceptar</button> @endif
+                    <button type="submit" class="btn btn-primary ml-auto" {{ $movies->isEmpty() || $auditoriums->isEmpty() ? 'disabled' : '' }}>Aceptar</button>
                 </div>
         </div>
         </form>

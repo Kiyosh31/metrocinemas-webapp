@@ -13,10 +13,6 @@ class CreateForeignKeys extends Migration
      */
     public function up()
     {
-        Schema::table('users_type', function (Blueprint $table) {
-            $table->foreign('users_id')->references('id')->on('users');
-        });
-
         Schema::table('screenings_has_movies', function (Blueprint $table) {
             $table->foreign('screenings_id')->references('id')->on('screenings');
             $table->foreign('movies_id')->references('id')->on('movies');

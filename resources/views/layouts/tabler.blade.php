@@ -13,10 +13,12 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+  <link rel="icon" href="{{ asset('demo/brand/favicon.ico') }}" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('demo/brand/favicon.ico') }}" />
   <!-- Generated: 2018-04-16 09:29:05 +0200 -->
-  <title>Empty page</title>
+  <title>
+    @isset($title) {{ $title . '|' }} @endisset {{ config('app.name') }}
+  </title>
   <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext') }}">
   <script src="{{ asset('./assets/js/require.min.js') }}"></script>
@@ -44,8 +46,8 @@
       <div class="header py-4">
         <div class="container">
           <div class="d-flex">
-            <a class="header-brand" href="/main-page">
-                <img src="{{ asset('demo/brand/tabler.svg') }}" class="header-brand-img" alt="tabler logo">
+            <a class="header-brand" href="{{ route('home') }}">
+                <img src="{{ asset('demo/brand/logo.svg') }}" class="header-brand-img" alt="tabler logo">
               </a>
             <div class="d-flex order-lg-2 ml-auto">
               <div class="dropdown d-none d-md-flex">
@@ -90,13 +92,15 @@
       <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
         <div class="container">
           <div class="row align-items-center">
+
             <div class="col-lg-3 ml-auto">
+              {{--
               <form class="input-icon my-3 my-lg-0">
                 <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
                 <div class="input-icon-addon">
                   <i class="fe fe-search"></i>
                 </div>
-              </form>
+              </form> --}}
             </div>
   @include('layouts.menu')
           </div>

@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('main-page');
+        return view('main-page')->with([
+            'title' => 'Pagina Principal',
+        ]);;
     }
 }

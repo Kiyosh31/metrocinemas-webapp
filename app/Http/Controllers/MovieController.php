@@ -19,7 +19,10 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('movies.movieIndex', compact('movies'));
+        return view('movies.movieIndex', compact('movies'))
+        ->with([
+            'title' => 'Todas las peliculas'
+        ]);
     }
 
     /**
@@ -29,7 +32,10 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('Movies.movieForm');
+        return view('Movies.movieForm')
+        ->with([
+            'title' => 'Agregar Nueva Pelicula'
+        ]);
     }
 
     /**
@@ -42,11 +48,11 @@ class MovieController extends Controller
     {
         //Validacion de datos
         $request->validate([
-            'title' => 'required|max:45',
-            'description' => 'required|min:15|max:45',
-            'director' => 'required|max:45',
-            'cast' => 'required|max:45',
-            'clasification' => 'required|max:5',
+            'title' => 'required|max:255',
+            'description' => 'required|min:15|max:255',
+            'director' => 'required|max:255',
+            'cast' => 'required|max:255',
+            'clasification' => 'required|max:255',
             'duration_min' => 'required|numeric'
         ]);
 
@@ -122,7 +128,7 @@ class MovieController extends Controller
         return redirect()->route('movies.index')
             ->with([
                 'notification' => 'Pelicula eliminada con exito',
-                'alert-class' => 'alert-warning'
+                'alert-class' => 'alert-danger'
             ]);
     }
 }

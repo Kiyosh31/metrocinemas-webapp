@@ -17,7 +17,10 @@ class ScreeningController extends Controller
     public function index()
     {
         $screenings = Screening::all();
-        return view('screenings.screeningIndex', compact('screenings'));
+        return view('screenings.screeningIndex', compact('screenings'))
+        ->with([
+            'title' => 'Todas las proyecciones'
+        ]);
     }
 
     /**
@@ -29,7 +32,10 @@ class ScreeningController extends Controller
     {
         $movies = Movie::all();
         $auditoriums = Auditorium::all();
-        return view('screenings.screeningForm', compact('movies', 'auditoriums'));
+        return view('screenings.screeningForm', compact('movies', 'auditoriums'))
+        ->with([
+            'title' => 'Agregar nueva proyeccion'
+        ]);
     }
 
     /**

@@ -15,7 +15,7 @@ class CreateAuditoriumsTable extends Migration
     {
         Schema::create('auditoriums', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', '45');
+            $table->string('name', '255');
             $table->integer('seats_no');
             $table->timestamps();
         });

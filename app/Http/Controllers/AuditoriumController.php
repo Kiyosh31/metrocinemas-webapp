@@ -15,7 +15,10 @@ class AuditoriumController extends Controller
     public function index()
     {
         $auditoriums = Auditorium::all();
-        return view('auditoriums.auditoriumIndex', compact('auditoriums'));
+        return view('auditoriums.auditoriumIndex', compact('auditoriums'))
+        ->with([
+            'title' => 'Todos los auditorios'
+        ]);
     }
 
     /**
@@ -25,7 +28,10 @@ class AuditoriumController extends Controller
      */
     public function create()
     {
-        return view('auditoriums.auditoriumForm');
+        return view('auditoriums.auditoriumForm')
+        ->with([
+            'title' => 'Agregar auditorios'
+        ]);
     }
 
     /**
@@ -38,13 +44,17 @@ class AuditoriumController extends Controller
     {
         // Validacion de datos
         $request->validate([
-            'name' => 'required|max:45',
+            'name' => 'required|max:255',
             'seats_no' => 'required|integer'
         ]);
 
         Auditorium::create($request->all());
 
-        return redirect()->route('auditoriums.index');
+        return redirect()->route('auditoriums.index')
+        ->with([
+            'notification' => 'Auditorio agregado con exito',
+            'alert-class' => 'alert-success'
+        ]);
     }
 
     /**
@@ -55,7 +65,10 @@ class AuditoriumController extends Controller
      */
     public function show(Auditorium $auditorium)
     {
-        return view('auditoriums.auditoriumShow', compact('auditorium'));
+        return view('auditoriums.auditoriumShow', compact('auditorium'))
+        ->with([
+            'title' => 'Todas los auditorios'
+        ]);
     }
 
     /**
@@ -79,13 +92,17 @@ class AuditoriumController extends Controller
     public function update(Request $request, Auditorium $auditorium)
     {
         $request->validate([
-            'name' => 'required|max:45',
+            'name' => 'required|max:255',
             'seats_no' => 'required|integer'
         ]);
 
         $auditorium->update($request->all());
 
-        return redirect()->route('auditoriums.show', $auditorium->id);
+        return redirect()->route('auditoriums.show', $auditorium->id)
+        ->with([
+            'notification' => 'Auditorio actualizado con exito',
+            'alert-class' => 'alert-success'
+        ]);
     }
 
     /**
@@ -97,6 +114,10 @@ class AuditoriumController extends Controller
     public function destroy(Auditorium $auditorium)
     {
         $auditorium->delete();
-        return redirect()->route('auditoriums.index');
+        return redirect()->route('auditoriums.index')
+        ->with([
+            'notification' => 'Auditorio eliminado con exito',
+            'alert-class' => 'alert-danger'
+        ]);
     }
 }
