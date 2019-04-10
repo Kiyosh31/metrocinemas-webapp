@@ -143,9 +143,10 @@
               </div>
             </div>
           </div>
+          {{--
           <div class="col-lg-4 mt-4 mt-lg-0">
             Premium and Open Source dashboard template with responsive and high quality UI. For Free!
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
