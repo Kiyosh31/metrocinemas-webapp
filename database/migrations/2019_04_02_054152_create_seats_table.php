@@ -16,8 +16,7 @@ class CreateSeatsTable extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('number');
-            $table->unsignedInteger('auditoriums_id');
-            $table->unsignedInteger('reservations_id');
+            $table->unsignedInteger('auditorium_id');
             $table->timestamps();
         });
     }

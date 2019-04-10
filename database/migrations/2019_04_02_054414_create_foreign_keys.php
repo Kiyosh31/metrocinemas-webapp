@@ -14,30 +14,28 @@ class CreateForeignKeys extends Migration
     public function up()
     {
         Schema::table('screenings_has_movies', function (Blueprint $table) {
-            $table->foreign('screenings_id')->references('id')->on('screenings');
-            $table->foreign('movies_id')->references('id')->on('movies');
+            $table->foreign('screening_id')->references('id')->on('screenings');
+            $table->foreign('movie_id')->references('id')->on('movies');
         });
 
         Schema::table('reservations', function (Blueprint $table) {
-            $table->foreign('screenings_has_movies_screenings_id')->references('screenings_id')->on('screenings_has_movies');
-            $table->foreign('screenings_has_movies_movies_id')->references('movies_id')->on('screenings_has_movies');
-            $table->foreign('seats_reserved_id')->references('id')->on('seats_reserved');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('screenings_has_movies_screening_id')->references('screening_id')->on('screenings_has_movies');
+            $table->foreign('screenings_has_movies_movie_id')->references('movie_id')->on('screenings_has_movies');
         });        
 
         Schema::table('screenings', function (Blueprint $table) {
-            $table->foreign('auditoriums_id')->references('id')->on('auditoriums');
+            $table->foreign('auditorium_id')->references('id')->on('auditoriums');
         });
 
         Schema::table('seats', function (Blueprint $table) {
-            $table->foreign('auditoriums_id')->references('id')->on('auditoriums');
-            $table->foreign('reservations_id')->references('id')->on('reservations');
+            $table->foreign('auditorium_id')->references('id')->on('auditoriums');
         });
 
         Schema::table('seats_reserved', function (Blueprint $table) {
-            $table->foreign('seats_id')->references('id')->on('seats');
-            $table->foreign('screenings_has_movies_screenings_id')->references('screenings_id')->on('screenings_has_movies');
-            $table->foreign('screenings_has_movies_movies_id')->references('movies_id')->on('screenings_has_movies');
+            $table->foreign('seat_id')->references('id')->on('seats');
+            $table->foreign('reservation_id')->references('id')->on('reservations');
+            $table->foreign('screening_id')->references('id')->on('screenings');
         });
     }
 

@@ -39,31 +39,31 @@
                         <div class="form-group">
                             <label class="form-label">Clasificacion</label>
                             <select name="clasification" class="form-control">
-                                <option value="aa" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>AA</option>
-                                <option value="a" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>A</option>
-                                <option value="b" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>B</option>
-                                <option value="b15" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>B15</option>
-                                <option value="c" {{ old('clasification', $movie->id) == 1 ? 'selected' : '' }}>C</option>
+                                <option value="aa" {{ 'aa' == $movie->clasification ? 'selected' : '' }}>AA</option>
+                                <option value="a" {{ 'a' == $movie->clasification ? 'selected' : '' }}>A</option>
+                                <option value="b" {{ 'b' == $movie->clasification ? 'selected' : '' }}>B</option>
+                                <option value="b15" {{ 'b15' == $movie->clasification ? 'selected' : '' }}>B15</option>
+                                <option value="c" {{ 'c' == $movie->clasification ? 'selected' : '' }}>C</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Categoria</label>
                             <select name="category" class="form-control">
-                                <option value="Comedia" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Comedia</option>
-                                <option value="Sci-Fi" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Sci-Fi</option>
-                                <option value="Horror" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Horror</option>
-                                <option value="Romance" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Romance</option>
-                                <option value="Accion" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Accion</option>
-                                <option value="Thriller" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Thriller</option>
-                                <option value="Drama" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Drama</option>
-                                <option value="Misterio" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Misterio</option>
-                                <option value="Animacion" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Animacion</option>
-                                <option value="Aventura" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Aventura</option>
-                                <option value="Fantasia" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Fantasia</option>
-                                <option value="Comedia Romantica" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Comedia Romantica</option>
-                                <option value="Accion Comedia" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Accion Comedia</option>
-                                <option value="Super Heores" {{ old('category', $movie->id) == 1 ? 'selected' : '' }} >Super Heores</option>
+                                <option value="Comedia" {{ 'Comedia' == $movie->category ? 'selected' : '' }} >Comedia</option>
+                                <option value="Sci-Fi" {{ 'Sci-Fi' == $movie->category ? 'selected' : '' }} >Sci-Fi</option>
+                                <option value="Horror" {{ 'Horror' == $movie->category ? 'selected' : '' }} >Horror</option>
+                                <option value="Romance" {{ 'Romance' == $movie->category ? 'selected' : '' }} >Romance</option>
+                                <option value="Accion" {{ 'Accion' == $movie->category ? 'selected' : '' }} >Accion</option>
+                                <option value="Thriller" {{ 'Thriller' == $movie->category ? 'selected' : '' }} >Thriller</option>
+                                <option value="Drama" {{ 'Drama' == $movie->category ? 'selected' : '' }} >Drama</option>
+                                <option value="Misterio" {{ 'Misterio' == $movie->category ? 'selected' : '' }} >Misterio</option>
+                                <option value="Animacion" {{ 'Animacion' == $movie->category ? 'selected' : '' }} >Animacion</option>
+                                <option value="Aventura" {{ 'Aventura' == $movie->category ? 'selected' : '' }} >Aventura</option>
+                                <option value="Fantasia" {{ 'Fantasia' == $movie->category ? 'selected' : '' }} >Fantasia</option>
+                                <option value="Comedia Romantica" {{ 'Comedia Romantica' == $movie->category ? 'selected' : '' }} >Comedia Romantica</option>
+                                <option value="Accion Comedia" {{ 'Accion Comedia' == $movie->category ? 'selected' : '' }} >Accion Comedia</option>
+                                <option value="Super Heores" {{ 'Super Heores' == $movie->category ? 'selected' : '' }} >Super Heores</option>
                             </select>
                         </div>
 

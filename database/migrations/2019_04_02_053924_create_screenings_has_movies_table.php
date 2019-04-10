@@ -14,8 +14,8 @@ class CreateScreeningsHasMoviesTable extends Migration
     public function up()
     {
         Schema::create('screenings_has_movies', function (Blueprint $table) {
-            $table->unsignedInteger('screenings_id');
-            $table->unsignedInteger('movies_id');
+            $table->unsignedInteger('screening_id');
+            $table->unsignedInteger('movie_id');
             $table->timestamp('screening_start');
             $table->timestamp('screening_finish');
             $table->timestamps();

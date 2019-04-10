@@ -16,4 +16,13 @@ class Movie extends Model
     {
         return $this->hasMany(Screening::class);
     }
+
+    public function screening_has_movies()
+    {
+        // Parametros:
+        // 1. Modelo
+        // 2. Tabla pivote
+        // 3. FK id_movie de la tabla pivote
+        return $this->belongsToMany(screening_has_movies::class, 'screenings_has_movies', 'movies_id');
+    }
 }

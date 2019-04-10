@@ -7,7 +7,7 @@
                 <h3 class="card-title">{{ isset($screening) ? 'Modificar' : 'Agregar' }} Proyeccion</h3>
             </div>
             <div class="card-body">
-                @if(isset($screening))
+    @include('partials.formErrors') @if(isset($screening))
                 <form action="{{ route('screenings.update', $screening->id) }}" method="POST">
                     <input type="hidden" name="_method" value="PATCH">@csrf
                     <div class="col-8 offset-2">
@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label class="form-label">Sala</label> @if($auditoriums->isEmpty())
                             <input type="text" class="form-control" placeholder="No hay auditorios" disabled> @endif
-                            <select name="movie_id" class="form-control">
+                            <select name="auditorium_id" class="form-control">
                                 @foreach($auditoriums as $auditorium)
                                     <option value="{{ $auditorium->id }}">{{ $auditorium->name }}</option>
                                 @endforeach
@@ -33,17 +33,15 @@
 
                         <div class="form-group">
                             <label class="form-label">Inicio</label>
-                            <input type="datetime-local" class="form-control" name="start" value="{{ old('start', date('Y-m-d')) }}">
+                            <input type="datetime-local" class="form-control" name="screening_start" value="{{ $screening->finish ?? '' }}{{ old('screening_start') }}">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Termina</label>
-                            <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}{{ old('finish') }}">
+                            <input type="datetime-local" class="form-control" name="screening_finish" value="{{ $screening->finish ?? '' }}{{ old('screening_finish') }}">
                         </div>
 
-                        @if($movies->isEmpty() || $auditoriums->isEmpty())
-                        <button type="submit" class="btn btn-primary ml-auto" disabled>Aceptar</button> @else
-                        <button type="submit" class="btn btn-primary ml-auto">Aceptar</button> @endif
+                        <button type="submit" class="btn btn-primary ml-auto" {{ $movies->isEmpty() || $auditoriums->isEmpty() ? 'disabled': '' }}>Aceptar</button>
                     </div>
             </div>
             </form>
@@ -64,7 +62,7 @@
                     <div class="form-group">
                         <label class="form-label">Sala</label> @if($auditoriums->isEmpty())
                         <input type="text" class="form-control" placeholder="No hay salas" disabled> @else
-                        <select name="room_id" class="form-control">
+                        <select name="auditorium_id" class="form-control">
                             @foreach($auditoriums as $auditorium)
                                 <option value="{{ $auditorium->id }}">{{ $auditorium->name }}</option>
                             @endforeach
@@ -73,12 +71,12 @@
 
                     <div class="form-group">
                         <label class="form-label">Inicio</label>
-                        <input type="datetime-local" class="form-control" name="start" value="{{ $screening->start ?? '' }}">
+                        <input type="datetime-local" class="form-control" name="screening_start">
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Termina</label>
-                        <input type="datetime-local" class="form-control" name="finish" value="{{ $screening->finish ?? '' }}">
+                        <input type="datetime-local" class="form-control" name="screening_finish">
                     </div>
 
                     <button type="submit" class="btn btn-primary ml-auto" {{ $movies->isEmpty() || $auditoriums->isEmpty() ? 'disabled' : '' }}>Aceptar</button>

@@ -15,7 +15,7 @@ class CreateScreeningsTable extends Migration
     {
         Schema::create('screenings', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('auditoriums_id');
+            $table->unsignedInteger('auditorium_id');
             $table->timestamps();
         });
     }

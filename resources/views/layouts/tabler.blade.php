@@ -17,7 +17,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('demo/brand/favicon.png') }}" />
   <!-- Generated: 2018-04-16 09:29:05 +0200 -->
   <title>
-    @isset($title) {{ $title . '|' }} @endisset {{ config('app.name') }}
+    @isset($title) {{ $title . ' | ' }} @endisset {{ config('app.name') }}
   </title>
   <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext') }}">

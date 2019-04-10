@@ -7,14 +7,14 @@
       </span>
     </a>
   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-    <a class="dropdown-item" href="#">
+    <a class="dropdown-item" href="">
         <i class="dropdown-icon fe fe-user"></i> Perfil
       </a>
-    <a class="dropdown-item" href="#">
+    <a class="dropdown-item" href="">
           <span class="float-right"><span class="badge badge-primary">6</span></span>
           <i class="dropdown-icon fa fa-money"></i> Historial
         </a>
-    <a class="dropdown-item" href="#">
+    <a class="dropdown-item" href="">
         <i class="dropdown-icon fa fa-cog"></i> Configuraciones
       </a>
     <div class="dropdown-divider"></div>
