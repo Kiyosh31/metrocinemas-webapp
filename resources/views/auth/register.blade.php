@@ -81,9 +81,22 @@
                                         </span> @endif
                                 </div>
                                 <div class="form-group">
+                                        <div class="form-label">Tipo de empleado</div>
+                                        <div class="custom-controls-stacked">
+                                        <label class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="role" value="admin" checked>
+                                            <div class="custom-control-label">Administrador</div>
+                                        </label>
+                                        <label class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="role" value="emp">
+                                            <div class="custom-control-label">Empleado</div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" />
-                      <span class="custom-control-label" name="terms">Acepto los <a href="terms.html">terminos y condiciones de servicio</a></span>
+                      <span class="custom-control-label" name="terms">Acepto los <a href="terms.html">terminos</a> y condiciones de servicio</span>
                     </label>
                                 </div>
                                 <div class="form-footer">

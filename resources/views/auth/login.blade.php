@@ -57,7 +57,6 @@
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span> @endif
-
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">

@@ -85,6 +85,13 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
+        //implementacion gate
+        // if(\Gate::denies('edit-movie', $user))
+        // {
+        //     return redirect()->back()
+        //         ->with(['message' => 'No tienes permiso para editar esta pelicula']);
+        // }
+
         return view('Movies.movieForm', compact('movie'));
     }
 

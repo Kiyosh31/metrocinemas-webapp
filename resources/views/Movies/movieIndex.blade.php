@@ -48,13 +48,16 @@
                                 <div class="input-group-append">
                                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                     <div class="dropdown-menu dropdown-menu-right">
+                                        {{-- GATE  @can('edit-movie') --}}
+                                        {{-- policy --}} @can('update')
                                         <a class="dropdown-item" href="{{ route('movies.edit', $movie->id) }}">
                                                 Editar
                                               </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $movie->id }}">
+                                        @endcan
+                                        {{-- <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $movie->id }}">
                                             Eliminar
-                                        </a>
+                                        </a> --}}
                                         <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
                                             <input type="hidden" name="_method" value="DELETE"> @csrf
                                             <button type="submit" class="dropdown-item">Eliminar</button>

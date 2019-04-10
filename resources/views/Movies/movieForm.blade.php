@@ -39,11 +39,11 @@
                         <div class="form-group">
                             <label class="form-label">Clasificacion</label>
                             <select name="clasification" class="form-control">
-                                <option value="aa" {{ 'aa' == $movie->clasification ? 'selected' : '' }}>AA</option>
-                                <option value="a" {{ 'a' == $movie->clasification ? 'selected' : '' }}>A</option>
-                                <option value="b" {{ 'b' == $movie->clasification ? 'selected' : '' }}>B</option>
-                                <option value="b15" {{ 'b15' == $movie->clasification ? 'selected' : '' }}>B15</option>
-                                <option value="c" {{ 'c' == $movie->clasification ? 'selected' : '' }}>C</option>
+                                <option value="AA" {{ 'AA' == $movie->clasification ? 'selected' : '' }}>AA</option>
+                                <option value="A" {{ 'A' == $movie->clasification ? 'selected' : '' }}>A</option>
+                                <option value="B" {{ 'B' == $movie->clasification ? 'selected' : '' }}>B</option>
+                                <option value="B15" {{ 'B15' == $movie->clasification ? 'selected' : '' }}>B15</option>
+                                <option value="C" {{ 'C' == $movie->clasification ? 'selected' : '' }}>C</option>
                             </select>
                         </div>
 

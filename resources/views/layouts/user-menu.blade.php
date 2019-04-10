@@ -3,7 +3,7 @@
       <span class="avatar" style="background-image: url({{ asset('demo/faces/female/25.jpg') }})"></span>
       <span class="ml-2 d-none d-lg-block">
         <span class="text-default">{{ Auth::user()->username }}</span>
-        <small class="text-muted d-block mt-1">Administrador</small>
+        <small class="text-muted d-block mt-1">{{ Auth::user()->role == 'admin' ? 'Administrador' : 'Empleado' }}</small>
       </span>
     </a>
   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
