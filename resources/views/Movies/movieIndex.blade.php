@@ -9,7 +9,7 @@
             <div class="card-header">
                 <h3 class="card-title">Listado de peliculas</h3>
                 <div class="ml-auto">
-                    <a href="{{ route('movies.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Agregar pelicula</a>
+                    <a href="{{ route('movies.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>  Agregar pelicula</a>
                 </div>
             </div>
 

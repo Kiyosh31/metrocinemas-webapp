@@ -6,7 +6,7 @@
             <div class="card-header">
                 <h3 class="card-title">Listado de Proyecciones</h3>
                 <div class="ml-auto">
-                    <a href="{{ route('screenings.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Agregar proyeccion</a>
+                    <a href="{{ route('screenings.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>  Agregar proyeccion</a>
                 </div>
             </div>
             <div class="card-body">

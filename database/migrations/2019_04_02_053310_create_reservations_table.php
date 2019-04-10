@@ -18,8 +18,8 @@ class CreateReservationsTable extends Migration
             $table->unsignedInteger('screenings_has_movies_screenings_id');
             $table->unsignedInteger('screenings_has_movies_movies_id');
             $table->unsignedInteger('seats_reserved_id');
-            $table->string('client_name', '255');
-            $table->string('client_last_name', '255');
+            $table->string('client_name');
+            $table->string('client_last_name');
             $table->unsignedInteger('users_id');
             $table->integer('paid');
             $table->timestamps();

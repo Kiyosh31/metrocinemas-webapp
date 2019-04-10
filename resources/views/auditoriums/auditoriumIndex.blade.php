@@ -6,7 +6,7 @@
             <div class="card-header">
                 <h3 class="card-title">Listado de Auditorios</h3>
                 <div class="ml-auto">
-                    <a href="{{ route('auditoriums.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Agregar Auditorio</a>
+                    <a href="{{ route('auditoriums.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>  Agregar Auditorio</a>
                 </div>
             </div>
             <div class="card-body">

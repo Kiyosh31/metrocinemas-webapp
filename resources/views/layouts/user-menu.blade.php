@@ -12,10 +12,10 @@
       </a>
     <a class="dropdown-item" href="#">
           <span class="float-right"><span class="badge badge-primary">6</span></span>
-          <i class="dropdown-icon fe fe-mail"></i> Historial
+          <i class="dropdown-icon fa fa-money"></i> Historial
         </a>
     <a class="dropdown-item" href="#">
-        <i class="dropdown-icon fa fa-shopping-cart"></i> Configuraciones
+        <i class="dropdown-icon fa fa-cog"></i> Configuraciones
       </a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

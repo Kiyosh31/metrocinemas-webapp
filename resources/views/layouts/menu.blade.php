@@ -7,10 +7,10 @@
       <a href="{{ route('movies.index') }}" class="nav-link {{ Request::is('movies*') ? 'active' : '' }}"><i class="fa fa-film"></i> Peliculas</a>
     </li>
     <li class="nav-item">
-      <a href="{{ route('screenings.index') }}" class="nav-link {{ Request::is('screenings*') ? 'active' : '' }}"><i class="fa fa-video-camera"></i> Proyecciones</a>
+      <a href="{{ route('auditoriums.index') }}" class="nav-link {{ Request::is('auditoriums*') ? 'active' : '' }}"><i class="fa fa-television"></i> Auditorios</a>
     </li>
     <li class="nav-item">
-      <a href="{{ route('auditoriums.index') }}" class="nav-link {{ Request::is('auditoriums*') ? 'active' : '' }}"><i class="fa fa-television"></i> Auditorios</a>
+      <a href="{{ route('screenings.index') }}" class="nav-link {{ Request::is('screenings*') ? 'active' : '' }}"><i class="fa fa-video-camera"></i> Proyecciones</a>
     </li>
   </ul>
 </div>

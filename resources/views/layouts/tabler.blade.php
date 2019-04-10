@@ -13,8 +13,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <link rel="icon" href="{{ asset('demo/brand/favicon.ico') }}" type="image/x-icon" />
-  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('demo/brand/favicon.ico') }}" />
+  <link rel="icon" href="{{ asset('demo/brand/favicon.png') }}" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('demo/brand/favicon.png') }}" />
   <!-- Generated: 2018-04-16 09:29:05 +0200 -->
   <title>
     @isset($title) {{ $title . '|' }} @endisset {{ config('app.name') }}
@@ -47,7 +47,7 @@
         <div class="container">
           <div class="d-flex">
             <a class="header-brand" href="{{ route('home') }}">
-                <img src="{{ asset('demo/brand/logo.svg') }}" class="header-brand-img" alt="tabler logo">
+                <img src="{{ asset('demo/brand/tabler.svg') }}" class="header-brand-img" alt="tabler logo">
               </a>
             <div class="d-flex order-lg-2 ml-auto">
               <div class="dropdown d-none d-md-flex">
