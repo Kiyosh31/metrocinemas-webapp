@@ -159,7 +159,6 @@
                 <ul class="list-inline list-inline-dots mb-0">
                   <li class="list-inline-item"><a href="{{ route('contact') }}">Contacto</a></li>
                   <li class="list-inline-item"><a href="{{ route('info') }}">Informacion</a></li>
-                  <li class="list-inline-item"><a href="{{ route('team') }}">Equipo</a></li>
                 </ul>
               </div>
             </div>
