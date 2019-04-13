@@ -42,7 +42,7 @@ class MoviePolicy
      */
     public function update(User $user, Movie $movie)
     {
-        return $user->role === 'admin';
+        
     }
 
     /**
@@ -54,7 +54,7 @@ class MoviePolicy
      */
     public function delete(User $user, Movie $movie)
     {
-        
+        return $user->role == 'admin';
     }
 
     /**

@@ -48,23 +48,21 @@
                                 <div class="input-group-append">
                                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        {{-- GATE @can('edit-movie') --}} {{-- policy --}} @can('update')
                                         <a class="dropdown-item" href="{{ route('movies.edit', $movie->id) }}">
                                                 Editar
-                                              </a>
+                                              </a> @can('delete')
                                         <div class="dropdown-divider"></div>
-                                        @endcan {{-- <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $movie->id }}">
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $movie->id }}">
                                             Eliminar
-                                        </a> --}}
+                                        </a> {{--
                                         <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
                                             <input type="hidden" name="_method" value="DELETE"> @csrf
                                             <button type="submit" class="dropdown-item">Eliminar</button>
-                                        </form>
+                                        </form> --}} @endcan
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        {{--
                         <div class="modal fade" id="deleteModal-{{ $movie->id }}" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -85,7 +83,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}} @endforeach @endif
+                        </div> @endforeach @endif
                     </tbody>
                 </table>
             </div>

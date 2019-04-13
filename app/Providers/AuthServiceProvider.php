@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'Metrocinemas\Model' => 'Metrocinemas\Policies\ModelPolicy',
-        'Metrocinemas\Movie' => 'Metrocinemas\MoviePolicy',
+        'Metrocinemas\Movie' => 'Metrocinemas\Policies\MoviePolicy',
     ];
 
     /**
