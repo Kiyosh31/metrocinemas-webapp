@@ -23,17 +23,17 @@
 
                         <div class="form-group">
                             <label class="form-label">Descripcion</label>
-                            <input type="text" class="form-control" name="description" value="{{ $movie->description ?? '' }}{{ old('description') }}">
+                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Escriba alguna descripcion...">{{ $movie->description ?? '' }}{{ old('description') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Director</label>
-                            <input type="text" class="form-control" name="director" value="{{ $movie->director ?? '' }}{{ old('director') }}">
+                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Reparto</label>
-                            <input type="text" class="form-control" name="cast" value="{{ $movie->cast ?? '' }}{{ old('cast') }}">
+                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -71,6 +71,12 @@
                             <label class="form-label">Duracion en minutos</label>
                             <input type="number" class="form-control" name="duration_min" value="{{ $movie->duration_min ?? '' }}{{ old('duration_min') }}">
                         </div>
+
+                        <div class="form-group">
+                                <label class="form-label">Cargar Fotos</label>
+                                {!! Form::file('files[]', ['multiple' => true], ['class' => 'form-control']) !!}
+                        </div>
+
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                     </div>
                 </form>
@@ -88,17 +94,17 @@
 
                         <div class="form-group">
                             <label class="form-label">Descripcion</label>
-                            <input type="text" class="form-control" name="description" value="{{ old('description') }}">
+                        <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Escriba alguna descripcion...">{{ $movie->description ?? '' }}{{ old('description') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Director</label>
-                            <input type="text" class="form-control" name="director" value="{{ old('director') }}">
+                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Reparto</label>
-                            <input type="text" class="form-control" name="cast" value="{{ old('cast') }}">
+                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -141,6 +147,7 @@
                     </div>
             </div>
             </form>
+            </div>
             @endif
         </div>
     </div>

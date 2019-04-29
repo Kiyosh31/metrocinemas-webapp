@@ -26,6 +26,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('screenings', 'ScreeningController');
     Route::resource('auditoriums', 'AuditoriumController');
 
+    // Load files
+    Route::resource('files', 'FileController', ['except' => ['create', 'edit', 'update']]);
+
     // Info pages
     Route::get('/info', 'PageController@info')->name('info');
     Route::get('/contact', 'PageController@contact')->name('contact');

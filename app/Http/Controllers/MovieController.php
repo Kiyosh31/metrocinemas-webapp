@@ -3,6 +3,7 @@
 namespace Metrocinemas\Http\Controllers;
 
 use Metrocinemas\Movie;
+use Metrocinemas\File;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -57,7 +58,19 @@ class MovieController extends Controller
         ]);
 
         // Nueva forma de guardar con el fillable o guard en el model
-        Movie::create($request->all());
+        // se guarda movie sin los archivos
+        $movie = Movie::create($request->except('files'));
+
+        // Se guardan los archivos
+        $file = File::create([
+            'model_id' => $movie->id,
+            'model_type' => 'App\\Movie',
+            'name' => $file->getOriginalName(),
+            'hashed' => $hashedName,
+            'mime' => $file->getClientMime(),
+            'size' => $file->getClientSize(),
+        ]);
+        $file->save();
 
         return redirect()->route('movies.index')
         ->with([

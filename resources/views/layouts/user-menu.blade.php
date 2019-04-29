@@ -14,9 +14,6 @@
           <span class="float-right"><span class="badge badge-primary">6</span></span>
           <i class="dropdown-icon fa fa-money"></i> Historial
         </a>
-    <a class="dropdown-item" href="">
-        <i class="dropdown-icon fa fa-cog"></i> Configuraciones
-      </a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">
