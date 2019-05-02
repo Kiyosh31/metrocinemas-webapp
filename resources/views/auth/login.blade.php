@@ -67,13 +67,6 @@
                                         </label>
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="remember"
-                                                name="remember" {{ old('remember') ? 'checked' : '' }} />
-                                            <span class="custom-control-label" for="remember">Recuerdame</span>
-                                        </label>
-                                    </div>
                                     <div class="form-footer">
                                         <button type="submit" class="btn btn-primary btn-block">Iniciar Sesion</button>
                                     </div>

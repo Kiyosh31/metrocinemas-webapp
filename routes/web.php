@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Group for the routes who shares the same middleware
@@ -30,12 +30,15 @@ Route::group(['middleware' => 'auth'], function(){
     // Load files
     Route::resource('files', 'FileController', ['except' => ['create', 'edit', 'update']]);
 
+    // Send verification emails
+    Route::get('emails/users-list', 'VerifyUserController@usersList')->name('users-not-verified');
+    Route::get('emails/send-email/{user}', 'VerifyUserController@sendMail');
+
     // Info pages
     Route::get('/info', 'PageController@info')->name('info');
     Route::get('/contact', 'PageController@contact')->name('contact');
 
-
-    // Employee pages
+    // User pages
     Route::resource('profile', 'UserController');
 
     Route::get('/main-page', function () {

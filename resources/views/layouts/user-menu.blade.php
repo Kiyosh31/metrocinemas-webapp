@@ -9,11 +9,13 @@
   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
     <a class="dropdown-item" href="{{ route('profile.index') }}">
         <i class="dropdown-icon fe fe-user"></i> Perfil
-      </a>
-    <a class="dropdown-item" href="">
-          <span class="float-right"><span class="badge badge-primary">6</span></span>
-          <i class="dropdown-icon fa fa-money"></i> Historial
-        </a>
+    </a>
+    <a class="dropdown-item" href="{{ route('users-not-verified') }}">
+        <i class="dropdown-icon fa fa-user"></i> Usuarios no verificados
+    </a>
+    <a class="dropdown-item" href="{{ route('users-not-verified') }}">
+        <i class="dropdown-icon fa fa-user-plus"></i> Permisos usuarios
+    </a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">

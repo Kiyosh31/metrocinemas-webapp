@@ -1,6 +1,5 @@
-@extends('layouts.tabler') 
+@extends('layouts.tabler')
 @section('content')
-
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card">
@@ -8,32 +7,40 @@
                 <h3 class="card-title">{{ isset($movie) ? 'Modificar' : 'Agregar' }} pelicula</h3>
             </div>
             <div class="card-body">
-    @include('partials.formErrors') @if(isset($movie))
+            @include('partials.formErrors') 
+            @if(isset($movie))
                 <form action="{{ route('movies.update', $movie->id) }}" method="POST">
-                    <input type="hidden" name="_method" value="PATCH"> @csrf
+                    <input type="hidden" name="_method" value="PATCH"> 
+                    @csrf
 
                     <div class="col-8 offset-2">
                         <div class="form-group">
                             <label class="form-label">Titulo</label>
-                            <input type="text" class="form-control" name="title" placeholder="Agrega un titulo..." value="{{ $movie->title ?? '' }}{{ old('title') }}">                            @if ($errors->has('name'))
-                            <span class="alert alert-danger">
+                            <input type="text" class="form-control" name="title" placeholder="Escribe un titulo..."
+                                value="{{ $movie->title ?? '' }}{{ old('title') }}"> 
+                                @if ($errors->has('name'))
+                                    <span class="alert alert-danger">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span> @endif
+                                    </span> 
+                                @endif
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Descripcion</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Escriba alguna descripcion...">{{ $movie->description ?? '' }}{{ old('description') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="description"
+                                placeholder="Escriba alguna descripcion...">{{ $movie->description ?? '' }}{{ old('description') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Director</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="director" placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="director"
+                                placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Reparto</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="cast" placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="cast"
+                                placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -50,26 +57,41 @@
                         <div class="form-group">
                             <label class="form-label">Categoria</label>
                             <select name="category" class="form-control">
-                                <option value="Comedia" {{ 'Comedia' == $movie->category ? 'selected' : '' }} >Comedia</option>
-                                <option value="Sci-Fi" {{ 'Sci-Fi' == $movie->category ? 'selected' : '' }} >Sci-Fi</option>
-                                <option value="Horror" {{ 'Horror' == $movie->category ? 'selected' : '' }} >Horror</option>
-                                <option value="Romance" {{ 'Romance' == $movie->category ? 'selected' : '' }} >Romance</option>
-                                <option value="Accion" {{ 'Accion' == $movie->category ? 'selected' : '' }} >Accion</option>
-                                <option value="Thriller" {{ 'Thriller' == $movie->category ? 'selected' : '' }} >Thriller</option>
-                                <option value="Drama" {{ 'Drama' == $movie->category ? 'selected' : '' }} >Drama</option>
-                                <option value="Misterio" {{ 'Misterio' == $movie->category ? 'selected' : '' }} >Misterio</option>
-                                <option value="Animacion" {{ 'Animacion' == $movie->category ? 'selected' : '' }} >Animacion</option>
-                                <option value="Aventura" {{ 'Aventura' == $movie->category ? 'selected' : '' }} >Aventura</option>
-                                <option value="Fantasia" {{ 'Fantasia' == $movie->category ? 'selected' : '' }} >Fantasia</option>
-                                <option value="Comedia Romantica" {{ 'Comedia Romantica' == $movie->category ? 'selected' : '' }} >Comedia Romantica</option>
-                                <option value="Accion Comedia" {{ 'Accion Comedia' == $movie->category ? 'selected' : '' }} >Accion Comedia</option>
-                                <option value="Super Heores" {{ 'Super Heores' == $movie->category ? 'selected' : '' }} >Super Heores</option>
+                                <option value="Comedia" {{ 'Comedia' == $movie->category ? 'selected' : '' }}>Comedia
+                                </option>
+                                <option value="Sci-Fi" {{ 'Sci-Fi' == $movie->category ? 'selected' : '' }}>Sci-Fi
+                                </option>
+                                <option value="Horror" {{ 'Horror' == $movie->category ? 'selected' : '' }}>Horror
+                                </option>
+                                <option value="Romance" {{ 'Romance' == $movie->category ? 'selected' : '' }}>Romance
+                                </option>
+                                <option value="Accion" {{ 'Accion' == $movie->category ? 'selected' : '' }}>Accion
+                                </option>
+                                <option value="Thriller" {{ 'Thriller' == $movie->category ? 'selected' : '' }}>Thriller
+                                </option>
+                                <option value="Drama" {{ 'Drama' == $movie->category ? 'selected' : '' }}>Drama</option>
+                                <option value="Misterio" {{ 'Misterio' == $movie->category ? 'selected' : '' }}>Misterio
+                                </option>
+                                <option value="Animacion" {{ 'Animacion' == $movie->category ? 'selected' : '' }}>
+                                    Animacion</option>
+                                <option value="Aventura" {{ 'Aventura' == $movie->category ? 'selected' : '' }}>Aventura
+                                </option>
+                                <option value="Fantasia" {{ 'Fantasia' == $movie->category ? 'selected' : '' }}>Fantasia
+                                </option>
+                                <option value="Comedia Romantica"
+                                    {{ 'Comedia Romantica' == $movie->category ? 'selected' : '' }}>Comedia Romantica
+                                </option>
+                                <option value="Accion Comedia"
+                                    {{ 'Accion Comedia' == $movie->category ? 'selected' : '' }}>Accion Comedia</option>
+                                <option value="Super Heores" {{ 'Super Heores' == $movie->category ? 'selected' : '' }}>
+                                    Super Heores</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Duracion en minutos</label>
-                            <input type="number" class="form-control" name="duration_min" value="{{ $movie->duration_min ?? '' }}{{ old('duration_min') }}">
+                            <input type="number" class="form-control" name="duration_min" placeholder="e.j 180"
+                                value="{{ $movie->duration_min ?? '' }}{{ old('duration_min') }}">
                         </div>
 
                         {{--
@@ -87,25 +109,29 @@
                     <div class="col-8 offset-2">
                         <div class="form-group">
                             <label class="form-label">Titulo</label>
-                            <input type="text" class="form-control" name="title" value="{{ old('title') }}"> @if ($errors->has('title'))
+                            <input type="text" class="form-control" placeholder="Escribe un titulo..." name="title"
+                                value="{{ old('title') }}"> @if ($errors->has('title'))
                             <span class="alert alert-danger">
-                                        <strong>{{ $errors->first('title') }}</strong>
-                                    </span> @endif
+                                <strong>{{ $errors->first('title') }}</strong>
+                            </span> @endif
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Descripcion</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Escriba alguna descripcion...">{{ $movie->description ?? '' }}{{ old('description') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="description"
+                                placeholder="Escriba alguna descripcion...">{{ $movie->description ?? '' }}{{ old('description') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Director</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="director" placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="director"
+                                placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Reparto</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="cast" placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="cast"
+                                placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -142,7 +168,8 @@
 
                         <div class="form-group">
                             <label class="form-label">Duracion en minutos</label>
-                            <input type="number" class="form-control" name="duration_min" value="{{ old('duration_min') }}">
+                            <input type="number" class="form-control" name="duration_min" placeholder="e.j 180"
+                                value="{{ old('duration_min') }}">
                         </div>
 
                         {{--
