@@ -16,6 +16,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'Metrocinemas\Model' => 'Metrocinemas\Policies\ModelPolicy',
         'Metrocinemas\Movie' => 'Metrocinemas\Policies\MoviePolicy',
+        'Metrocinemas\Auditorium' => 'Metrocinemas\Policies\AuditoriumPolicy',
+        'Metrocinemas\Screening' => 'Metrocinemas\Policies\ScreeningPolicy',
     ];
 
     /**
@@ -26,11 +28,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //Gate -> similar a middleware
-        // valida que el usuario sea administrador si es asi le permitira editar o eliminar peliculas
-        // Gate::define('edit-movie', function($user){
-        //     return $user->role == 'admin';
-        // });
     }
 }

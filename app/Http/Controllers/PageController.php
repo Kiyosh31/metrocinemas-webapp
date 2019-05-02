@@ -20,12 +20,4 @@ class PageController extends Controller
             'title' => 'Contacto'
         ]);
     }
-
-    public function userProfile () 
-    {
-        return view('user.profile')
-        ->with([
-            'title' => 'Perfil'
-        ]);
-    }
 }

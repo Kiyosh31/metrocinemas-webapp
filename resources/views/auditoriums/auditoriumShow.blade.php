@@ -4,9 +4,9 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Listado de peliculas</h3>
+                <h3 class="card-title">Auditorio modificado</h3>
                 <div class="ml-auto">
-                    <a href="{{ route('movies.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>  Agregar pelicula</a>
+                    <a href="{{ route('movies.index') }}" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i>  Regresar</a>
                 </div>
             </div>
 
@@ -15,41 +15,26 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Titulo</th>
-                            <th>Descripcion</th>
-                            <th>Director</th>
-                            <th>Cast</th>
-                            <th>Clasificacion</th>
-                            <th>Categoria</th>
-                            <th>Duracion</th>
+                            <th>Nombre</th>
+                            <th>Numero de asientos</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if($movies->isEmpty())
-                        <div class="alert alert-danger" role="alert">
-                            No se encontraron peliculas
-                        </div>
-                        @else @foreach($movies as $movie)
                         <tr>
-                            <td>{{ $movie->id }}</td>
-                            <td>{{ $movie->title }}</td>
-                            <td>{{ $movie->description }}</td>
-                            <td>{{ $movie->director }}</td>
-                            <td>{{ $movie->cast }}</td>
-                            <td>{{ $movie->clasification }}</td>
-                            <td>{{ $movie->category }}</td>
-                            <td>{{ $movie->duration_min }} minutos</td>
+                            <td>{{ $auditorium->id }}</td>
+                            <td>{{ $auditorium->name }}</td>
+                            <td>{{ $auditorium->seats_no }}</td>
 
                             <td>
                                 <div class="input-group-append">
                                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{ route('movies.edit', $movie->id) }}">
+                                        <a class="dropdown-item" href="{{ route('auditoriums.edit', $auditorium->id) }}">
                                                 Editar
-                                              </a> @can('delete', $movie)
+                                              </a> @can('delete', $auditorium)
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $movie->id }}">
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $auditorium->id }}">
                                             Eliminar
                                         </a> {{--
                                         <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
@@ -60,7 +45,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <div class="modal fade" id="deleteModal-{{ $movie->id }}" tabindex="-1" role="dialog">
+                        <div class="modal fade" id="deleteModal-{{ $auditorium->id }}" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -73,14 +58,14 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
+                                        <form action="{{ route('auditoriums.destroy', $auditorium->id) }}" method="POST">
                                             <input type="hidden" name="_method" value="DELETE"> @csrf
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                        </div> @endforeach @endif
+                        </div>
                     </tbody>
                 </table>
             </div>

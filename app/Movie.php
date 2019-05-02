@@ -14,15 +14,20 @@ class Movie extends Model
 
     public function screening()
     {
-        return $this->hasMany(Screening::class);
+        /** 
+         * Parametros:
+         * 1. modelo al que va dirigido
+         * 2. tablar pivote
+         * 3 y 4. Llaves foraneas
+         * withPivot -> filas extras de la tabla pivote
+         */ 
+        return $this->belongsToMany(Screening::class, 'movie_screening', 'screening_id', 'movie_id')
+            ->withPivot('screening_start', 'screening_finish')
+            ->withTimeStamps();
     }
 
-    public function screening_has_movies()
+    public function files()
     {
-        // Parametros:
-        // 1. Modelo
-        // 2. Tabla pivote
-        // 3. FK id_movie de la tabla pivote
-        return $this->belongsToMany(screening_has_movies::class, 'screenings_has_movies', 'movies_id');
+        return $this->morphMany('Metrocinemas\File', 'model');
     }
 }

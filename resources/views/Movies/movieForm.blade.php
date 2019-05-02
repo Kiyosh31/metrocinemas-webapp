@@ -15,7 +15,7 @@
                     <div class="col-8 offset-2">
                         <div class="form-group">
                             <label class="form-label">Titulo</label>
-                            <input type="text" class="form-control" name="title" value="{{ $movie->title ?? '' }}{{ old('title') }}">                            @if ($errors->has('name'))
+                            <input type="text" class="form-control" name="title" placeholder="Agrega un titulo..." value="{{ $movie->title ?? '' }}{{ old('title') }}">                            @if ($errors->has('name'))
                             <span class="alert alert-danger">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span> @endif
@@ -28,12 +28,12 @@
 
                         <div class="form-group">
                             <label class="form-label">Director</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="director" placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Reparto</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="cast" placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -72,10 +72,11 @@
                             <input type="number" class="form-control" name="duration_min" value="{{ $movie->duration_min ?? '' }}{{ old('duration_min') }}">
                         </div>
 
+                        {{--
                         <div class="form-group">
-                                <label class="form-label">Cargar Fotos</label>
-                                {!! Form::file('files[]', ['multiple' => true], ['class' => 'form-control']) !!}
-                        </div>
+                            <label class="form-label">Cargar Fotos</label> {!! Form::file('files[]', ['multiple' => true],
+                            ['class' => 'form-control']) !!}
+                        </div> --}}
 
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                     </div>
@@ -94,17 +95,17 @@
 
                         <div class="form-group">
                             <label class="form-label">Descripcion</label>
-                        <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Escriba alguna descripcion...">{{ $movie->description ?? '' }}{{ old('description') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Escriba alguna descripcion...">{{ $movie->description ?? '' }}{{ old('description') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Director</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="director" placeholder="Directores...">{{ $movie->director ?? '' }}{{ old('director') }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Reparto</label>
-                            <textarea rows="5" class="form-control" style="resize:none" name="description" placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
+                            <textarea rows="5" class="form-control" style="resize:none" name="cast" placeholder="Reparto...">{{ $movie->cast ?? '' }}{{ old('cast') }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -143,14 +144,21 @@
                             <label class="form-label">Duracion en minutos</label>
                             <input type="number" class="form-control" name="duration_min" value="{{ old('duration_min') }}">
                         </div>
+
+                        {{--
+                        <div class="form-group">
+                            <label class="form-label">Cargar Fotos</label> {!! Form::file('files[]', ['multiple' => true],
+                            ['class' => 'form-control']) !!}
+                        </div> --}}
+
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                     </div>
             </div>
             </form>
-            </div>
-            @endif
         </div>
+        @endif
     </div>
+</div>
 </div>
 </div>
 @endsection

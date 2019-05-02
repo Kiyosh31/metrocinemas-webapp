@@ -67,7 +67,7 @@ class AuditoriumController extends Controller
     {
         return view('auditoriums.auditoriumShow', compact('auditorium'))
         ->with([
-            'title' => 'Todas los auditorios'
+            'title' => 'Todos los auditorios'
         ]);
     }
 

@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('movies', 'MovieController');
     Route::resource('screenings', 'ScreeningController');
     Route::resource('auditoriums', 'AuditoriumController');
+    Route::resource('reservations', 'ReservationController');
 
     // Load files
     Route::resource('files', 'FileController', ['except' => ['create', 'edit', 'update']]);
@@ -34,7 +35,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/contact', 'PageController@contact')->name('contact');
 
 
-    Route::get('/profile', 'PageController@userProfile')->name('profile');
+    // Employee pages
+    Route::resource('profile', 'UserController');
 
     Route::get('/main-page', function () {
         return view('main-page');

@@ -62,17 +62,17 @@ class MovieController extends Controller
         $movie = Movie::create($request->except('files'));
 
         // Se guardan los archivos
-        $file = File::create([
-            'model_id' => $movie->id,
-            'model_type' => 'App\\Movie',
-            'name' => $file->getOriginalName(),
-            'hashed' => $hashedName,
-            'mime' => $file->getClientMime(),
-            'size' => $file->getClientSize(),
-        ]);
-        $file->save();
+        // $file = File::create([
+        //     'model_id' => $movie->id,
+        //     'model_type' => 'App\\Movie',
+        //     'name' => $file->getOriginalName(),
+        //     'hashed' => $hashedName,
+        //     'mime' => $file->getClientMime(),
+        //     'size' => $file->getClientSize(),
+        // ]);
+        // $file->save();
 
-        return redirect()->route('movies.index')
+        return redirect()->route('movies.show', $movie->id)
         ->with([
             'notification' => 'Pelicula agregada con exito',
             'alert-class' => 'alert-success'
@@ -87,7 +87,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        return view('movies.showMovie', compact('movie'));
+        return view('movies.movieShow', compact('movie'));
     }
 
     /**
@@ -98,14 +98,10 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //implementacion gate
-        // if(\Gate::denies('edit-movie', $user))
-        // {
-        //     return redirect()->back()
-        //         ->with(['message' => 'No tienes permiso para editar esta pelicula']);
-        // }
-
-        return view('Movies.movieForm', compact('movie'));
+        return view('Movies.movieForm', compact('movie'))
+        ->with([
+            'title' => 'Editar pelicula'
+        ]);
     }
 
     /**
@@ -127,7 +123,18 @@ class MovieController extends Controller
         ]);
         
         //Nueva forma de guardar con el fillable o guard en el model
-        $movie->update($request->all());
+        $movie->update($request->except('files'));
+
+        // Se guardan los archivos
+        // $file = File::create([
+        //     'model_id' => $movie->id,
+        //     'model_type' => 'App\\Movie',
+        //     'name' => $file->getOriginalName(),
+        //     'hashed' => $hashedName,
+        //     'mime' => $file->getClientMime(),
+        //     'size' => $file->getClientSize(),
+        // ]);
+        // $file->save();
 
         return redirect()->route('movies.show', $movie->id)
         ->with([

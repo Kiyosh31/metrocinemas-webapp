@@ -23,32 +23,59 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($screenings as $sc)
+                            @if($screenings->isEmpty())
+                            <div class="alert alert-danger" role="alert">
+                                No se encontraron proyecciones
+                            </div>
+                            @else @foreach($screenings as $sc)
                             <tr>
-                                <td>
-                                    {{ $sc->id }}
-                                </td>
-                                <td>{{ $sc->movie->title }}</td>
-                                <td>{{ $sc->room->name }}</td>
-                                <td>{{ $sc->start }}</td>
-                                <td>{{ $sc->finish }}</td>
+                                <td>{{ $sc->id }}</td>
+                                <td>{{ $sc->title }}</td>
+                                <td>{{ $sc->name }}</td>
+                                <td>{{ $sc->screening_start }}</td>
+                                <td>{{ $sc->screening_finish }}</td>
                                 <td>
                                     <div class="input-group-append">
                                         <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="{{ route('screenings.edit', $sc->id) }}">
                                                             Editar
-                                                          </a>
+                                                          </a> @can('delete',
+                                            $sc)
                                             <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $sc->id }}">
+                                                    Eliminar
+                                                </a> @endcan {{--
                                             <form action="{{ route('screenings.destroy', $sc->id) }}" method="POST">
                                                 <input type="hidden" name="_method" value="DELETE"> @csrf
                                                 <button type="submit" class="dropdown-item">Eliminar</button>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach
+                            <div class="modal fade" id="deleteModal-{{ $sc->id }}" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Esta seguro de eliminar?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Desea eliminar este elemento?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <form action="{{ route('screenings.destroy', $sc->id) }}" method="POST">
+                                                <input type="hidden" name="_method" value="DELETE"> @csrf
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach @endif
                         </tbody>
                     </table>
                 </div>

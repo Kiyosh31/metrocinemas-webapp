@@ -38,7 +38,7 @@
                             Crear e implementar un middleware.
                         </li>
                         <li>
-                            mplementar gates y policies.
+                            Implementar gates y policies.
                         </li>
                         <li>
                             <strong>Extra:</strong> Passport / Socialite.

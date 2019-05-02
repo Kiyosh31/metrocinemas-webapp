@@ -11,51 +11,54 @@
         </p>
     </div>
 </div>
-<form class="card">
+    @include('partials.formErrors')
+<form class="card" action="{{ route('profile.update', Auth::user()->id) }}" method="POST">
+    <input type="hidden" name="_method" value="PATCH"> @csrf
     <div class="card-body">
         <h3 class="card-title">Editar Perfil</h3>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label">Nombre de usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ old('username') }}" required focus>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ Auth::user()->username }}{{ old('username') }}"
+                        required focus>
                 </div>
             </div>
             <div class="col-sm-6 col-md-6">
                 <div class="form-group">
                     <label class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ Auth::user()->email }}{{ old('email') }}">
                 </div>
             </div>
             <div class="col-sm-6 col-md-6">
                 <div class="form-group">
                     <label class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" value="{{ old('password') }}" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" value="{{ old('password') }}">
                 </div>
             </div>
             <div class="col-sm-6 col-md-6">
                 <div class="form-group">
                     <label class="form-label">Confirmar Contraseña</label>
-                    <input type="text" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Confirmar contraseña" value="{{ old('password_confirmation') }}"
-                        required>
+                    <input type="text" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Confirmar contraseña"
+                        value="{{ old('password_confirmation') }}">
                 </div>
             </div>
             <div class="col-sm-6 col-md-6">
                 <div class="form-label">Tipo de empleado</div>
                 <div class="custom-controls-stacked">
                     <label class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" name="role" value="admin" checked>
-                        <div class="custom-control-label">Administrador</div>
-                    </label>
+                            <input type="radio" class="custom-control-input" name="role" value="admin" {{ Auth::user()->role == 'admin' ? 'checked' : 'disabled' }}>
+                            <div class="custom-control-label">Administrador</div>
+                        </label>
                     <label class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" name="role" value="emp">
-                        <div class="custom-control-label">Empleado</div>
-                    </label>
+                            <input type="radio" class="custom-control-input" name="role" value="emp" {{ Auth::user()->role != 'admin' ? 'checked disabled' : '' }}>
+                            <div class="custom-control-label">Empleado</div>
+                        </label>
                 </div>
             </div>
-    </div>
-    <div class="card-footer text-right">
-        <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
-    </div>
+        </div>
+        <div class="card-footer text-right">
+            <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+        </div>
 </form>
 @endsection

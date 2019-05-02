@@ -7,7 +7,7 @@
       </span>
     </a>
   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-    <a class="dropdown-item" href="{{ route('profile') }}">
+    <a class="dropdown-item" href="{{ route('profile.index') }}">
         <i class="dropdown-icon fe fe-user"></i> Perfil
       </a>
     <a class="dropdown-item" href="">

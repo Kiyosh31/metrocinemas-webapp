@@ -4,9 +4,9 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Listado de peliculas</h3>
+                <h3 class="card-title">Pelicula Modificada</h3>
                 <div class="ml-auto">
-                    <a href="{{ route('movies.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>  Agregar pelicula</a>
+                    <a href="{{ route('movies.index') }}" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i>  Regresar</a>
                 </div>
             </div>
 
@@ -26,11 +26,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if($movies->isEmpty())
-                        <div class="alert alert-danger" role="alert">
-                            No se encontraron peliculas
-                        </div>
-                        @else @foreach($movies as $movie)
                         <tr>
                             <td>{{ $movie->id }}</td>
                             <td>{{ $movie->title }}</td>
@@ -80,7 +75,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> @endforeach @endif
+                        </div>
                     </tbody>
                 </table>
             </div>

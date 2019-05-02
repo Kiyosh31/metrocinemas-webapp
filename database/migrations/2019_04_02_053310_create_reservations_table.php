@@ -16,8 +16,8 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('screenings_has_movies_screening_id');
-            $table->unsignedInteger('screenings_has_movies_movie_id');
+            $table->unsignedInteger('screening_id');
+            $table->unsignedInteger('movie_id');
             $table->string('client_name');
             $table->string('client_last_name');
             $table->integer('paid');

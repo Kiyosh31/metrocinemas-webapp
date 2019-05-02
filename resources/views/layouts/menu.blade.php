@@ -12,5 +12,8 @@
     <li class="nav-item">
       <a href="{{ route('screenings.index') }}" class="nav-link {{ Request::is('screenings*') ? 'active' : '' }}"><i class="fa fa-video-camera"></i> Proyecciones</a>
     </li>
+    <li class="nav-item">
+      <a href="{{ route('reservations.index') }}" class="nav-link {{ Request::is('reservations*') ? 'active' : '' }}"><i class="fa fa-credit-card"></i> Reservaciones</a>
+    </li>
   </ul>
 </div>

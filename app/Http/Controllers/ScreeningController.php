@@ -49,13 +49,20 @@ class ScreeningController extends Controller
         $request->validate([
             'movie_id' => 'required|numeric',
             'auditorium_id' => 'required|numeric',
-            'start' => 'required|max:255',
-            'finish' => 'required|max:255'
+            'screening_start' => 'required|max:255',
+            'screening_finish' => 'required|max:255'
         ]);
 
-        Screening::create($request->all());
+        $screening = Screening::create($request->only('auditorium_id'));
 
-        return redirect()->route('screenings.index');
+        $movie = Movie::find($request->movie_id);
+        $movie->screening()->attach($request->movie_id, ['screening_start' => $request->screening_start, 'screening_finish' => $request->screening_finish]);
+
+        return redirect()->route('screenings.show', $screening->id)
+        ->with([
+            'notification' => 'Proyeccion agregada con exito',
+            'alert-class' => 'alert-success'
+        ]);
     }
 
     /**
@@ -79,7 +86,10 @@ class ScreeningController extends Controller
     {
         $movies = Movie::all();
         $auditorium = Auditorium::all();
-        return view('screenings.screeningForm', compact('screening', 'movies', 'auditorium'));
+        return view('screenings.screeningForm', compact('screening', 'movies', 'auditorium'))
+        ->with([
+            'title' => 'Editar una proyeccion'
+        ]);
     }
 
     /**
@@ -98,9 +108,16 @@ class ScreeningController extends Controller
             'finish' => 'required|max:255'
         ]);
 
-        $screening->update($request->all());
+        $screening->update($request->only('auditorium_id'));
 
-        return redirect()->route('screenings.screeningShow', $screening->id);
+        $movie = Movie::find($request->movie_id);
+        $movie->screening()->sync($request->movie_id, ['screening_start' => $request->screening_start, 'screening_finish' => $request->screening_finish]);
+
+        return redirect()->route('screenings.screeningShow', $screening->id)
+        ->with([
+            'notification' => 'Proyeccion eliminada con exito',
+            'alert-class' => 'alert-danger'
+        ]);
     }
 
     /**
@@ -112,6 +129,11 @@ class ScreeningController extends Controller
     public function destroy(Screening $screening)
     {
         $screening->delete();
-        return redirect()->route('screenings.screeningIndex');
+        
+        return redirect()->route('screenings.screeningIndex')
+        ->with([
+            'notification' => 'Proyeccion eliminada con exito',
+            'alert-class' => 'alert-danger'
+        ]);
     }
 }
