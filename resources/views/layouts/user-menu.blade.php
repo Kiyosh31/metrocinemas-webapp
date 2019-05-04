@@ -10,12 +10,13 @@
     <a class="dropdown-item" href="{{ route('profile.index') }}">
         <i class="dropdown-icon fe fe-user"></i> Perfil
     </a>
-    <a class="dropdown-item" href="{{ route('users-not-verified') }}">
-        <i class="dropdown-icon fa fa-user"></i> Usuarios no verificados
-    </a>
-    <a class="dropdown-item" href="{{ route('users-not-verified') }}">
-        <i class="dropdown-icon fa fa-user-plus"></i> Permisos usuarios
-    </a>
+    
+    @if (Auth::user()->role == 'admin')
+      <a class="dropdown-item" href="">
+          <i class="dropdown-icon fa fa-user-plus"></i> Permisos usuarios
+      </a>
+    @endif
+    
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">

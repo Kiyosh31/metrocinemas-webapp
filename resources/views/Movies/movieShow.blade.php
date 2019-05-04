@@ -37,22 +37,16 @@
                             <td>{{ $movie->duration_min }} minutos</td>
 
                             <td>
-                                <div class="input-group-append">
-                                    <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{ route('movies.edit', $movie->id) }}">
-                                                Editar
-                                              </a> @can('delete', $movie)
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $movie->id }}">
-                                            Eliminar
-                                        </a> {{--
-                                        <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
-                                            <input type="hidden" name="_method" value="DELETE"> @csrf
-                                            <button type="submit" class="dropdown-item">Eliminar</button>
-                                        </form> --}} @endcan
-                                    </div>
-                                </div>
+                                <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-sm btn-warning">
+                                    Editar
+                                </a>
+                                @can('delete', $movie)
+                                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
+                                    </form>
+                                @endcan
                             </td>
                         </tr>
                         <div class="modal fade" id="deleteModal-{{ $movie->id }}" tabindex="-1" role="dialog">
@@ -80,6 +74,36 @@
                 </table>
             </div>
         </div>
+    </div>
+</div>
+<div class="row row-cards">
+  <div class="col-lg-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Covers de la pelicula</h3>
+      </div>
+      
+      @if($photos->isEmpty())
+        <div class="alert alert-danger" role="alert">
+            No hay covers ligados a esta pelicula
+        </div>
+     @endif
+      <table class="table card-table table-vcenter">
+        @foreach ($photos as $photo)
+          <tr>
+            <td>
+                <img src="" alt="{{ $photo->hashed }}" title="{{ $photo->name }}" class="h-8">
+            </td>
+            <td>
+              {{ $photo->name }}
+            </td>
+            <td>
+                <a href="{{ route('files.destroy', $photo->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+        @endforeach
+        </table>
+      </div>
     </div>
 </div>
 @endsection

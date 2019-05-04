@@ -12,6 +12,11 @@ class Movie extends Model
     // los que no se van a insertar
     protected $guarded = ['id'];
 
+    /**
+     * Polymorphic relationship to screening
+     * Many To Many
+     * @return type
+     */
     public function screening()
     {
         /** 
@@ -26,8 +31,14 @@ class Movie extends Model
             ->withTimeStamps();
     }
 
+    /**
+     * Polymorphic relationship to files
+     * One To Many
+     * 
+     * @return type
+     */
     public function files()
     {
-        return $this->morphMany('Metrocinemas\File', 'model');
+        return $this->morphMany('Metrocinemas\File', 'modelo');
     }
 }

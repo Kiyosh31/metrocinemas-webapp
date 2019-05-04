@@ -18,7 +18,7 @@
             <a href="https://github.com/Kiyosh31" title="Github" data-toggle="tooltip" target="_blank"><i class="fa fa-github"></i></a>
           </li>
           <li class="list-inline-item">
-            <a href="https://github.com/Kiyosh31" title="Linkedin" data-toggle="tooltip" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/david-kiyoshi-garcia-azano-8b365b159/" title="Linkedin" data-toggle="tooltip" target="_blank"><i class="fa fa-linkedin"></i></a>
           </li>
         </ul>
       </div>

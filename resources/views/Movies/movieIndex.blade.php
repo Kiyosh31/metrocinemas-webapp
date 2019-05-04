@@ -32,7 +32,11 @@
                         </div>
                         @else @foreach($movies as $movie)
                         <tr>
-                            <td>{{ $movie->id }}</td>
+                            <td>
+                                <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-sm btn-info">
+                                    {{ $movie->id }}
+                                </a>
+                            </td>
                             <td>{{ $movie->title }}</td>
                             <td>{{ $movie->description }}</td>
                             <td>{{ $movie->director }}</td>
@@ -46,16 +50,14 @@
                                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="{{ route('movies.edit', $movie->id) }}">
-                                                Editar
-                                              </a> @can('delete', $movie)
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $movie->id }}">
-                                            Eliminar
-                                        </a> {{--
-                                        <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
-                                            <input type="hidden" name="_method" value="DELETE"> @csrf
-                                            <button type="submit" class="dropdown-item">Eliminar</button>
-                                        </form> --}} @endcan
+                                            Editar
+                                        </a>
+                                        @can('delete', $movie)
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $movie->id }}">
+                                                Eliminar
+                                            </a> 
+                                        @endcan
                                     </div>
                                 </div>
                             </td>

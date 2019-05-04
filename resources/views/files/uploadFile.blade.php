@@ -1,6 +1,5 @@
 {!! Form::open(['route' => 'files.store', 'files' => true, 'id' => 'form-file-upload']) !!}
 <div class="form-group">
-    <label for="files" class="col-foms-label">Seleccione los archivos a cargar</label>
     {!! Form::file('files[]', ['multiple' => true], ['class' => 'form-control']) !!}
 </div>
 

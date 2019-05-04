@@ -12,17 +12,17 @@ class VerifyUser extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $users;
+    public $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($userId)
     {
-        //trae todos los usuarios que no han confirmado su email
-        $this->users = User::where('email_verified_at', null)
+        //trae el usuario a traves de su ID
+        $this->user = User::where('id', $userId)
             ->get();
     }
 
@@ -33,6 +33,9 @@ class VerifyUser extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.verify-mail');
+        return $this->view('emails.verify-mail')
+            ->with([
+                'email_token' => $this->user->remember_token
+        ]);
     }
 }

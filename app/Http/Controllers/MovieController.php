@@ -4,6 +4,7 @@ namespace Metrocinemas\Http\Controllers;
 
 use Metrocinemas\Movie;
 use Metrocinemas\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -54,24 +55,38 @@ class MovieController extends Controller
             'director' => 'required|max:255',
             'cast' => 'required|max:255',
             'clasification' => 'required|max:255',
-            'duration_min' => 'required|numeric'
+            'duration_min' => 'required|numeric',
+            'photos.*' => 'image|mimes:jpg,jpeg,png',
         ]);
 
         // Nueva forma de guardar con el fillable o guard en el model
-        // se guarda movie sin los archivos
-        $movie = Movie::create($request->except('files'));
+        $movie = Movie::create($request->except('photos'));
 
-        // Se guardan los archivos
-        // $file = File::create([
-        //     'model_id' => $movie->id,
-        //     'model_type' => 'App\\Movie',
-        //     'name' => $file->getOriginalName(),
-        //     'hashed' => $hashedName,
-        //     'mime' => $file->getClientMime(),
-        //     'size' => $file->getClientSize(),
-        // ]);
-        // $file->save();
+        // Si la coleccion no viene vacia
+        if($request->photos)
+        {
+            // Recibe multiples archivos y guarda cada uno
+            foreach($request->photos as $photo)
+            {
+                if($photo->isValid())
+                {
+                    // Guarda el archivo en storage/app/movie-covers/
+                    $hashedName = $photo->store('/movie-covers/');
 
+                    $regFile = File::create([
+                        'model_id' => $movie->id,
+                        'model_type' => 'Metrocinemas\\Movie',
+                        'name' => $photo->getClientOriginalName(),
+                        'hashed' => $hashedName,
+                        'mime' => $photo->getClientMimeType(),
+                        'size' => $photo->getClientSize(),
+                    ]);
+                    $regFile->save();
+                }
+            }
+        }
+        
+        
         return redirect()->route('movies.show', $movie->id)
         ->with([
             'notification' => 'Pelicula agregada con exito',
@@ -87,7 +102,19 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        return view('movies.movieShow', compact('movie'));
+        $photos = File::where('model_id', $movie->id)->get();
+        $headers;
+
+        foreach($photos as $photo)
+        {
+            $this->headers = ['Content-Type: ' . $photo->mime];
+            $this->photos = Storage::download($photo->hashed, $photo->name, $this->headers);
+        }
+
+        return view('movies.movieShow', compact('movie', 'photos'))
+        ->with([
+            'title' => 'Ver pelicula'
+        ]);
     }
 
     /**
@@ -119,22 +146,32 @@ class MovieController extends Controller
             'director' => 'required|max:255',
             'cast' => 'required|max:255',
             'clasification' => 'required|max:255',
-            'duration_min' => 'required|numeric'
+            'duration_min' => 'required|numeric',
+            'photos.*' => 'image|mimes:jpg,jpeg,png',
         ]);
         
         //Nueva forma de guardar con el fillable o guard en el model
-        $movie->update($request->except('files'));
+        $movie->update($request->except('photos'));
 
-        // Se guardan los archivos
-        // $file = File::create([
-        //     'model_id' => $movie->id,
-        //     'model_type' => 'App\\Movie',
-        //     'name' => $file->getOriginalName(),
-        //     'hashed' => $hashedName,
-        //     'mime' => $file->getClientMime(),
-        //     'size' => $file->getClientSize(),
-        // ]);
-        // $file->save();
+        // Recibe multiples archivos y guarda cada uno
+        foreach($request->photos as $photo)
+        {
+            if($photo->isValid())
+            {
+                // Guarda el archivo en storage/app/movie-covers/
+                $hashedName = $photo->store('/movie-covers/');
+
+                $regFile = File::create([
+                    'model_id' => $movie->id,
+                    'model_type' => 'Metrocinemas\\Movie',
+                    'name' => $photo->getClientOriginalName(),
+                    'hashed' => $hashedName,
+                    'mime' => $photo->getClientMimeType(),
+                    'size' => $photo->getClientSize(),
+                ]);
+                $regFile->save();
+            }
+        }
 
         return redirect()->route('movies.show', $movie->id)
         ->with([
@@ -151,6 +188,21 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
+        // Obtiene todas las fotos de una pelicula
+        $photos = File::where('model_id', $movie->id)->get();
+
+        // Si hay fotos las elimina
+        if($photos)
+        {
+            foreach($photos as $photo)
+            {
+                Storage::delete($photo->hashed);
+                $photo->delete();
+            }
+        }
+        
+
+        // Despues elimina la pelicula
         $movie->delete();
         return redirect()->route('movies.index')
             ->with([

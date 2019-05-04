@@ -8,13 +8,14 @@ class File extends Model
 {
     protected $guarded = ['id'];
 
+    /**
+     * Polymorphic relationship to movies
+     * One To Many
+     * 
+     * @return type
+     */
     public function movie()
     {
         return $this->belongsTo(Movie::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }

@@ -9,7 +9,7 @@
             <div class="card-body">
             @include('partials.formErrors') 
             @if(isset($movie))
-                <form action="{{ route('movies.update', $movie->id) }}" method="POST">
+                <form action="{{ route('movies.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PATCH"> 
                     @csrf
 
@@ -57,34 +57,22 @@
                         <div class="form-group">
                             <label class="form-label">Categoria</label>
                             <select name="category" class="form-control">
-                                <option value="Comedia" {{ 'Comedia' == $movie->category ? 'selected' : '' }}>Comedia
-                                </option>
-                                <option value="Sci-Fi" {{ 'Sci-Fi' == $movie->category ? 'selected' : '' }}>Sci-Fi
-                                </option>
-                                <option value="Horror" {{ 'Horror' == $movie->category ? 'selected' : '' }}>Horror
-                                </option>
-                                <option value="Romance" {{ 'Romance' == $movie->category ? 'selected' : '' }}>Romance
-                                </option>
-                                <option value="Accion" {{ 'Accion' == $movie->category ? 'selected' : '' }}>Accion
-                                </option>
-                                <option value="Thriller" {{ 'Thriller' == $movie->category ? 'selected' : '' }}>Thriller
-                                </option>
+                                <option value="Comedia" {{ 'Comedia' == $movie->category ? 'selected' : '' }}>Comedia</option>
+                                <option value="Sci-Fi" {{ 'Sci-Fi' == $movie->category ? 'selected' : '' }}>Sci-Fi</option>
+                                <option value="Horror" {{ 'Horror' == $movie->category ? 'selected' : '' }}>Horror</option>
+                                <option value="Romance" {{ 'Romance' == $movie->category ? 'selected' : '' }}>Romance</option>
+                                <option value="Accion" {{ 'Accion' == $movie->category ? 'selected' : '' }}>Accion</option>
+                                <option value="Thriller" {{ 'Thriller' == $movie->category ? 'selected' : '' }}>Thriller</option>
                                 <option value="Drama" {{ 'Drama' == $movie->category ? 'selected' : '' }}>Drama</option>
-                                <option value="Misterio" {{ 'Misterio' == $movie->category ? 'selected' : '' }}>Misterio
-                                </option>
-                                <option value="Animacion" {{ 'Animacion' == $movie->category ? 'selected' : '' }}>
-                                    Animacion</option>
+                                <option value="Misterio" {{ 'Misterio' == $movie->category ? 'selected' : '' }}>Misterio</option>
+                                <option value="Animacion" {{ 'Animacion' == $movie->category ? 'selected' : '' }}>Animacion</option>
                                 <option value="Aventura" {{ 'Aventura' == $movie->category ? 'selected' : '' }}>Aventura
                                 </option>
                                 <option value="Fantasia" {{ 'Fantasia' == $movie->category ? 'selected' : '' }}>Fantasia
                                 </option>
-                                <option value="Comedia Romantica"
-                                    {{ 'Comedia Romantica' == $movie->category ? 'selected' : '' }}>Comedia Romantica
-                                </option>
-                                <option value="Accion Comedia"
-                                    {{ 'Accion Comedia' == $movie->category ? 'selected' : '' }}>Accion Comedia</option>
-                                <option value="Super Heores" {{ 'Super Heores' == $movie->category ? 'selected' : '' }}>
-                                    Super Heores</option>
+                                <option value="Comedia Romantica"{{ 'Comedia Romantica' == $movie->category ? 'selected' : '' }}>Comedia Romantica</option>
+                                <option value="Accion Comedia"{{ 'Accion Comedia' == $movie->category ? 'selected' : '' }}>Accion Comedia</option>
+                                <option value="Super Heores" {{ 'Super Heores' == $movie->category ? 'selected' : '' }}>Super Heores</option>
                             </select>
                         </div>
 
@@ -94,17 +82,16 @@
                                 value="{{ $movie->duration_min ?? '' }}{{ old('duration_min') }}">
                         </div>
 
-                        {{--
                         <div class="form-group">
-                            <label class="form-label">Cargar Fotos</label> {!! Form::file('files[]', ['multiple' => true],
-                            ['class' => 'form-control']) !!}
-                        </div> --}}
+                            <label for="photos" class="form-label">Cargar de archivos</label>
+                            {!! Form::file('photos[]', ['multiple' => true], ['class' => 'form-control'], ['enctype' => 'multipart/form-data']) !!}
+                        </div>
 
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                     </div>
                 </form>
                 @else
-                <form action="{{ route('movies.store') }}" method="POST">
+                <form action="{{ route('movies.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-8 offset-2">
                         <div class="form-group">
@@ -169,14 +156,13 @@
                         <div class="form-group">
                             <label class="form-label">Duracion en minutos</label>
                             <input type="number" class="form-control" name="duration_min" placeholder="e.j 180"
-                                value="{{ old('duration_min') }}">
+                                value="{{ $movie->duration_min ?? '' }}{{ old('duration_min') }}">
                         </div>
 
-                        {{--
                         <div class="form-group">
-                            <label class="form-label">Cargar Fotos</label> {!! Form::file('files[]', ['multiple' => true],
-                            ['class' => 'form-control']) !!}
-                        </div> --}}
+                            <label for="photos" class="form-label">Cargar de archivos</label>
+                            {!! Form::file('photos[]', ['multiple' => true], ['class' => 'form-control'], ['enctype' => 'multipart/form-data']) !!}
+                        </div>
 
                         <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
                     </div>

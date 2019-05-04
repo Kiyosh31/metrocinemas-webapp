@@ -37,12 +37,12 @@ class FileController extends Controller
     public function store(Request $request)
     {
         // gets all the multiple files
-        foreach($request->files as $file)
+        foreach($request->photos as $photo)
         {
             // validate the file is correctly uploaded
-            if($file->isValid())
+            if($photo->isValid())
             {
-                $hashedName = $file->store('');
+                $hashedName = $photo->store('');
 
                 // save the registry in the DB
                 $regFile = File::create([
@@ -53,6 +53,7 @@ class FileController extends Controller
                     'mime' => $file->getClientMime(),
                     'size' => $file->getClientSize(),
                 ]);
+                dd($regFile);
 
                 $regFile->save();
             }
@@ -68,17 +69,6 @@ class FileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(File $file)
-    {
-        
-    }
-
-    /**
-     * Download the specified resource.
-     *
-     * @param  \Metrocinemas\File  $file
-     * @return \Illuminate\Http\Response
-     */
-    public function donwload(File $file)
     {
         $headers = ['Content-Type: ' . $file->mime];
         return Storage::download($file->hashed, $file->name, $headers);
