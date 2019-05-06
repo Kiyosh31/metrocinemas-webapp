@@ -29,10 +29,10 @@
                     <tbody>
                         <tr>
                             <td>{{ $movie->id }}</td>
-                            <td>{{ $movie->title }}</td>
-                            <td>{{ $movie->description }}</td>
-                            <td>{{ $movie->director }}</td>
-                            <td>{{ $movie->cast }}</td>
+                            <td>{{ $movie->upper_title }}</td>
+                            <td>{{ $movie->upper_description }}</td>
+                            <td>{{ $movie->upper_director }}</td>
+                            <td>{{ $movie->upper_cast }}</td>
                             <td>{{ $movie->clasification }}</td>
                             <td>{{ $movie->category }}</td>
                             <td>{{ $movie->duration_min }} minutos</td>
@@ -60,10 +60,10 @@
     <div class="col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Covers de la pelicula</h3>
+                <h3 class="card-title">Imagenes de la pelicula</h3>
                 <div class="ml-auto">
                     <a href="{{ route('movies.index') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>
-                        Agregar cover</a>
+                        Agregar imagen</a>
                 </div>
             </div>
 

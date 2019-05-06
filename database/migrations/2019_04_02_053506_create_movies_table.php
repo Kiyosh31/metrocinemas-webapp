@@ -23,6 +23,7 @@ class CreateMoviesTable extends Migration
             $table->string('category');
             $table->integer('duration_min');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

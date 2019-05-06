@@ -44,10 +44,10 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary ml-auto pull-right"
+                            <button type="submit" class="btn btn-primary ml-auto"
                                 {{ $movies->isEmpty() || $auditoriums->isEmpty() ? 'disabled': '' }}>Aceptar</button>
                             <a href="{{ route('screenings.show', $sc->id) }}"
-                                class="btn btn-danger ml-auto pull-right">Cancelar</a>
+                                class="btn btn-danger ml-auto">Cancelar</a>
                         </div>
 
                     </div>
@@ -88,9 +88,9 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary ml-auto pull-right"
+                        <button type="submit" class="btn btn-primary ml-auto"
                             {{ $movies->isEmpty() || $auditoriums->isEmpty() ? 'disabled': '' }}>Aceptar</button>
-                        <a href="{{ route('screenings.index') }}" class="btn btn-danger ml-auto pull-right">Cancelar</a>
+                        <a href="{{ route('screenings.index') }}" class="btn btn-danger ml-auto">Cancelar</a>
                     </div>
 
                 </div>

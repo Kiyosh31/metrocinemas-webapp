@@ -71,7 +71,7 @@ class MovieController extends Controller
                 if($photo->isValid())
                 {
                     // Guarda el archivo en storage/app/movie-covers/
-                    $hashedName = $photo->store('/public/movie-covers');
+                    $hashedName = $photo->store('/movie-covers');
 
                     $regFile = File::create([
                         'model_id' => $movie->id,

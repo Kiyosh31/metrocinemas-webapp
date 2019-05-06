@@ -88,8 +88,8 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary ml-auto pull-right">Aceptar</button>
-                            <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-danger ml-auto pull-right">Cancelar</a>
+                            <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
+                            <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-danger ml-auto">Cancelar</a>
                         </div>
                         
                     </div>
@@ -169,8 +169,8 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary ml-auto pull-right">Aceptar</button>
-                            <a href="{{ route('movies.index') }}" class="btn btn-danger ml-auto pull-right">Cancelar</a>
+                            <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
+                            <a href="{{ route('movies.index') }}" class="btn btn-danger ml-auto">Cancelar</a>
                         </div>
 
                     </div>

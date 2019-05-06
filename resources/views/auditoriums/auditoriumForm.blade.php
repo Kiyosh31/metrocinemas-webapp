@@ -24,8 +24,8 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary ml-auto pull-right">Aceptar</button>
-                                <a href="{{ route('auditoriums.show', $auditorium->id) }}" class="btn btn-danger ml-auto pull-right">Cancelar</a>
+                                <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
+                                <a href="{{ route('auditoriums.show', $auditorium->id) }}" class="btn btn-danger ml-auto">Cancelar</a>
                             </div>
                         </div>
                     </form>
@@ -44,8 +44,8 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary ml-auto pull-right">Aceptar</button>
-                            <a href="{{ route('auditoriums.index') }}" class="btn btn-danger ml-auto pull-right">Cancelar</a>
+                            <button type="submit" class="btn btn-primary ml-auto">Aceptar</button>
+                            <a href="{{ route('auditoriums.index') }}" class="btn btn-danger ml-auto">Cancelar</a>
                         </div>
 
                     </div>

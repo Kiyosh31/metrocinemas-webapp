@@ -37,10 +37,10 @@
                                     {{ $movie->id }}
                                 </a>
                             </td>
-                            <td>{{ $movie->title }}</td>
-                            <td>{{ $movie->description }}</td>
-                            <td>{{ $movie->director }}</td>
-                            <td>{{ $movie->cast }}</td>
+                            <td>{{ $movie->upper_title }}</td>
+                            <td>{{ $movie->upper_description }}</td>
+                            <td>{{ $movie->upper_director }}</td>
+                            <td>{{ $movie->upper_cast }}</td>
                             <td>{{ $movie->clasification }}</td>
                             <td>{{ $movie->category }}</td>
                             <td>{{ $movie->duration_min }} minutos</td>
