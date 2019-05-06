@@ -71,7 +71,7 @@ class MovieController extends Controller
                 if($photo->isValid())
                 {
                     // Guarda el archivo en storage/app/movie-covers/
-                    $hashedName = $photo->store('/movie-covers/');
+                    $hashedName = $photo->store('/public/movie-covers');
 
                     $regFile = File::create([
                         'model_id' => $movie->id,
@@ -89,7 +89,7 @@ class MovieController extends Controller
         
         return redirect()->route('movies.show', $movie->id)
         ->with([
-            'notification' => 'Pelicula agregada con exito',
+            'notification' => 'Pelicula agregada',
             'alert-class' => 'alert-success'
         ]);
     }
@@ -153,26 +153,30 @@ class MovieController extends Controller
         //Nueva forma de guardar con el fillable o guard en el model
         $movie->update($request->except('photos'));
 
-        // Recibe multiples archivos y guarda cada uno
-        foreach($request->photos as $photo)
+        //Si hay fotos
+        if($request->photos)
         {
-            if($photo->isValid())
+            // Recibe multiples archivos y guarda cada uno
+            foreach($request->photos as $photo)
             {
-                // Guarda el archivo en storage/app/movie-covers/
-                $hashedName = $photo->store('/movie-covers/');
+                if($photo->isValid())
+                {
+                    // Guarda el archivo en storage/app/movie-covers/
+                    $hashedName = $photo->store('/movie-covers');
 
-                $regFile = File::create([
-                    'model_id' => $movie->id,
-                    'model_type' => 'Metrocinemas\\Movie',
-                    'name' => $photo->getClientOriginalName(),
-                    'hashed' => $hashedName,
-                    'mime' => $photo->getClientMimeType(),
-                    'size' => $photo->getClientSize(),
-                ]);
-                $regFile->save();
+                    $regFile = File::create([
+                        'model_id' => $movie->id,
+                        'model_type' => 'Metrocinemas\\Movie',
+                        'name' => $photo->getClientOriginalName(),
+                        'hashed' => $hashedName,
+                        'mime' => $photo->getClientMimeType(),
+                        'size' => $photo->getClientSize(),
+                    ]);
+                    $regFile->save();
+                }
             }
         }
-
+        
         return redirect()->route('movies.show', $movie->id)
         ->with([
             'notification' => 'Pelicula actualizada con exito',
@@ -206,8 +210,54 @@ class MovieController extends Controller
         $movie->delete();
         return redirect()->route('movies.index')
             ->with([
-                'notification' => 'Pelicula eliminada con exito',
+                'notification' => 'Pelicula eliminada',
                 'alert-class' => 'alert-danger'
             ]);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Metrocinemas\File  $photo
+     * @return \Illuminate\Http\Response
+     */
+     public function destroyImage(File $photo)
+     {
+         Storage::delete($photo->hashed);
+         $photo->delete();
+
+         return redirect()->back()
+            ->with([
+                'notification' => 'Cover eliminado',
+                'alert-class' => 'alert-success'
+            ]);
+     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Metrocinemas\Movie  $movie
+     * @return \Illuminate\Http\Response
+     */
+     public function destroyAllImages(Movie $movie)
+     {
+         // Obtiene todas las fotos de una pelicula
+         $photos = File::where('model_id', $movie->id)->get();
+ 
+         // Si hay fotos las elimina
+         if($photos)
+         {
+             foreach($photos as $photo)
+             {
+                 Storage::delete($photo->hashed);
+                 $photo->delete();
+             }
+         }
+
+         return redirect()->back()
+            ->with([
+                'notification' => 'Todos los covers han sido eliminados',
+                'alert-class' => 'alert-success'
+            ]);
+     }
 }

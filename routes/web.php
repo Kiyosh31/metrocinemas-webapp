@@ -22,10 +22,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth', 'verified'], function(){
 
     // CRUD for the management of the DB
+    Route::resource('user', 'UserController');
     Route::resource('movies', 'MovieController');
     Route::resource('screenings', 'ScreeningController');
     Route::resource('auditoriums', 'AuditoriumController');
     Route::resource('reservations', 'ReservationController');
+
+    // Delete a movie file
+    Route::delete('movies/delete-image/{photo}', 'MovieController@destroyImage');
+    // Delete all movie files
+    Route::delete('movies/delete-images/{movie}', 'MovieController@destroyAllImages');
 
     // CRUD files
     Route::resource('files', 'FileController', ['except' => ['create', 'edit', 'update']]);
@@ -37,9 +43,6 @@ Route::group(['middleware' => 'auth', 'verified'], function(){
     // Info pages
     Route::get('/info', 'PageController@info')->name('info');
     Route::get('/contact', 'PageController@contact')->name('contact');
-
-    // User pages
-    Route::resource('profile', 'UserController');
 
     Route::get('/main-page', function () {
         return view('main-page');

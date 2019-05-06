@@ -66,7 +66,7 @@ class ScreeningController extends Controller
 
         return redirect()->route('screenings.show', $screening->id)
         ->with([
-            'notification' => 'Proyeccion agregada con exito',
+            'notification' => 'Proyeccion agregada',
             'alert-class' => 'alert-success'
         ]);
     }
@@ -121,7 +121,7 @@ class ScreeningController extends Controller
 
         return redirect()->route('screenings.screeningShow', $screening->id)
         ->with([
-            'notification' => 'Proyeccion eliminada con exito',
+            'notification' => 'Proyeccion eliminada',
             'alert-class' => 'alert-danger'
         ]);
     }
@@ -138,7 +138,7 @@ class ScreeningController extends Controller
         
         return redirect()->route('screenings.screeningIndex')
         ->with([
-            'notification' => 'Proyeccion eliminada con exito',
+            'notification' => 'Proyeccion eliminada',
             'alert-class' => 'alert-danger'
         ]);
     }

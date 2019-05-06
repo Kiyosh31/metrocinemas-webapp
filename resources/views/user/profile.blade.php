@@ -12,7 +12,7 @@
     </div>
 </div>
     @include('partials.formErrors')
-<form class="card" action="{{ route('profile.update', Auth::user()->id) }}" method="POST">
+<form class="card" action="{{ route('user.update', Auth::user()->id) }}" method="POST">
     <input type="hidden" name="_method" value="PATCH"> @csrf
     <div class="card-body">
         <h3 class="card-title">Editar Perfil</h3>

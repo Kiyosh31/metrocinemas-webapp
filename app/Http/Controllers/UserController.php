@@ -64,6 +64,17 @@ class UserController extends Controller
     }
 
     /**
+     * upgrade the user from employee to administrator or viveversa.
+     *
+     * @param  \Metrocinemas\User  $user
+     * @return \Illuminate\Http\Response
+     */
+     public function promoteUser(User $user)
+     {
+         
+     }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -1,4 +1,4 @@
-@extends('layouts.tabler') 
+@extends('layouts.tabler')
 @section('content')
 <div class="row">
     <div class="col-md-8 offset-2">
@@ -6,7 +6,8 @@
             <div class="card-header">
                 <h3 class="card-title">Listado de Proyecciones</h3>
                 <div class="ml-auto">
-                    <a href="{{ route('screenings.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>  Agregar proyeccion</a>
+                    <a href="{{ route('screenings.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>
+                        Agregar proyeccion</a>
                 </div>
             </div>
             <div class="card-body">
@@ -29,27 +30,29 @@
                             </div>
                             @else @foreach($screenings as $sc)
                             <tr>
-                                <td>{{ $sc->id }}</td>
+                                <td>
+                                    <a href="{{ route('screenings.show', $sc->id) }}" class="btn btn-sm btn-info">
+                                        {{ $sc->id }}
+                                    </a>
+                                </td>
                                 <td>{{ $sc->title }}</td>
                                 <td>{{ $sc->name }}</td>
                                 <td>{{ $sc->screening_start }}</td>
                                 <td>{{ $sc->screening_finish }}</td>
                                 <td>
                                     <div class="input-group-append">
-                                        <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
+                                        <button type="button" data-toggle="dropdown"
+                                            class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="{{ route('screenings.edit', $sc->id) }}">
-                                                            Editar
-                                                          </a> @can('delete',
+                                                Editar
+                                            </a> @can('delete',
                                             $sc)
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $sc->id }}">
-                                                    Eliminar
-                                                </a> @endcan {{--
-                                            <form action="{{ route('screenings.destroy', $sc->id) }}" method="POST">
-                                                <input type="hidden" name="_method" value="DELETE"> @csrf
-                                                <button type="submit" class="dropdown-item">Eliminar</button>
-                                            </form> --}}
+                                            <a class="dropdown-item" data-toggle="modal"
+                                                data-target="#deleteModal-{{ $sc->id }}">
+                                                Eliminar
+                                            </a> @endcan
                                         </div>
                                     </div>
                                 </td>
@@ -60,13 +63,14 @@
                                         <div class="modal-header">
                                             <h5 class="modal-title">Esta seguro de eliminar?</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          </button>
+                                            </button>
                                         </div>
                                         <div class="modal-body">
                                             <p>Desea eliminar este elemento?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Cerrar</button>
                                             <form action="{{ route('screenings.destroy', $sc->id) }}" method="POST">
                                                 <input type="hidden" name="_method" value="DELETE"> @csrf
                                                 <button type="submit" class="btn btn-danger">Eliminar</button>

@@ -52,7 +52,7 @@ class AuditoriumController extends Controller
 
         return redirect()->route('auditoriums.index')
         ->with([
-            'notification' => 'Auditorio agregado con exito',
+            'notification' => 'Auditorio agregado',
             'alert-class' => 'alert-success'
         ]);
     }
@@ -100,7 +100,7 @@ class AuditoriumController extends Controller
 
         return redirect()->route('auditoriums.show', $auditorium->id)
         ->with([
-            'notification' => 'Auditorio actualizado con exito',
+            'notification' => 'Auditorio actualizado',
             'alert-class' => 'alert-success'
         ]);
     }
@@ -116,7 +116,7 @@ class AuditoriumController extends Controller
         $auditorium->delete();
         return redirect()->route('auditoriums.index')
         ->with([
-            'notification' => 'Auditorio eliminado con exito',
+            'notification' => 'Auditorio eliminado',
             'alert-class' => 'alert-danger'
         ]);
     }

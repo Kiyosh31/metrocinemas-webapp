@@ -23,7 +23,11 @@
                         <tbody>
                             @foreach($auditoriums as $auditorium)
                             <tr>
-                                <td>{{ $auditorium->id }}</td>
+                                <td>
+                                    <a href="{{ route('auditoriums.show', $auditorium->id) }}" class="btn btn-sm btn-info">
+                                        {{ $auditorium->id }}
+                                    </a>
+                                </td>
                                 <td>{{ $auditorium->name }}</td>
                                 <td>{{ $auditorium->seats_no }}</td>
                                 <td>
