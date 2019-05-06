@@ -50,28 +50,6 @@
                                 @endcan
                             </td>
                         </tr>
-                        <div class="modal fade" id="deleteModal-{{ $movie->id }}" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Esta seguro de eliminar?</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Desea eliminar este elemento?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Cerrar</button>
-                                        <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
-                                            <input type="hidden" name="_method" value="DELETE"> @csrf
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </tbody>
                 </table>
             </div>
