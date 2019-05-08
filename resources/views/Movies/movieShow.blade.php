@@ -76,7 +76,7 @@
                 @foreach ($photos as $photo)
                 <tr>
                     <td>
-                        <img src="" alt="{{ $photo->hashed }}" title="{{ $photo->name }}" class="h-8">
+                        <img src="data:image/jpeg;base64,{{ base64_encode(\Storage::get($photo->hashed)) }}" alt="{{ $photo->hashed }}" title="{{ $photo->name }}" style="height: 50px; width: 50px;">
                     </td>
                     <td>
                         {{ $photo->name }}
@@ -90,25 +90,21 @@
                         </form>
                     </td>
                 </tr>
-                @endforeach
-                @if ($photos->isNotEmpty())
-                <tfoot>
-                    <tr>
-                        <td colspan="3" align="right">
-                            <div class="ml-auto">
-                                <form action="{{ action('MovieController@destroyAllImages', $movie->id) }}"
-                                    method="POST">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    @csrf
-                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"
-                                            aria-hidden="true"></i> Eliminar todo</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
-                @endif
+                @endforeach                
             </table>
+            @if ($photos->isNotEmpty())
+                <div class="card-footer">
+                    <div class="ml-auto pull-right">
+                        <form action="{{ action('MovieController@destroyAllImages', $movie->id) }}"
+                            method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"
+                                aria-hidden="true"></i> Eliminar todo</button>
+                        </form>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>

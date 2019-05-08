@@ -26,11 +26,11 @@ class Movie extends Model
         /** 
          * Parametros:
          * 1. modelo al que va dirigido
-         * 2. tablar pivote
+         * 2. tabla pivote
          * 3 y 4. Llaves foraneas
          * withPivot -> filas extras de la tabla pivote
          */ 
-        return $this->belongsToMany(Screening::class, 'movie_screening', 'screening_id', 'movie_id')
+        return $this->belongsToMany(Screening::class, 'movie_screening', 'movie_id', 'screening_id')
             ->withPivot('screening_start', 'screening_finish')
             ->withTimeStamps();
     }
@@ -105,6 +105,6 @@ class Movie extends Model
      */
     public function scopeClasification($query)
     {
-        return $query->where('clasification', '==', 'B15');
+        return $query->where('clasification', '=', 'B15');
     }
 }

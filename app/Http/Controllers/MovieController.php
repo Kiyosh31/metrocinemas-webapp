@@ -18,14 +18,22 @@ class MovieController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Paginacion
-        $movies = Movie::paginate(10);
+        if(!empty($request->filter_title))
+        {
+            $movies = Movie::where('title', '=', $request->filter_title)->get();
+        }
+        else
+        {
+            // Paginacion
+            $movies = Movie::paginate(10);
+        }
+
         return view('movies.movieIndex', compact('movies'))
-        ->with([
-            'title' => 'Todas las peliculas'
-        ]);
+            ->with([
+                'title' => 'Todas las peliculas'
+            ]);
     }
 
     /**
@@ -71,8 +79,8 @@ class MovieController extends Controller
             {
                 if($photo->isValid())
                 {
-                    // Guarda el archivo en storage/app/movie-covers/
-                    $hashedName = $photo->store('/movie-covers');
+                    // Guarda el archivo en storage/app/public/movie-covers/
+                    $hashedName = $photo->store('/public/movie-covers');
 
                     $regFile = File::create([
                         'model_id' => $movie->id,
@@ -162,8 +170,8 @@ class MovieController extends Controller
             {
                 if($photo->isValid())
                 {
-                    // Guarda el archivo en storage/app/movie-covers/
-                    $hashedName = $photo->store('/movie-covers');
+                    // Guarda el archivo en storage/app/public/movie-covers/
+                    $hashedName = $photo->store('/public/movie-covers');
 
                     $regFile = File::create([
                         'model_id' => $movie->id,

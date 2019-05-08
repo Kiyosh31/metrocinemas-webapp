@@ -82,7 +82,9 @@
                             @endforeach @endif
                         </tbody>
                     </table>
-                    {{ $screenings->links() }}
+                    <div class="card-footer">
+                        {{ $screenings->links() }}
+                    </div>
                 </div>
             </div>
         </div>

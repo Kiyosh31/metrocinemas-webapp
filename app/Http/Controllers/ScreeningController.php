@@ -57,13 +57,7 @@ class ScreeningController extends Controller
         $screening = Screening::create($request->only('auditorium_id'));
         
         $movie = Movie::find($request->movie_id);
-        $movie->screening()->attach(1, ['screening_start' => $request->screening_start, 'screening_finish' => $request->screening_finish]);
-        // $movie->screening()->attach([
-        //     1 => ['screening_id' => $screening->id],
-        //     2 => ['movie_id' => $movie->id],
-        //     3 => ['screening_start' => $request->screening_start],
-        //     4 => ['screening_finish' => $request->screening_finish]
-        // ]);
+        $movie->screening()->attach($screening->id, ['screening_start' => $request->screening_start, 'screening_finish' => $request->screening_finish]);
 
         return redirect()->route('screenings.show', $screening->id)
         ->with([

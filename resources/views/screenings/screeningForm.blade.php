@@ -58,23 +58,28 @@
                 @csrf
                 <div class="col-8 offset-2">
                     <div class="form-group">
-                        <label class="form-label">Pelicula</label> @if($movies->isEmpty())
-                        <input type="text" class="form-control" placeholder="No hay peliculas" disabled> @else
-                        <select name="movie_id" class="form-control">
-                            @foreach($movies as $movie)
-                            <option value="{{ $movie->id }}">{{ $movie->title }}</option>
-                            @endforeach
-                        </select> @endif
+                        <label class="form-label">Pelicula</label> 
+                        @if($movies->isEmpty())
+                            <input type="text" class="form-control" placeholder="No hay peliculas" disabled> 
+                        @else
+                            <select name="movie_id" class="form-control">
+                                @foreach($movies as $movie)
+                                    <option value="{{ $movie->id }}">{{ $movie->title }}</option>
+                                @endforeach
+                            </select> 
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Sala</label> @if($auditoriums->isEmpty())
-                        <input type="text" class="form-control" placeholder="No hay salas" disabled> @else
-                        <select name="auditorium_id" class="form-control">
-                            @foreach($auditoriums as $auditorium)
-                            <option value="{{ $auditorium->id }}">{{ $auditorium->name }}</option>
-                            @endforeach
-                        </select> @endif
+                            <input type="text" class="form-control" placeholder="No hay salas" disabled> 
+                        @else
+                            <select name="auditorium_id" class="form-control">
+                                @foreach($auditoriums as $auditorium)
+                                <option value="{{ $auditorium->id }}">{{ $auditorium->name }}</option>
+                                @endforeach
+                            </select> 
+                        @endif
                     </div>
 
                     <div class="form-group">

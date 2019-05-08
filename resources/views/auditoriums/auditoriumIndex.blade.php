@@ -70,7 +70,9 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $auditoriums->links() }}
+                    <div class="card-footer">
+                        {{ $auditoriums->links() }}
+                    </div>
                 </div>
             </div>
         </div>

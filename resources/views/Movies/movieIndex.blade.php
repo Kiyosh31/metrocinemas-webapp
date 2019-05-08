@@ -11,6 +11,11 @@
             </div>
 
             <div class="card-body">
+            <form action="{{ route('movies.index') }}" method="GET">
+                <label for="filter_title">Buscar pelicula</label>
+                <input type="text" name="filter_title">
+                <button type="submit" class="btn btn-primary ml-auto">Buscar</button>
+            </form>
                 <table class="table">
                     <thead>
                         <tr>
@@ -85,7 +90,9 @@
                         </div> @endforeach @endif
                     </tbody>
                 </table>
-                {{ $movies->links() }}
+                <div class="card-footer">
+                    {{ $movies->links() }}
+                </div>
             </div>
         </div>
     </div>
