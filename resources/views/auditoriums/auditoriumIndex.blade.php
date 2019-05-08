@@ -70,6 +70,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $auditoriums->links() }}
                 </div>
             </div>
         </div>

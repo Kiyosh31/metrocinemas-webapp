@@ -85,6 +85,7 @@
                         </div> @endforeach @endif
                     </tbody>
                 </table>
+                {{ $movies->links() }}
             </div>
         </div>
     </div>

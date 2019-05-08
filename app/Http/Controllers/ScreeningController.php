@@ -16,7 +16,8 @@ class ScreeningController extends Controller
      */
     public function index()
     {
-        $screenings = Screening::all();
+        // Paginacion
+        $screenings = Screening::paginate(10);
         return view('screenings.screeningIndex', compact('screenings'))
         ->with([
             'title' => 'Todas las proyecciones'

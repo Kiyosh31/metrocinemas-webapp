@@ -14,7 +14,8 @@ class AuditoriumController extends Controller
      */
     public function index()
     {
-        $auditoriums = Auditorium::all();
+        // Paginacion
+        $auditoriums = Auditorium::paginate(10);
         return view('auditoriums.auditoriumIndex', compact('auditoriums'))
         ->with([
             'title' => 'Todos los auditorios'

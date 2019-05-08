@@ -20,7 +20,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
+        // Paginacion
+        $movies = Movie::paginate(10);
         return view('movies.movieIndex', compact('movies'))
         ->with([
             'title' => 'Todas las peliculas'
