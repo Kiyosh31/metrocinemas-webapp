@@ -47,7 +47,7 @@ class Movie extends Model
     }
 
     /**
-     * Get the title first letter toUpper.
+     * Get the Title first letter toUpper.
      *
      * @return string
      */
@@ -57,7 +57,7 @@ class Movie extends Model
     }
 
     /**
-     * Get the description first letter toUpper.
+     * Get the Description first letter toUpper.
      *
      * @return string
      */
@@ -67,7 +67,7 @@ class Movie extends Model
     }
 
     /**
-     * Get the Directors first letter toUpper.
+     * Get the Director first letter toUpper.
      *
      * @return string
      */
@@ -77,7 +77,7 @@ class Movie extends Model
     }
 
     /**
-     * Get the casts first letter toUpper.
+     * Get the Cast first letter toUpper.
      *
      * @return string
      */
@@ -87,7 +87,7 @@ class Movie extends Model
     }
 
     /**
-     * Set the category uppercase
+     * Set the clasification uppercase
      *
      * @param  string  $value
      * @return void
@@ -95,5 +95,16 @@ class Movie extends Model
     public function setClasificationAttribute($clasification)
     {
         $this->attributes['clasification'] = strtoupper($clasification);
+    }
+
+     /**
+     * Scope a query to only include B15+ categories.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeClasification($query)
+    {
+        return $query->where('clasification', '==', 'B15');
     }
 }
