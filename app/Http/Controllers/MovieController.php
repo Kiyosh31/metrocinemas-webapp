@@ -18,17 +18,10 @@ class MovieController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        if(!empty($request->filter_title))
-        {
-            $movies = Movie::where('title', '=', $request->filter_title)->get();
-        }
-        else
-        {
-            // Paginacion
-            $movies = Movie::paginate(10);
-        }
+        // Paginacion
+        $movies = Movie::paginate(10);
 
         return view('movies.movieIndex', compact('movies'))
             ->with([
@@ -188,7 +181,7 @@ class MovieController extends Controller
         
         return redirect()->route('movies.show', $movie->id)
         ->with([
-            'notification' => 'Pelicula actualizada con exito',
+            'notification' => 'Pelicula actualizada',
             'alert-class' => 'alert-success'
         ]);
     }
@@ -225,6 +218,50 @@ class MovieController extends Controller
     }
 
     /**
+     * Add the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Metrocinemas\Movie  $movie
+     * @return \Illuminate\Http\Response
+     */
+     public function addPhoto(Request $request, Movie $movie)
+     {
+        $request->validate([
+            'photos.*' => 'image|mimes:jpg,jpeg,png',
+        ]);
+
+        //Si hay fotos
+        if($request->photos)
+        {
+            // Recibe multiples archivos y guarda cada uno
+            foreach($request->photos as $photo)
+            {
+                if($photo->isValid())
+                {
+                    // Guarda el archivo en storage/app/public/movie-covers/
+                    $hashedName = $photo->store('/public/movie-covers');
+
+                    $regFile = File::create([
+                        'model_id' => $movie->id,
+                        'model_type' => 'Metrocinemas\\Movie',
+                        'name' => $photo->getClientOriginalName(),
+                        'hashed' => $hashedName,
+                        'mime' => $photo->getClientMimeType(),
+                        'size' => $photo->getClientSize(),
+                    ]);
+                    $regFile->save();
+                }
+            }
+        }
+
+         return redirect()->back()
+            ->with([
+                'notification' => 'Imagen agregada',
+                'alert-class' => 'alert-success'
+            ]);
+     }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \Metrocinemas\File  $photo
@@ -237,7 +274,7 @@ class MovieController extends Controller
 
          return redirect()->back()
             ->with([
-                'notification' => 'Cover eliminado',
+                'notification' => 'Imagen eliminado',
                 'alert-class' => 'alert-success'
             ]);
      }
@@ -265,7 +302,7 @@ class MovieController extends Controller
 
          return redirect()->back()
             ->with([
-                'notification' => 'Todos los covers han sido eliminados',
+                'notification' => 'Todas las imagenes han sido eliminados',
                 'alert-class' => 'alert-success'
             ]);
      }

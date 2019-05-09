@@ -96,15 +96,4 @@ class Movie extends Model
     {
         $this->attributes['clasification'] = strtoupper($clasification);
     }
-
-     /**
-     * Scope a query to only include B15+ categories.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeClasification($query)
-    {
-        return $query->where('clasification', '=', 'B15');
-    }
 }

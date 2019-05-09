@@ -26,9 +26,4 @@ class Screening extends Model
             ->withPivot('screening_start', 'screening_finish')
             ->withTimeStamps();
     }
-
-    public function room()
-    {
-        return $this->belongsTo(Room::class);
-    }
 }

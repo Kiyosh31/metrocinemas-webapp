@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerifyUser extends Mailable
+class UserEmp extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,9 +33,6 @@ class VerifyUser extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.verify-mail')
-            ->with([
-                'email_token' => $this->user->remember_token
-        ]);
+        return $this->view('emails.emp-email');
     }
 }

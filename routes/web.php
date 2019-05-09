@@ -32,13 +32,13 @@ Route::group(['middleware' => 'auth', 'verified'], function(){
     Route::delete('movies/delete-image/{photo}', 'MovieController@destroyImage');
     // Delete all movie files
     Route::delete('movies/delete-images/{movie}', 'MovieController@destroyAllImages');
-
-    // CRUD files
-    Route::resource('files', 'FileController', ['except' => ['create', 'edit', 'update']]);
+    // Add movie files
+    Route::post('movies/add-images/{movie}', 'MovieController@addPhoto');
 
     // Send verification emails
-    // Route::get('emails/users-list', 'VerifyUserController@usersList')->name('users-not-verified');
-    // Route::get('emails/send-email/{user}', 'VerifyUserController@sendMail');
+    Route::get('emails/users-list', 'UpdateUserController@usersList')->name('users-permission');
+    Route::get('emails/send-email-admin/{user}', 'UpdateUserController@makeAdmin');
+    Route::get('emails/send-email-emp/{user}', 'UpdateUserController@makeEmp');
 
     // Info pages
     Route::get('/info', 'PageController@info')->name('info');

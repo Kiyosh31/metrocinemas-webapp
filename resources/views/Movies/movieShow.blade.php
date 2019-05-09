@@ -61,10 +61,6 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Imagenes de la pelicula</h3>
-                <div class="ml-auto">
-                    <a href="{{ route('movies.index') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>
-                        Agregar imagen</a>
-                </div>
             </div>
 
             @if($photos->isEmpty())
@@ -76,7 +72,8 @@
                 @foreach ($photos as $photo)
                 <tr>
                     <td>
-                        <img src="data:image/jpeg;base64,{{ base64_encode(\Storage::get($photo->hashed)) }}" alt="{{ $photo->hashed }}" title="{{ $photo->name }}" style="height: 50px; width: 50px;">
+                        <img src="data:image/jpeg;base64,{{ base64_encode(\Storage::get($photo->hashed)) }}"
+                            alt="{{ $photo->hashed }}" title="{{ $photo->name }}" style="height: 50px; width: 50px;">
                     </td>
                     <td>
                         {{ $photo->name }}
@@ -90,21 +87,41 @@
                         </form>
                     </td>
                 </tr>
-                @endforeach                
+                @endforeach
             </table>
             @if ($photos->isNotEmpty())
-                <div class="card-footer">
-                    <div class="ml-auto pull-right">
-                        <form action="{{ action('MovieController@destroyAllImages', $movie->id) }}"
-                            method="POST">
-                            <input type="hidden" name="_method" value="DELETE">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"
+            <div class="card-footer">
+                <div class="ml-auto pull-right">
+                    <form action="{{ action('MovieController@destroyAllImages', $movie->id) }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"
                                 aria-hidden="true"></i> Eliminar todo</button>
-                        </form>
-                    </div>
+                    </form>
                 </div>
+            </div>
             @endif
+        </div>
+    </div>
+</div>
+<div class="row row-cards">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Agregar pelicula</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <form action="{{ action('MovieController@addPhoto', $movie->id) }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <label for="photos" class="form-label">Cargar archivos</label>
+                        {!! Form::file('photos[]', ['multiple' => true], ['class' => 'form-control'], ['enctype' =>
+                        'multipart/form-data']) !!}
+                        <button type="submit" class="btn btn-primary ml-auto">Subir fotos</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

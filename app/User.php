@@ -36,4 +36,26 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Scope a query to only include users with roler = employee.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+     public function scopeEmployee($query)
+     {
+         return $query->where('role', '=', 'emp');
+     }
+     
+     /**
+     * Scope a query to only include users with roler = administrator.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+     public function scopeAdministrator($query)
+     {
+         return $query->where('role', '=', 'admin');
+     }
 }
