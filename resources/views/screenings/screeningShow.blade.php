@@ -26,10 +26,12 @@
                     <tbody>
                         <tr>
                             <td>{{ $screening->id }}</td>
-                            <td>{{ $screening->title }}</td>
-                            <td>{{ $screening->name }}</td>
-                            <td>{{ $screening->screening_start }}</td>
-                            <td>{{ $screening->screening_finish }}</td>
+                            @foreach($screening->movie as $movie)
+                                <td>{{ $movie->title }}</td>
+                                <td>{{ $screening->auditorium_id }}</td>
+                                <td>{{ $movie->pivot->screening_start }}</td>
+                                <td>{{ $movie->pivot->screening_finish }}</td>
+                            @endforeach
 
                             <td>
                                 <a href="{{ route('screenings.edit', $screening->id) }}" class="btn btn-sm btn-warning">

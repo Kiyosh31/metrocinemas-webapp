@@ -35,10 +35,12 @@
                                         {{ $sc->id }}
                                     </a>
                                 </td>
-                                <td>{{ $sc->id }}</td>
-                                <td>{{ $sc->name }}</td>
-                                <td>{{ $sc->screening_start }}</td>
-                                <td>{{ $sc->screening_finish }}</td>
+                                @foreach($sc->movie as $movie)
+                                    <td>{{ $movie->title }}</td>
+                                    <td>{{ $sc->auditorium_id }}</td>
+                                    <td>{{ $movie->pivot->screening_start }}</td>
+                                    <td>{{ $movie->pivot->screening_finish }}</td>
+                                @endforeach
                                 <td>
                                     <div class="input-group-append">
                                         <button type="button" data-toggle="dropdown"

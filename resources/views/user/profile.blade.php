@@ -43,19 +43,6 @@
                         value="{{ old('password_confirmation') }}">
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6">
-                <div class="form-label">Tipo de empleado</div>
-                <div class="custom-controls-stacked">
-                    <label class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="role" value="admin" {{ Auth::user()->role == 'admin' ? 'checked' : 'disabled' }}>
-                            <div class="custom-control-label">Administrador</div>
-                        </label>
-                    <label class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="role" value="emp" {{ Auth::user()->role != 'admin' ? 'checked disabled' : '' }}>
-                            <div class="custom-control-label">Empleado</div>
-                        </label>
-                </div>
-            </div>
         </div>
         <div class="card-footer text-right">
             <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
