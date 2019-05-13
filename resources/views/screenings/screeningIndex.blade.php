@@ -35,7 +35,7 @@
                                         {{ $sc->id }}
                                     </a>
                                 </td>
-                                <td>{{ $sc->title }}</td>
+                                <td>{{ $sc->id }}</td>
                                 <td>{{ $sc->name }}</td>
                                 <td>{{ $sc->screening_start }}</td>
                                 <td>{{ $sc->screening_finish }}</td>

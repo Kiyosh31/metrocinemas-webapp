@@ -26,26 +26,22 @@
                     <tbody>
                         <tr>
                             <td>{{ $screening->id }}</td>
-                            <td>{{ $screening->movie->title }}</td>
+                            <td>{{ $screening->title }}</td>
                             <td>{{ $screening->name }}</td>
                             <td>{{ $screening->screening_start }}</td>
                             <td>{{ $screening->screening_finish }}</td>
 
                             <td>
-                                <div class="input-group-append">
-                                    <button type="button" data-toggle="dropdown"
-                                        class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{ route('screenings.edit', $screening->id) }}">
-                                            Editar
-                                        </a> @can('delete', $screening)
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" data-toggle="modal"
-                                            data-target="#deleteModal-{{ $screening->id }}">
-                                            Eliminar
-                                        </a> @endcan
-                                    </div>
-                                </div>
+                                <a href="{{ route('screenings.edit', $screening->id) }}" class="btn btn-sm btn-warning">
+                                    Editar
+                                </a>
+                                @can('delete', $screening)
+                                <form action="{{ route('screenings.destroy', $screening->id) }}" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
+                                </form>
+                                @endcan
                             </td>
                         </tr>
                         <div class="modal fade" id="deleteModal-{{ $screening->id }}" tabindex="-1" role="dialog">

@@ -25,7 +25,8 @@
                             <td>{{ $admin->email }}</td>
                             <td>
                                 <a href="{{ action('UpdateUserController@makeEmp', $admin->id) }}"
-                                    class="btn btn-sm btn-success">Hacer empleado</a>
+                                    class="btn btn-sm btn-success">Hacer
+                                    empleado</a>
                             </td>
                         </tr>
                         @endforeach

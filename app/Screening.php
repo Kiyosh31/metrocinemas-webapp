@@ -12,7 +12,6 @@ class Screening extends Model
     // los que no se van a insertar
     protected $guarded = ['id'];
 
-
     public function movie()
     {
         /** 
