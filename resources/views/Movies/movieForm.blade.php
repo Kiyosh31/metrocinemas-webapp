@@ -7,7 +7,7 @@
                 <h3 class="card-title">{{ isset($movie) ? 'Modificar' : 'Agregar' }} pelicula</h3>
             </div>
             <div class="card-body">
-            @include('partials.formErrors') 
+            @include('partials.formErrors')
             @if(isset($movie))
                 <form action="{{ route('movies.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PATCH"> 

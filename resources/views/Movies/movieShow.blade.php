@@ -10,6 +10,7 @@
                             class="fa fa-arrow-left"></i> Regresar</a>
                 </div>
             </div>
+            @include('partials.formErrors')
 
             <div class="card-body">
                 <table class="table">
@@ -62,7 +63,6 @@
             <div class="card-header">
                 <h3 class="card-title">Imagenes de la pelicula</h3>
             </div>
-
             @if($photos->isEmpty())
             <div class="alert alert-danger" role="alert">
                 No hay covers ligados a esta pelicula
@@ -108,7 +108,7 @@
     <div class="col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Agregar pelicula</h3>
+                <h3 class="card-title">Agregar imagenes</h3>
             </div>
             <div class="card-body">
                 <div class="form-group">
@@ -118,7 +118,9 @@
                         <label for="photos" class="form-label">Cargar archivos</label>
                         {!! Form::file('photos[]', ['multiple' => true], ['class' => 'form-control'], ['enctype' =>
                         'multipart/form-data']) !!}
-                        <button type="submit" class="btn btn-primary ml-auto">Subir fotos</button>
+                        <div class="form-group pull-right">
+                            <button type="submit" class="btn btn-primary ml-auto">Subir fotos</button>
+                        </div>
                     </form>
                 </div>
             </div>
