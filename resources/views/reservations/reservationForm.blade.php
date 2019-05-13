@@ -76,16 +76,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Pelicula</label> @if($movies->isEmpty())
-                            <input type="text" class="form-control" placeholder="No hay peliculas" disabled> @else
-                            <select name="movie_id" class="form-control">
-                                                    @foreach($movies as $movie)
-                                                        <option value="{{ $movie->id }}">{{ $movie->title }}</option>
-                                                    @endforeach
-                                                </select> @endif
-                        </div>
-
-                        <div class="form-group">
                             <label class="form-label">Nombre del cliente</label>
                             <input type="text" class="form-control" name="client_name" value="{{ old('client_name') }}">
                         </div>
