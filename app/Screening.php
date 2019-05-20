@@ -25,4 +25,9 @@ class Screening extends Model
             ->withPivot('screening_start', 'screening_finish')
             ->withTimeStamps();
     }
+
+    public function auditorium()
+    {
+        return $this->hasMany(Seat_Reserved::class);
+    }
 }

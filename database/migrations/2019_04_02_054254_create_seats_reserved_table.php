@@ -15,7 +15,7 @@ class CreateSeatsReservedTable extends Migration
     {
         Schema::create('seats_reserved', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('seat_id');
+            $table->integer('seat');
             $table->unsignedInteger('reservation_id');
             $table->unsignedInteger('screening_id');
             $table->timestamps();

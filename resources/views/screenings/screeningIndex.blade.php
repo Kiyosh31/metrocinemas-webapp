@@ -1,7 +1,7 @@
 @extends('layouts.tabler')
 @section('content')
 <div class="row">
-    <div class="col-md-8 offset-2">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Listado de Proyecciones</h3>
@@ -36,10 +36,10 @@
                                     </a>
                                 </td>
                                 @foreach($sc->movie as $movie)
-                                    <td>{{ $movie->title }}</td>
-                                    <td>{{ $sc->auditorium_id }}</td>
-                                    <td>{{ $movie->pivot->screening_start }}</td>
-                                    <td>{{ $movie->pivot->screening_finish }}</td>
+                                <td>{{ $movie->title }}</td>
+                                <td>{{ $sc->auditorium_id }}</td>
+                                <td>{{ $movie->pivot->screening_start }}</td>
+                                <td>{{ $movie->pivot->screening_finish }}</td>
                                 @endforeach
                                 <td>
                                     <div class="input-group-append">

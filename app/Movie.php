@@ -48,6 +48,7 @@ class Movie extends Model
 
     /**
      * Get the Title first letter toUpper.
+     * Accessor
      *
      * @return string
      */

@@ -31,10 +31,8 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $users = User::all();
         $screenings = Screening::all();
-        $movies = Movie::all();
-        return view('reservations.reservationForm', compact('users', 'screenings', 'movies'))
+        return view('reservations.reservationForm', compact('screenings'))
         ->with([
             'title' => 'Agregar Nueva reservacion'
         ]);
@@ -48,7 +46,32 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|numeric',
+            'screening_id' => 'required|numeric',
+            'client_name' => 'required|max:255',
+            'client_last_name' => 'required|max:255',
+            'seats.*' => 'required|numeric',
+        ]);
+
+        // dd($request->seats);
+
+        $reservation = Reservation::create($request->except('seats'));
+        
+        // guarda los asientos reservados
+        if($request->seats)
+        {
+            foreach($request->seats as $seat)
+            {
+                Seat_Reserved::create($seat, $reservation->id, $request->screening_id);
+            }
+        }
+
+        return redirect()->route('reservations.show', $reservation->id)
+        ->with([
+            'notification' => 'Reservacion completada',
+            'alert-class' => 'alert-success'
+        ]);
     }
 
     /**
@@ -70,10 +93,8 @@ class ReservationController extends Controller
      */
     public function edit(Reservation $reservation)
     {
-        $users = User::all();
         $screenings = Screening::all();
-        $movies = Movie::all();
-        return view('reservations.reservationForm', compact('reservations'), compact('users', 'screenings', 'movies'))
+        return view('reservations.reservationForm', compact('reservations'), compact('screenings'))
         ->with([
             'title' => 'Editar una reservacion'
         ]);
