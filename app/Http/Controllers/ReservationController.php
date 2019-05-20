@@ -51,10 +51,8 @@ class ReservationController extends Controller
             'screening_id' => 'required|numeric',
             'client_name' => 'required|max:255',
             'client_last_name' => 'required|max:255',
-            'seats.*' => 'required|numeric',
+            'seats' => 'required',
         ]);
-
-        // dd($request->seats);
 
         $reservation = Reservation::create($request->except('seats'));
         

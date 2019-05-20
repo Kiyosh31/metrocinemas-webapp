@@ -100,7 +100,7 @@
                                 <div class="col-md-6 col-md-border">
                                     <ol>
                                         @for ($i = 0; $i < 15; $i++) <li>
-                                            <input type="checkbox" name="seats[]" value="{{ $i+1 }}">
+                                            <input type="checkbox" name="seats[]" value="{{ $i+1 }}" onclick="calculate_total();">
                                             </li>
                                             @endfor
                                     </ol>
@@ -108,7 +108,7 @@
                                 <div class="col-md-6 col-md-border">
                                     <ol start="16">
                                         @for ($j = 15; $j < 30; $j++) <li>
-                                            <input type="checkbox" name="seats[]" value="{{ $j+1 }}">
+                                            <input type="checkbox" name="seats[]" value="{{ $j+1 }}" onclick="calculate_total();">
                                             </li>
                                             @endfor
                                     </ol>
@@ -118,7 +118,7 @@
 
                         <div class="form-group">
                             <label class="form-lable">Pago total</label>
-                            <input type="number" class="form-control" name="paid" onclick="total();" value="15"
+                            <input type="number" class="form-control" id="total" name="total" value="0"
                                 disabled>
                         </div>
 
@@ -138,16 +138,18 @@
 
 
 <script>
-    function total() {
-        let seats = document.getElementById('seats');
-        let total;
+    function calculate_total() {
+        // console.log(document.querySelectorAll('input[type="checkbox"]:checked').length);
 
-        for(var i = 0; i < seats.length; i++)
-        {
+        var total = 0;
+
+        for(var i = 0; i < document.querySelectorAll('input[type="checkbox"]:checked').length; i++) {
+            // console.log("entro");
             total += 30;
+            // console.log(total);
         }
 
-        return total;
+        document.getElementById("total").value = total;
     }
 </script>
 

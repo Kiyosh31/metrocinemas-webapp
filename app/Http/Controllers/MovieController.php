@@ -58,7 +58,7 @@ class MovieController extends Controller
             'cast' => 'required|max:255',
             'clasification' => 'required|max:255',
             'duration_min' => 'required|numeric',
-            'photos.*' => 'image|mimes:jpg,jpeg,png',
+            'photos' => 'required|image|mimes:jpg,jpeg,png',
         ]);
 
         // Nueva forma de guardar con el fillable o guard en el model
@@ -149,7 +149,7 @@ class MovieController extends Controller
             'cast' => 'required|max:255',
             'clasification' => 'required|max:255',
             'duration_min' => 'required|numeric',
-            'photos.*' => 'image|mimes:jpg,jpeg,png',
+            'photos' => 'required|image|mimes:jpg,jpeg,png',
         ]);
         
         //Nueva forma de guardar con el fillable o guard en el model
@@ -227,7 +227,7 @@ class MovieController extends Controller
      public function addPhoto(Request $request, Movie $movie)
      {
         $request->validate([
-            'photos.*' => 'image|mimes:jpg,jpeg,png',
+            'photos' => 'required|image|mimes:jpg,jpeg,png',
         ]);
 
         //Si hay fotos
