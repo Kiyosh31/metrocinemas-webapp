@@ -41,6 +41,23 @@ php artisan key:generate
 php artisan migrate
 ```
 
+EXTRA: If you want to populate de DB with users, movies and auditoriums
+
+```
+composer dump-autoload
+```
+
+```
+php artisan db:seed
+```
+
+Users:
+
+-   Admin -> admin@test.com
+    password -> secret
+-   employee -> emp@test.com
+    password -> secret
+
 # Usage
 
 In laragon command line

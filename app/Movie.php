@@ -48,7 +48,7 @@ class Movie extends Model
 
     /**
      * Get the Title first letter toUpper.
-     * Accessor
+     * THIS IS AN ACCESSOR
      *
      * @return string
      */
@@ -89,6 +89,7 @@ class Movie extends Model
 
     /**
      * Set the clasification uppercase
+     * THIS IS A MUTATOR
      *
      * @param  string  $value
      * @return void

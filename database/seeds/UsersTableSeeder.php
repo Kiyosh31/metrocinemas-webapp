@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $admin = new Metrocinemas\User();
-        $admin->username = 'administrador';
+        $admin->username = 'El mero mero';
         $admin->email = 'admin@test.com';
         $admin->email_verified_at = now();
         $admin->password = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';

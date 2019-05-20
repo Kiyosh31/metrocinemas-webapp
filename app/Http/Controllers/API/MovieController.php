@@ -8,6 +8,11 @@ use Metrocinemas\Http\Controllers\Controller;
 
 class MovieController extends Controller
 {
+    public function _construct()
+    {
+        $this->middleware('employee')->except('create', 'store', 'edit', 'update');
+    }
+
     /**
      * Display a listing of the resource.
      *
