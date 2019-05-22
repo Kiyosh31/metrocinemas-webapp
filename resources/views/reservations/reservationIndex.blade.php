@@ -17,7 +17,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Empleado</th>
-                            <th>Proyeccion</th>
                             <th>Pelicula</th>
                             <th>Nombre del cliente</th>
                             <th>Pago</th>
@@ -37,7 +36,6 @@
                                 </a>
                             </td>
                             <td>{{ $rv->user->username }}</td>
-                            <td>{{ $rv->screening_id }}</td>
                             <td>{{ $rv->movie->title }}</td>
                             <td>{{ $rv->upper_client_name . ' ' . $rv->upper_client_last_name }}</td>
                             <td>{{ '$ ' . $rv->paid }}</td>

@@ -20,7 +20,7 @@
                             @else
                             <select name="movie_id" class="form-control">
                                 @foreach($movies as $movie)
-                                <option value="{{ $movie->id }}">{{ $movie->id . '. ' . $movie->title }}</option>
+                                <option value="{{ $movie->id }}" {{ ($screening->movie->first()->id == $movie->id) ? 'selected' : '' }} >{{ $movie->id . '. ' . $movie->title }}</option>
                                 @endforeach
                             </select>
                             @endif
@@ -41,13 +41,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Inicio</label>
-                            <input type="datetime-local" class="form-control" name="screening_start">
+                            <label class="form-label">{{ $screening->movie->first()->pivot->screening_start }}</label>
+                            <input type="datetime-local" class="form-control" name="screening_start" value="{{  DateTime::createFromFormat('d-m-Y H:i:s', $screening->movie->first()->pivot->screening_start) }}">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Termina</label>
-                            <input type="datetime-local" class="form-control" name="screening_finish">
+                            <input type="datetime-local" class="form-control" name="screening_finish" value="{{ $screening->movie->first()->pivot->screening_finish }}">
                         </div>
 
                         <div class="form-group">

@@ -17,7 +17,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Empleado</th>
-                            <th>Proyeccion</th>
                             <th>Pelicula</th>
                             <th>Nombre del cliente</th>
                             <th>Asientos</th>
@@ -29,7 +28,6 @@
                         <tr>
                             <td>{{ $reservation->id }}</td>
                             <td>{{ $reservation->user->username }}</td>
-                            <td>{{ $reservation->screening_id }}</td>
                             <td>{{ $reservation->movie->title }}</td>
                             <td>{{ $reservation->upper_client_name . ' ' . $reservation->upper_client_last_name }}</td>
                             <td>{{ $imploded }}</td>

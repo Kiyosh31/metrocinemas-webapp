@@ -104,7 +104,7 @@
                                 @foreach($screenings as $sc)
                                 @foreach($sc->movie as $movie)
                                 <option value="{{ $sc->id .'|'. $movie->id }}"
-                                    {{ ($movie->id == $movie->pivot->movie_id) ? 'selected' : '' }}>{{ $movie->title }}
+                                    {{ ($sc->movie->first()->id == $movie->id) ? 'selected' : '' }}>{{ $movie->title }}
                                     -
                                     {{ $movie->pivot->screening_start }} -
                                     {{ $movie->pivot->screening_finish }}

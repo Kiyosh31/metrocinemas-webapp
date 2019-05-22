@@ -12,6 +12,12 @@ class Screening extends Model
     // los que no se van a insertar
     protected $guarded = ['id'];
 
+    /**
+     * Polymorphic relationship to movies m:n
+     * Many to Many
+     * 
+     * @return type
+     */
     public function movie()
     {
         /** 
@@ -26,6 +32,12 @@ class Screening extends Model
             ->withTimeStamps();
     }
 
+    /**
+     * Polymorphic relationship to auditoriums 1:n
+     * One To Many
+     * 
+     * @return type
+     */
     public function auditorium()
     {
         return $this->hasMany(Seat_Reserved::class);

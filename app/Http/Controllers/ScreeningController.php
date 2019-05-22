@@ -6,6 +6,7 @@ use Metrocinemas\Screening;
 use Metrocinemas\Movie;
 use Metrocinemas\Auditorium;
 use Illuminate\Http\Request;
+use DateTime;
 
 class ScreeningController extends Controller
 {
@@ -85,9 +86,8 @@ class ScreeningController extends Controller
     {
         $movies = Movie::all();
         $auditoriums = Auditorium::all();
-        $screenings = Screening::all();
 
-        return view('screenings.screeningForm', compact('screening', 'movies', 'auditoriums', 'screenings'))
+        return view('screenings.screeningForm', compact('screening', 'movies', 'auditoriums'))
         ->with([
             'title' => 'Editar una proyeccion'
         ]);
