@@ -20,7 +20,7 @@
                             @else
                             <select name="movie_id" class="form-control">
                                 @foreach($movies as $movie)
-                                <option value="{{ $movie->id }}">{{ $movie->title }}</option>
+                                <option value="{{ $movie->id }}">{{ $movie->id . '. ' . $movie->title }}</option>
                                 @endforeach
                             </select>
                             @endif
@@ -32,7 +32,9 @@
                             @else
                             <select name="auditorium_id" class="form-control">
                                 @foreach($auditoriums as $ad)
-                                <option value="{{ $ad->id }}">{{ $ad->name }}</option>
+                                <option value="{{ $ad->id }}"
+                                    {{ ($ad->id == $screening->auditorium_id) ? 'selected': '' }}>
+                                    {{ $ad->id . '. ' . $ad->name }}</option>
                                 @endforeach
                             </select>
                             @endif

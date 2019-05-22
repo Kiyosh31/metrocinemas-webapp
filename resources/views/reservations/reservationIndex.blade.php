@@ -20,8 +20,6 @@
                             <th>Proyeccion</th>
                             <th>Pelicula</th>
                             <th>Nombre del cliente</th>
-                            <th>Apellido del cliente</th>
-                            <th>Asientos</th>
                             <th>Pago</th>
                             <th>Acciones</th>
                         </tr>
@@ -41,9 +39,7 @@
                             <td>{{ $rv->user_id }}</td>
                             <td>{{ $rv->screening_id }}</td>
                             <td>{{ $rv->movie_id }}</td>
-                            <td>{{ $rv->upper_client_name }}</td>
-                            <td>{{ $rv->upper_client_last_name }}</td>
-                            <td></td>
+                            <td>{{ $rv->upper_client_name . ' ' . $rv->upper_client_last_name }}</td>
                             <td>{{ '$ ' . $rv->paid }}</td>
 
                             <td>

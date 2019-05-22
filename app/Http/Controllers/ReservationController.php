@@ -4,7 +4,6 @@ namespace Metrocinemas\Http\Controllers;
 
 use Metrocinemas\Reservation;
 use Metrocinemas\Screening;
-use Metrocinemas\Movie;
 use Metrocinemas\Seat_Reserved;
 use Illuminate\Http\Request;
 
@@ -18,8 +17,9 @@ class ReservationController extends Controller
     public function index()
     {
         $reservations = Reservation::all();
+        $screenings = Screening::all();
 
-        return view('reservations.reservationIndex', compact('reservations', 'seats_reserved'))
+        return view('reservations.reservationIndex', compact('reservations', 'screenings', 'seats'))
         ->with([
             'title' => 'Todas las reservaciones'
         ]);
@@ -93,7 +93,6 @@ class ReservationController extends Controller
     public function show(Reservation $reservation)
     {
         $seats_reserved = Seat_Reserved::where('reservation_id', $reservation->id)->get();
-        
         $imploded = $seats_reserved->implode('seat', ',');
 
         return view('reservations.reservationShow', compact('reservation', 'imploded'));
@@ -108,6 +107,7 @@ class ReservationController extends Controller
     public function edit(Reservation $reservation)
     {
         $screenings = Screening::all();
+
         return view('reservations.reservationForm', compact('reservation', 'screenings'))
         ->with([
             'title' => 'Editar una reservacion'

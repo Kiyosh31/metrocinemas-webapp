@@ -77,7 +77,8 @@
 
                         <div class="form-group">
                             <label class="form-lable">Pago total</label>
-                            <input type="number" class="form-control" id="total_buy" name="total_buy">
+                            <input type="number" class="form-control" id="total_buy" name="total_buy"
+                                value="{{ $reservation->paid ?? '' }}{{ old('total_buy') }}">
                         </div>
 
                         <div class="form-group">
@@ -102,7 +103,9 @@
                             <select name="screening_id" class="form-control">
                                 @foreach($screenings as $sc)
                                 @foreach($sc->movie as $movie)
-                                <option value="{{ $sc->id .'|'. $movie->id }}">{{ $movie->title }} -
+                                <option value="{{ $sc->id .'|'. $movie->id }}"
+                                    {{ ($movie->id == $movie->pivot->movie_id) ? 'selected' : '' }}>{{ $movie->title }}
+                                    -
                                     {{ $movie->pivot->screening_start }} -
                                     {{ $movie->pivot->screening_finish }}
                                 </option>

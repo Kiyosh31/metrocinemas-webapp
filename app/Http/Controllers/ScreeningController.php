@@ -85,7 +85,9 @@ class ScreeningController extends Controller
     {
         $movies = Movie::all();
         $auditoriums = Auditorium::all();
-        return view('screenings.screeningForm', compact('screening', 'movies', 'auditoriums'))
+        $screenings = Screening::all();
+
+        return view('screenings.screeningForm', compact('screening', 'movies', 'auditoriums', 'screenings'))
         ->with([
             'title' => 'Editar una proyeccion'
         ]);

@@ -2,7 +2,7 @@
 
 namespace Metrocinemas\Http\Controllers;
 
-use Metrocinemas\Movie;
+use Metrocinemas\Screening;
 use Metrocinemas\File;
 use Illuminate\Http\Request;
 
@@ -25,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('main-page')->with([
+        $screenings = Screening::all();
+
+        return view('main-page', compact('screenings'))->with([
             'title' => 'Pagina Principal',
         ]);;
     }

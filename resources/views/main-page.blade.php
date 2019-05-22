@@ -10,11 +10,18 @@
                             <th class="text-center w-1"><i class="icon-people"></i></th>
                             <th>Pelicula</th>
                             <th>Proyeccion</th>
-                            <th class="text-center">Sala</th>
+                            <th class="text-center">Auditorio</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @if($screenings->isEmpty())
+                        <div class="alert alert-danger" role="alert">
+                            No se encontraron proyecciones
+                        </div>
+                        @else
+                        @foreach ($screenings as $sc)
+                        @foreach ($sc->movie as $movie)
                         <tr>
                             <td class="text-center">
                                 <div class="avatar d-block">
@@ -23,45 +30,63 @@
                                 </div>
                             </td>
                             <td>
-                                <div>{{-- {{ $movie->title }} --}}</div>
+                                <div>{{ $movie->title }}</div>
                                 <div class="small text-muted">
-                                    {{-- {{ $screening->pivot->screening_start }} -
-                                    {{ $screening->pivot->screening_finish }} --}}
+                                    {{ $movie->clasification }} -
+                                    {{ $movie->category }}
                                 </div>
                             </td>
                             <td>
-                                <div class="clearfix">
-                                    <div class="float-left">
-                                        <strong>42%</strong>
-                                    </div>
-                                    <div class="float-right">
-                                        <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                                    </div>
-                                </div>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar bg-yellow" role="progressbar" style="width: 42%"
-                                        aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <div>{{ $movie->pivot->screening_start }} -
+                                    {{ $movie->pivot->screening_finish }}</div>
                             </td>
                             <td class="text-center">
-                                <i class="payment payment-visa"></i>
+                                <div>{{ $sc->auditorium_id }}</div>
                             </td>
                             <td class="text-center">
                                 <div class="item-action dropdown">
                                     <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i
-                                            class="fe fe-more-vertical"></i></a>
+                                            class="fa fa-bars"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:void(0)" class="dropdown-item"><i
+                                        <a href="{{ route('screenings.edit', $sc->id) }}" class="dropdown-item"><i
                                                 class="dropdown-icon fe fe-tag"></i> Editar </a>
                                         @if (Auth::user()->role == 'admin')
                                         <div class="dropdown-divider"></div>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i
-                                                class="dropdown-icon fa fa-trash"></i> Eliminar </a>
+                                        <a class="dropdown-item" data-toggle="modal"
+                                            data-target="#deleteModal-{{ $sc->id }}">
+                                            <i class="dropdown-icon fa fa-trash"></i>Eliminar
+                                        </a>
                                         @endif
                                     </div>
                                 </div>
                             </td>
                         </tr>
+                        <div class="modal fade" id="deleteModal-{{ $sc->id }}" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Esta seguro de eliminar?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Desea eliminar este elemento?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cerrar</button>
+                                        <form action="{{ route('screenings.destroy', $sc->id) }}" method="POST">
+                                            <input type="hidden" name="_method" value="DELETE"> @csrf
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        @endforeach
+
+                        @endif
                     </tbody>
                 </table>
             </div>
