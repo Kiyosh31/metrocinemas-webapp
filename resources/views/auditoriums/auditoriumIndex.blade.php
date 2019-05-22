@@ -1,4 +1,4 @@
-@extends('layouts.tabler') 
+@extends('layouts.tabler')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -6,7 +6,8 @@
             <div class="card-header">
                 <h3 class="card-title">Listado de Auditorios</h3>
                 <div class="ml-auto">
-                    <a href="{{ route('auditoriums.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>  Agregar Auditorio</a>
+                    <a href="{{ route('auditoriums.create') }}" class="btn btn-sm btn-primary"><i
+                            class="fa fa-plus"></i> Agregar Auditorio</a>
                 </div>
             </div>
             <div class="card-body">
@@ -24,7 +25,8 @@
                             @foreach($auditoriums as $auditorium)
                             <tr>
                                 <td>
-                                    <a href="{{ route('auditoriums.show', $auditorium->id) }}" class="btn btn-sm btn-info">
+                                    <a href="{{ route('auditoriums.show', $auditorium->id) }}"
+                                        class="btn btn-sm btn-info">
                                         {{ $auditorium->id }}
                                     </a>
                                 </td>
@@ -32,16 +34,19 @@
                                 <td>{{ $auditorium->seats_no }}</td>
                                 <td>
                                     <div class="input-group-append">
-                                        <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
+                                        <button type="button" data-toggle="dropdown"
+                                            class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('auditoriums.edit', $auditorium->id) }}">
-                                                            Editar
-                                                          </a> @can('delete',
+                                            <a class="dropdown-item"
+                                                href="{{ route('auditoriums.edit', $auditorium->id) }}">
+                                                <i class="dropdown-icon fe fe-tag"></i>Editar
+                                            </a> @can('delete',
                                             $auditorium)
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $auditorium->id }}">
-                                                                  Eliminar
-                                                          </a> @endcan
+                                            <a class="dropdown-item" data-toggle="modal"
+                                                data-target="#deleteModal-{{ $auditorium->id }}">
+                                                <i class="dropdown-icon fa fa-trash"></i>Eliminar
+                                            </a> @endcan
                                         </div>
                                     </div>
                                 </td>
@@ -52,14 +57,16 @@
                                         <div class="modal-header">
                                             <h5 class="modal-title">Esta seguro de eliminar?</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              </button>
+                                            </button>
                                         </div>
                                         <div class="modal-body">
                                             <p>Desea eliminar este elemento?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                            <form action="{{ route('auditoriums.destroy', $auditorium->id) }}" method="POST">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Cerrar</button>
+                                            <form action="{{ route('auditoriums.destroy', $auditorium->id) }}"
+                                                method="POST">
                                                 <input type="hidden" name="_method" value="DELETE"> @csrf
                                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                                             </form>

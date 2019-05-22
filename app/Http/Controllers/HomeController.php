@@ -2,6 +2,8 @@
 
 namespace Metrocinemas\Http\Controllers;
 
+use Metrocinemas\Movie;
+use Metrocinemas\File;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

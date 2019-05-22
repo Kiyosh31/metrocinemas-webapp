@@ -18,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
         'Metrocinemas\Movie' => 'Metrocinemas\Policies\MoviePolicy',
         'Metrocinemas\Auditorium' => 'Metrocinemas\Policies\AuditoriumPolicy',
         'Metrocinemas\Screening' => 'Metrocinemas\Policies\ScreeningPolicy',
+        'Metrocinemas\Reservation' => 'Metrocinemas\Policies\ReservationPolicy',
     ];
 
     /**

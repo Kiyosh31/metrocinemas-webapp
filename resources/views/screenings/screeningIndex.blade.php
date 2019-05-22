@@ -47,13 +47,13 @@
                                             class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="{{ route('screenings.edit', $sc->id) }}">
-                                                Editar
+                                                <i class="dropdown-icon fe fe-tag"></i>Editar
                                             </a> @can('delete',
                                             $sc)
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" data-toggle="modal"
                                                 data-target="#deleteModal-{{ $sc->id }}">
-                                                Eliminar
+                                                <i class="dropdown-icon fa fa-trash"></i>Eliminar
                                             </a> @endcan
                                         </div>
                                     </div>

@@ -1,4 +1,4 @@
-@extends('layouts.tabler') 
+@extends('layouts.tabler')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -6,7 +6,8 @@
             <div class="card-header">
                 <h3 class="card-title">Listado de reservaciones</h3>
                 <div class="ml-auto">
-                    <a href="{{ route('reservations.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>  Agregar reservacion</a>
+                    <a href="{{ route('reservations.create') }}" class="btn btn-sm btn-primary"><i
+                            class="fa fa-plus"></i> Agregar reservacion</a>
                 </div>
             </div>
 
@@ -20,6 +21,7 @@
                             <th>Pelicula</th>
                             <th>Nombre del cliente</th>
                             <th>Apellido del cliente</th>
+                            <th>Asientos</th>
                             <th>Pago</th>
                             <th>Acciones</th>
                         </tr>
@@ -31,24 +33,31 @@
                         </div>
                         @else @foreach($reservations as $rv)
                         <tr>
-                            <td>{{ $rv->id }}</td>
+                            <td>
+                                <a href="{{ route('reservations.show', $rv->id) }}" class="btn btn-sm btn-info">
+                                    {{ $rv->id }}
+                                </a>
+                            </td>
                             <td>{{ $rv->user_id }}</td>
                             <td>{{ $rv->screening_id }}</td>
                             <td>{{ $rv->movie_id }}</td>
-                            <td>{{ $rv->client_name }}</td>
-                            <td>{{ $rv->client_last_name }}</td>
-                            <td>{{ $rv->paid }}</td>
+                            <td>{{ $rv->upper_client_name }}</td>
+                            <td>{{ $rv->upper_client_last_name }}</td>
+                            <td></td>
+                            <td>{{ '$ ' . $rv->paid }}</td>
 
                             <td>
                                 <div class="input-group-append">
-                                    <button type="button" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
+                                    <button type="button" data-toggle="dropdown"
+                                        class="btn btn-sm btn-warning dropdown-toggle">Acciones</button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="{{ route('reservations.edit', $rv->id) }}">
-                                                Editar
-                                              </a> @can('delete', $rv)
+                                            <i class="dropdown-icon fe fe-tag"></i>Editar
+                                        </a> @can('delete', $rv)
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteModal-{{ $rv->id }}">
-                                            Eliminar
+                                        <a class="dropdown-item" data-toggle="modal"
+                                            data-target="#deleteModal-{{ $rv->id }}">
+                                            <i class="dropdown-icon fa fa-trash"></i>Eliminar
                                         </a> @endcan
                                     </div>
                                 </div>
@@ -60,13 +69,14 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title">Esta seguro de eliminar?</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  </button>
+                                        </button>
                                     </div>
                                     <div class="modal-body">
                                         <p>Desea eliminar este elemento?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cerrar</button>
                                         <form action="{{ route('reservations.destroy', $rv->id) }}" method="POST">
                                             <input type="hidden" name="_method" value="DELETE"> @csrf
                                             <button type="submit" class="btn btn-danger">Eliminar</button>

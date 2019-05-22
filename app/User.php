@@ -37,8 +37,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function reservation()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
     /**
      * Scope a query to only include users with roler = employee.
+     * AQUI COMIENZAN LOS SCOPES
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder

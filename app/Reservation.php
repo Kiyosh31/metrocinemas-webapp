@@ -8,18 +8,30 @@ class Reservation extends Model
 {
     protected $guarded = ['id'];
 
-    public function user()
-    {
-        return $this->hasMany(User::class);
-    }
-
     public function seats_reserved()
     {
         return $this->hasMany(Seat_Reserved::class);
     }
 
-    public function movie_screening()
+    /**
+     * Get the Title first letter toUpper.
+     * THIS IS AN ACCESSOR
+     *
+     * @return string
+     */
+    public function getUpperClientNameAttribute()
     {
-        return $this->hasMany(Movie_Screening::class);
+        return ucfirst($this->client_name);
+    }
+
+    /**
+     * Get the Title first letter toUpper.
+     * THIS IS AN ACCESSOR
+     *
+     * @return string
+     */
+    public function getUpperClientLastNameAttribute()
+    {
+        return ucfirst($this->client_last_name);
     }
 }

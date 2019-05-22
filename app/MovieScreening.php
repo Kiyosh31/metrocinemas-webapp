@@ -8,13 +8,8 @@ class MovieScreening extends Model
 {
     protected $dates = ['screening_start', 'screening_start', 'created_at', 'updated_at'];
 
-    public function getDateScreeningStartAttribute($value)
+    public function reservations()
     {
-        return Carbon::parse($value)->format('Y-m-d\TH:i');
-    }
-
-    public function getDateScreeningFinishAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d\TH:i');
+        return $this->hasMany(Reservation::class);
     }
 }

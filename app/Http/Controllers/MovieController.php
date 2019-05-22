@@ -58,7 +58,7 @@ class MovieController extends Controller
             'cast' => 'required|max:255',
             'clasification' => 'required|max:255',
             'duration_min' => 'required|numeric',
-            'photos' => 'required|image|mimes:jpg,jpeg,png',
+            'photos' => 'image|mimes:jpg,jpeg,png',
         ]);
 
         // Nueva forma de guardar con el fillable o guard en el model
@@ -149,7 +149,7 @@ class MovieController extends Controller
             'cast' => 'required|max:255',
             'clasification' => 'required|max:255',
             'duration_min' => 'required|numeric',
-            'photos' => 'required|image|mimes:jpg,jpeg,png',
+            'photos' => 'image|mimes:jpg,jpeg,png',
         ]);
         
         //Nueva forma de guardar con el fillable o guard en el model
@@ -206,7 +206,6 @@ class MovieController extends Controller
                 $photo->delete();
             }
         }
-        
 
         // Despues elimina la pelicula
         $movie->delete();

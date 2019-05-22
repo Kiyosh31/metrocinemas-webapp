@@ -3,9 +3,9 @@
 namespace Metrocinemas\Http\Controllers;
 
 use Metrocinemas\Reservation;
-use Metrocinemas\User;
 use Metrocinemas\Screening;
 use Metrocinemas\Movie;
+use Metrocinemas\Seat_Reserved;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -18,7 +18,8 @@ class ReservationController extends Controller
     public function index()
     {
         $reservations = Reservation::all();
-        return view('reservations.reservationIndex', compact('reservations'))
+
+        return view('reservations.reservationIndex', compact('reservations', 'seats_reserved'))
         ->with([
             'title' => 'Todas las reservaciones'
         ]);
@@ -48,21 +49,32 @@ class ReservationController extends Controller
     {
         $request->validate([
             'user_id' => 'required|numeric',
-            'screening_id' => 'required|numeric',
+            'screening_id' => 'required',
             'client_name' => 'required|max:255',
             'client_last_name' => 'required|max:255',
             'seats' => 'required',
+            'total_buy' => 'required|numeric',
         ]);
 
-        $reservation = Reservation::create($request->except('seats'));
-        
-        // guarda los asientos reservados
-        if($request->seats)
+        // separa el screening_id del movie_id
+        $data = explode('|', $request->screening_id);
+
+        $reservation = new Reservation();
+        $reservation->user_id = $request->user_id;
+        $reservation->screening_id = $data[0];
+        $reservation->movie_id = $data[1];
+        $reservation->client_name = $request->client_name;
+        $reservation->client_last_name = $request->client_last_name;
+        $reservation->paid = $request->total_buy;
+        $reservation->save();
+
+        foreach($request->seats as $seat)
         {
-            foreach($request->seats as $seat)
-            {
-                Seat_Reserved::create($seat, $reservation->id, $request->screening_id);
-            }
+            $newSeat = new Seat_Reserved();
+            $newSeat->seat = $seat;
+            $newSeat->reservation_id = $reservation->id;
+            $newSeat->screening_id = $data[0];
+            $newSeat->save();
         }
 
         return redirect()->route('reservations.show', $reservation->id)
@@ -80,7 +92,11 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-        return view('reservations.reservationShow', compact('reservation'));
+        $seats_reserved = Seat_Reserved::where('reservation_id', $reservation->id)->get();
+        
+        $imploded = $seats_reserved->implode('seat', ',');
+
+        return view('reservations.reservationShow', compact('reservation', 'imploded'));
     }
 
     /**
@@ -92,7 +108,7 @@ class ReservationController extends Controller
     public function edit(Reservation $reservation)
     {
         $screenings = Screening::all();
-        return view('reservations.reservationForm', compact('reservations'), compact('screenings'))
+        return view('reservations.reservationForm', compact('reservation', 'screenings'))
         ->with([
             'title' => 'Editar una reservacion'
         ]);
@@ -107,7 +123,41 @@ class ReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|numeric',
+            'screening_id' => 'required',
+            'client_name' => 'required|max:255',
+            'client_last_name' => 'required|max:255',
+            'seats' => 'required',
+            'total_buy' => 'required|numeric',
+        ]);
+
+        // separa el screening_id del movie_id
+        $data = explode('|', $request->screening_id);
+
+        $reservation = new Reservation();
+        $reservation->user_id = $request->user_id;
+        $reservation->screening_id = $data[0];
+        $reservation->movie_id = $data[1];
+        $reservation->client_name = $request->client_name;
+        $reservation->client_last_name = $request->client_last_name;
+        $reservation->paid = $request->total_buy;
+        $reservation->save();
+
+        foreach($request->seats as $seat)
+        {
+            $newSeat = new Seat_Reserved();
+            $newSeat->seat = $seat;
+            $newSeat->reservation_id = $reservation->id;
+            $newSeat->screening_id = $data[0];
+            $newSeat->save();
+        }
+
+        return redirect()->route('reservations.show', $reservation->id)
+        ->with([
+            'notification' => 'Reservacion actualizada',
+            'alert-class' => 'alert-success'
+        ]);
     }
 
     /**
@@ -118,6 +168,11 @@ class ReservationController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+        return redirect()->route('reservations.index')
+            ->with([
+                'notification' => 'Reservacion eliminada',
+                'alert-class' => 'alert-danger'
+            ]);
     }
 }
