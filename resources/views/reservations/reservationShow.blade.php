@@ -31,7 +31,7 @@
                             <td>{{ $reservation->user_id }}</td>
                             <td>{{ $reservation->screening_id }}</td>
                             <td>{{ $reservation->movie_id }}</td>
-                            <td>{{ $reservation->client_name . ' ' . $reservation->client_last_name }}</td>
+                            <td>{{ $reservation->upper_client_name . ' ' . $reservation->upper_client_last_name }}</td>
                             <td>{{ $imploded }}</td>
                             <td>{{ '$ ' . $reservation->paid }}</td>
 

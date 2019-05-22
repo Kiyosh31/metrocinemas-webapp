@@ -54,7 +54,7 @@ class ReservationController extends Controller
             'client_last_name' => 'required|max:255',
             'seats' => 'required',
             'total_buy' => 'required|numeric',
-        ]);
+        ]);    
 
         // separa el screening_id del movie_id
         $data = explode('|', $request->screening_id);
