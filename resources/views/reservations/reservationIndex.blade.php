@@ -36,9 +36,9 @@
                                     {{ $rv->id }}
                                 </a>
                             </td>
-                            <td>{{ $rv->user_id }}</td>
+                            <td>{{ $rv->user->username }}</td>
                             <td>{{ $rv->screening_id }}</td>
-                            <td>{{ $rv->movie_id }}</td>
+                            <td>{{ $rv->movie->title }}</td>
                             <td>{{ $rv->upper_client_name . ' ' . $rv->upper_client_last_name }}</td>
                             <td>{{ '$ ' . $rv->paid }}</td>
 

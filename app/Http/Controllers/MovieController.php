@@ -226,7 +226,7 @@ class MovieController extends Controller
      public function addPhoto(Request $request, Movie $movie)
      {
         $request->validate([
-            'photos' => 'required|image|mimes:jpg,jpeg,png',
+            'photos.*' => 'required|image|mimes:jpg,jpeg,png',
         ]);
 
         //Si hay fotos
@@ -251,6 +251,14 @@ class MovieController extends Controller
                     $regFile->save();
                 }
             }
+        }
+        else
+        {
+            return redirect()->back()
+            ->with([
+                'notification' => 'Debes seleccionar un archivo',
+                'alert-class' => 'alert-danger'
+            ]);
         }
 
          return redirect()->back()

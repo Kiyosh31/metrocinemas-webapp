@@ -17,7 +17,7 @@ class Movie extends Model
     use SoftDeletes;
 
     /**
-     * Polymorphic relationship to screening
+     * Polymorphic relationship to screening m:n
      * Many To Many
      * @return type
      */
@@ -36,7 +36,18 @@ class Movie extends Model
     }
 
     /**
-     * Polymorphic relationship to files
+     * Polymorphic relationship to files 1:n
+     * One To Many
+     * 
+     * @return type
+     */
+    public function reservation()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    /**
+     * Polymorphic relationship to files 1:n
      * One To Many
      * 
      * @return type
