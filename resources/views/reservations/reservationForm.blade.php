@@ -157,7 +157,7 @@
 
                         <div class="form-group">
                             <label class="form-lable">Pago total</label>
-                            <input type="number" class="form-control" id="total_buy" name="total_buy"
+                            <input type="number" class="form-control" id="total_buy" name="total_buy" readonly
                                 value="{{ old('total_buy') }}">
                         </div>
 
@@ -175,7 +175,7 @@
 </div>
 </div>
 
-{{-- <script>
+<script>
     function calculate_total() {
         // console.log(document.querySelectorAll('input[type="checkbox"]:checked').length);
 
@@ -187,6 +187,6 @@
 
         document.getElementById("total_buy").value = total;
     }
-</script> --}}
+</script>
 
 @endsection
