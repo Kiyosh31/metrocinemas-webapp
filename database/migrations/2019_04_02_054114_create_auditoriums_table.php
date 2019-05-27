@@ -28,6 +28,8 @@ class CreateAuditoriumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auditoriums');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::drop('auditoriums');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

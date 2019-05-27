@@ -77,6 +77,6 @@ class CreateForeignKeys extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('foreign_keys');
+        Schema::dropIfExists('foreign_keys');
     }
 }

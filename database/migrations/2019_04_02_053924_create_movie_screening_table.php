@@ -29,6 +29,8 @@ class CreateMovieScreeningTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movie_screening');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::drop('movie_screening');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
