@@ -77,7 +77,7 @@
 
                         <div class="form-group">
                             <label class="form-lable">Pago total</label>
-                            <input type="number" class="form-control" id="total_buy" name="total_buy"
+                            <input type="number" class="form-control" id="total_buy" name="total_buy" readonly
                                 value="{{ $reservation->paid ?? '' }}{{ old('total_buy') }}">
                         </div>
 
